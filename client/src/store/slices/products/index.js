@@ -1,18 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-//acciones
-import { getAllProducts } from "../../../actions";
-import { getProductById } from "../../../actions";
-
 
 export const productsSlice = createSlice({
     name: "products",
     initialState: {
-        products: [],
-        detail: {},
+        products: []
     },
     reducers: {
-        getAllProducts: (state, action) => {
+        getProducts: (state, action) => {
             state.products = action.payload
         },
         getProductById: (state, action) => {
@@ -21,5 +16,7 @@ export const productsSlice = createSlice({
     }
 })
 
-export const { getAllProducts, getProductById } = productsSlice.actions;
+export const { getProducts, getProductById } = productsSlice.actions;
 export default productsSlice.reducer;
+
+//detail: {},

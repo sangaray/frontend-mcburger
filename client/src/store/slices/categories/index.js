@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllCategories } from "../../../actions";
 
 export const categoriesSlice = createSlice({
     name: "categories",
@@ -7,7 +6,7 @@ export const categoriesSlice = createSlice({
         categories: [],
     },
     reducers: {
-        getAllcategories: (state, action) => {
+        getCategories: (state, action) => {
             state.categories = action.payload
         },
         getCategoryById: (state, action) => {
@@ -16,6 +15,6 @@ export const categoriesSlice = createSlice({
     }
 })
 
-export const { getAllCa, getProductById } = categoriesSlice.actions;
+export const { getCategories, getCategoryById } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;
