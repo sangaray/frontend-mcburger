@@ -1,0 +1,19 @@
+.card-container{
+    width: 300px;
+    height: 400px;
+    background-color: #888888;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    transition: 0.3s;
+    margin: 20px;
+}
+
+.card-container:hover{
+    transform: scale(1.05);
+}
+
+.card-container img{
+    width: 300px;
+    height: 300px;
+}
