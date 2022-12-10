@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const branchesSlice = createSlice({
     name: "branches",
@@ -15,6 +16,13 @@ export const branchesSlice = createSlice({
         },
     }
 })
+
+export function getAllBranches() {
+    return async function (dispatch) {
+        var json = await axios.get("http://localhost:3001/branches")
+        return dispatch(getBranches(json.data))
+    }
+}
 
 export const { getBranches, getBranchById } = branchesSlice.actions;
 
