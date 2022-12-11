@@ -1,0 +1,96 @@
+.detailContainer {
+  width: 100%;
+  height: calc(100vh + 80px);
+  background-color: #c1c1c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerDetailContainer {
+  max-width: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 50px;
+}
+
+.detailImgContainer {
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+.detailImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  width: 100%;
+  object-fit: cover;
+  height: 300px;
+}
+
+.detailTextContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.detailTitle {
+  padding: 0;
+  margin: 0;
+  font-size: 2.2rem;
+  text-transform: capitalize;
+  font-family: dincond, Arial, Helvetica, sans-serif;
+}
+
+.detailLabelContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.detailLabel {
+  font-size: 1.2rem;
+  color: #651616;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+}
+
+.detailLabelContainerPrice {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: row;
+  margin-top: 20px;
+  gap: 1rem;
+}
+.detailLabelPrice {
+  font-size: 1.2rem;
+  color: #651616;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+}
+
+.detailPrice {
+  font-size: 1.5rem;
+}
+
+.unknownProduct {
+    margin: 20px;
+    font-size: 2rem;
+}
