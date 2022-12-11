@@ -1,0 +1,38 @@
+.nav-container li{
+    display: inline;
+    margin: 20px;
+    color: white;
+}
+
+.nav-container{
+    background-color: #651616;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-container a{
+ text-decoration: none;
+ color: white;
+}
+.button-login{
+    background-color:#EF7E63; 
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+
+}
+
+.nav-container img{
+    height: 80px;
+    width: 120px;
+}
