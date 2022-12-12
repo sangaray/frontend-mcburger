@@ -21,9 +21,10 @@ export function getProductID(id) {
 }
 
 export function getProductByAmount(params){
-    return ({type:"GET_PRODUCTS_AMOUNT" ,payload:params})
+    return {type:"GET_PRODUCTS_AMOUNT" ,payload:params}
 }
 
 export function getProductsByCategory(params){
-    return ({type:"GET_PRODUCTS_CATEGORY" ,payload:params})
+    console.log("llegue a la accion ")
+    return {type:"GET_PRODUCTS_CATEGORY" ,payload:params}
 }

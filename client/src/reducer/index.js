@@ -1,4 +1,4 @@
-import { GET_ALL_PRODUCTS, GET_PRODUCTS_ID, GET_PRODUCTS_AMOUNT, GET_PRODUCTS_CATEGORY, getAllProducts } from "../actions/index"
+import { GET_ALL_PRODUCTS, GET_PRODUCTS_ID, GET_PRODUCTS_AMOUNT, GET_PRODUCTS_CATEGORY } from "../actions/index"
 
 
 const initialState = {
@@ -6,38 +6,39 @@ const initialState = {
     products: []
 }
 
-function rootReducer (state = initialState, action){
+function rootReducer(state = initialState, action) {
     switch (action.type) {
 
         case GET_ALL_PRODUCTS:
-            return ({
+            console.log(action.payload)
+            return {
                 ...state,
                 products: action.payload,
                 allProducts: action.payload
-            })
+            }
 
         case GET_PRODUCTS_ID:
-            return ({
+            return {
                 ...state,
                 products: action.payload,
-            })
+            }
+
         case GET_PRODUCTS_CATEGORY:
-            const allProductss = state.allProducts;
-            console.log("llegue")
-            return ({
+            console.log(allProductss)
+            return {
                 ...state,
-                products: allProductss
-                //.filter(p => p.categories.includes(action.payload))
-            })
+                products: state.allProducts.filter(p => p.idCategory === action.payload)
+            }
+            
         case GET_PRODUCTS_AMOUNT:
             const allProducts = state.allProducts;
-            return ({
+            return {
                 ...state,
                 products: allProducts.filter(p => p.price > (action.payload[0]) && p.price < (action.payload[1]))
-            })
+            }
 
         default:
-            return ({...state})
+            return { ...state }
 
     }
 }

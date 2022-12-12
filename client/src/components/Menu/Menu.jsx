@@ -17,7 +17,7 @@ export default function Menu() {
     useEffect(() => {
         dispatch(getAllProducts());
     }, [])
-
+    
     return (
         <div>
             <div>
