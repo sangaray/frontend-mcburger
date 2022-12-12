@@ -10,7 +10,15 @@ export default function FilterAmount(){
         firstValue:"",
         secValue:""
     })
+
+    const [message, setMessage] = useState("")
+
     function handleFilterAmount(c) {
+        setMessage("")
+        if (input.firstValue >= input.secValue) {
+            return setMessage("The min value should be lower than the max value")
+        }
+        
         dispatch(getProductByAmount([input.firstValue, input.secValue]));
     }
 
@@ -27,6 +35,7 @@ export default function FilterAmount(){
                 <input type="number" value={input.firstValue} name="firstValue" onChange={e => handleChange(e)} /> 
                 <input type="number" value={input.secValue} name="secValue" onChange={e => handleChange(e)} /> 
                 <button onClick={() => handleFilterAmount(input)}>search</button>
+                <p>{message}</p>
             </div>
         </div>
     )
