@@ -8,6 +8,7 @@ import {
 const initialState = {
   allProducts: [],
   products: [],
+  product: {},
 };
 
 function rootReducer(state = initialState, action) {
@@ -22,7 +23,7 @@ function rootReducer(state = initialState, action) {
     case GET_PRODUCTS_ID:
       return {
         ...state,
-        products: action.payload,
+        product: action.payload,
       };
 
     case GET_PRODUCTS_CATEGORY:

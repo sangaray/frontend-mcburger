@@ -7,6 +7,7 @@ import News from "./components/News/News";
 import Locations from "./components/Locations/Locations";
 import Delivery from "./components/Delivery/Delivery";
 import SelectMenu from "./components/SelectMenu/SelectMenu";
+import Details from "./components/Details/Details";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
 
@@ -25,6 +26,7 @@ function App() {
       <Route exact path="/news" component={News} />
       <Route exact path="/locations" component={Locations} />
       <Route exact path="/delivery" component={Delivery} />
+      <Route exact path="/product/:id" component={Details} />
     </BrowserRouter>
   );
 }

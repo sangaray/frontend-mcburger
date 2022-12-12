@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "react-error-overlay": "^6.0.9"
+  },
+  "dependencies": {
+    "redux-devtools-extension": "^2.13.9"
   }
 }
