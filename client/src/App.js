@@ -6,12 +6,14 @@ import Menu from './components/Menu/Menu';
 import News from './components/News/News';
 import Locations from './components/Locations/Locations';
 import Delivery from './components/Delivery/Delivery';
+import SelectMenu from './components/SelectMenu/SelectMenu';
 
 function App() {
   return (
     <BrowserRouter>
        <Route exact path="/" component={Home} />
        <Route exact path="/menu" component={Menu} />
+       <Route exact path="/selectMenu" component={SelectMenu} />
        <Route exact path="/news" component={News} />
        <Route exact path="/locations" component={Locations} />
        <Route exact path="/delivery" component={Delivery} />
