@@ -9,13 +9,14 @@ import Delivery from "./components/Delivery/Delivery";
 import SelectMenu from "./components/SelectMenu/SelectMenu";
 import Details from "./components/Details/Details";
 import { useDispatch } from "react-redux";
-import { getAllProducts } from "./actions";
+import { getAllIngredients, getAllProducts } from "./actions";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllProducts());
+    dispatch(getAllIngredients());
   }, [dispatch]);
 
   return (
