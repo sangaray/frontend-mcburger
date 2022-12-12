@@ -12,11 +12,8 @@ export default function NavBar(){
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/Selectmenu">Menu</Link></li>
                     <li><Link to="/news">News</Link></li>
-                    <li><Link to="/delivery">Delivery</Link></li>
-                    <li><Link to="/locations">Locations</Link></li>
+                   
                 </ul>
-
-                <button className="button-login">Iniciar Sesión</button>
             </div>
         </div>
     )

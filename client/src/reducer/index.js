@@ -3,6 +3,7 @@ import {
   GET_PRODUCTS_ID,
   GET_PRODUCTS_AMOUNT,
   GET_PRODUCTS_CATEGORY,
+  ORDER_BY_PRICE,
 } from "../actions/index";
 
 const initialState = {
@@ -44,6 +45,29 @@ function rootReducer(state = initialState, action) {
         }),
       };
 
+    case ORDER_BY_PRICE:
+      let orderArray = [...state.products]
+      console.log(orderArray) //desordenado
+      // if (action.payload == 'cost') {
+      //   orderArray = [...state.products]
+      // } else {
+      action.payload == 'asc' ?
+        orderArray.sort(function (a, b) {
+          a = a.price.split("$")[1]
+          b = b.price.split("$")[1]
+          return parseInt(b) - parseInt(a);
+
+        }) : orderArray.sort(function (a, b) {
+          a = a.price.split("$")[1]
+          b = b.price.split("$")[1]
+          return parseInt(a) - parseInt(b);
+        })
+      console.log(orderArray) //ordenado
+      return {
+        ...state,
+        products: orderArray,
+      }
+    // }
     default:
       return { ...state };
   }
