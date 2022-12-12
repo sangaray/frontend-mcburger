@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../actions/index";
+import React from "react";
+import { useSelector } from "react-redux";
 import FilterIngredients from "../FilterIngredients/FilterIngredients";
 import FilterAmount from "../FilterAmount/FilterAmount";
 import Ordering from "../Ordering/Ordering";
@@ -9,14 +8,7 @@ import NavBar from "../NavBar/NavBar";
 import "./Menu.css";
 
 export default function Menu() {
-
-    const dispatch = useDispatch();
-
     const products = useSelector(state => state.products);
-
-    useEffect(() => {
-        dispatch(getAllProducts());
-    }, [])
     
     return (
         <div>

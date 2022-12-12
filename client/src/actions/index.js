@@ -25,6 +25,5 @@ export function getProductByAmount(params){
 }
 
 export function getProductsByCategory(params){
-    console.log("llegue a la accion ")
     return {type:"GET_PRODUCTS_CATEGORY" ,payload:params}
 }
