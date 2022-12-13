@@ -1,6 +1,7 @@
 import React from "react"
 import "./NavBar.css"
 import BurgerLogo from "./BurgerLogo.png"
+import { Link } from "react-router-dom"
 
 export default function NavBar(){
     return(
@@ -8,11 +9,11 @@ export default function NavBar(){
             <div className="nav-container">
                 <img src={BurgerLogo} alt="" />
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/menu">Menu</a></li>
-                    <li><a href="/news">News</a></li>
-                    <li><a href="/delivery">Delivery</a></li>
-                    <li><a href="/locations">Locations</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/Selectmenu">Menu</Link></li>
+                    <li><Link to="/news">News</Link></li>
+                    <li><Link to="/delivery">Delivery</Link></li>
+                    <li><Link to="/locations">Locations</Link></li>
                 </ul>
 
                 <button className="button-login">Iniciar Sesión</button>
