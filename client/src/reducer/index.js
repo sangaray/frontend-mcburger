@@ -4,11 +4,13 @@ import {
   GET_PRODUCTS_AMOUNT,
   GET_PRODUCTS_CATEGORY,
   ORDER_BY_PRICE,
+  GET_PRODUCTS_BY_INGREDIENT,
 } from "../actions/index";
 
 const initialState = {
   allProducts: [],
   products: [],
+  productsCategory: [],
   product: {},
 };
 
@@ -30,7 +32,32 @@ function rootReducer(state = initialState, action) {
     case GET_PRODUCTS_CATEGORY:
       return {
         ...state,
+        productsCategory: state.allProducts.filter((p) => p.idCategory === action.payload),
         products: state.allProducts.filter((p) => p.idCategory === action.payload),
+      };
+
+    case GET_PRODUCTS_BY_INGREDIENT:
+      //recibe uno o muchos "productIngredients"
+      console.log("llegue")
+      const products = state.productsCategory //los que estan cargados
+      const searchIngredients = action.payload //los que envio
+
+      return {
+        ...state,
+        products: products.filter((p) => {
+
+          let productIngredients = p.ingredients
+          productIngredients = productIngredients.split("-");
+          productIngredients = productIngredients.map(e => e.trim());
+          console.log(searchIngredients);
+          let coincidense = false
+          searchIngredients.map(e =>
+            productIngredients.map(i => {
+              if (e === i) coincidense = true;
+            })
+          )
+          return coincidense;
+        })
       };
 
     case GET_PRODUCTS_AMOUNT:
@@ -48,9 +75,6 @@ function rootReducer(state = initialState, action) {
     case ORDER_BY_PRICE:
       let orderArray = [...state.products]
       console.log(orderArray) //desordenado
-      // if (action.payload == 'cost') {
-      //   orderArray = [...state.products]
-      // } else {
       action.payload == 'asc' ?
         orderArray.sort(function (a, b) {
           a = a.price.split("$")[1]
@@ -67,7 +91,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         products: orderArray,
       }
-    // }
+
     default:
       return { ...state };
   }

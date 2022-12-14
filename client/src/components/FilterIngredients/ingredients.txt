@@ -1,0 +1,100 @@
+  bread = {
+    'Regular Bun',
+    'Quarter Pound Bun',
+    'Big Mac Bun',
+    'bread',
+    'Potato Roll',
+    'croutons',
+  }
+
+  beef = {
+    '100% Beef Patty',
+    'Quarter Pound 100% Beef Patty',
+  }
+
+  chicken = {
+    'McChicken Patty',
+    'chicken',
+    'Crispy Chicken Fillet',
+    'crispy chicken',
+  }
+  
+  cheese = {
+    'cream cheese',
+    'Pasteurized Process American Cheese',
+    'string cheese',
+    'mozzarella',
+    'Cheddar',
+  }
+
+  sauces and dressings = {
+    'Ketchup',
+    'ketchup',
+    'Mustard',
+    'Mayonnaise',
+    'mayonnaise',
+    'Big Mac Sauce',
+    'Smoky Sauce',
+    'Spicy Pepper Sauce',
+  }
+
+  
+  vegetable = {
+    'Pickle Slices',
+    'Onions',
+    'onion',
+    'Shredded Lettuce',
+    'Roma Tomato',
+    'potatoes',
+    '5 vegetable',
+    'vegetable medallion',
+    'lettuce',
+    'tomato',
+    'pickles',
+    'arugula',
+    'grated carrot',
+    'Lettuce',
+    'Crinkle Cut Pickle',
+    'Milanese NotCo',
+  }
+
+  
+  milk = {
+    'Whole Milk',
+    'M&M Mini Milk Chocolate Candies',
+    'Lowfat Smoothie Yogurt',
+  }
+
+  fish = {
+    'tuna',
+  }
+
+  fruits = {
+    'Strawberry Banana Fruit Base',
+    'apple',
+    'blueberries',
+    'Strawberry Shake Syrup',
+  }
+  
+  bacon = {
+    'Thick Cut Applewood Smoked Bacon'
+  }
+  
+  cream = {
+    'American cream ice cream',
+    'Vanilla Reduced Fat Ice Cream',
+  'vanilla ice cream',
+  'Whipped Light Cream',
+  }
+  
+  chocolate = {
+    'hot chocolate',
+    'Chocolate Chip',
+    'Chocolate Shake Syrup',
+    'Oreo cookies',
+    'Hot Fudge Topping',
+  }
+  
+  
+  
+  
