@@ -3,20 +3,28 @@ import {
   GET_PRODUCTS_ID,
   GET_PRODUCTS_AMOUNT,
   GET_PRODUCTS_CATEGORY,
-  GET_ALL_INGREDIENTS,
-  FILTER_BY_INGREDIENT,
+  ORDER_BY_PRICE,
+  GET_PRODUCTS_BY_INGREDIENT,
+  ADD_TO_CART,
+  RESTART_CART,
+  DELETE_FROM_CART,
 } from "../actions/index";
 
 const initialState = {
   allProducts: [],
   products: [],
+  productsCategory: [],
   product: {},
-  ingredients: [],
+  cart: [
+    {id: 1, name: 'Cheeseburger', ingredients: 'Regular Bun - 100% Beef Patty - Pasteurized Proces…eese - Ketchup - Pickle Slices - Onions - Mustard', summary: 'Our simple, classic cheeseburger begins with a 100…ervatives or added colors from artificial sources', price: '$2'},
+    {id: 1, name: 'Cheeseburger', ingredients: 'Regular Bun - 100% Beef Patty - Pasteurized Proces…eese - Ketchup - Pickle Slices - Onions - Mustard', summary: 'Our simple, classic cheeseburger begins with a 100…ervatives or added colors from artificial sources', price: '$2'}  
+  ],
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_PRODUCTS:
+      console.log(action.payload)
       return {
         ...state,
         products: action.payload,
@@ -30,11 +38,34 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_PRODUCTS_CATEGORY:
+      
       return {
         ...state,
-        products: state.allProducts.filter(
-          (p) => p.idCategory === action.payload
-        ),
+        productsCategory: state.allProducts.filter((p) => p.idCategory === action.payload),
+        products: state.allProducts.filter((p) => p.idCategory === action.payload),
+      };
+
+    case GET_PRODUCTS_BY_INGREDIENT:
+      //recibe uno o muchos "productIngredients"
+      console.log("llegue")
+      const products = state.productsCategory //los que estan cargados
+      const searchIngredients = action.payload //los que envio
+
+      return {
+        ...state,
+        products: action.payload === ["All"] ? state.productsCategory : products.filter((p) => {
+          let productIngredients = p.ingredients
+          productIngredients = productIngredients.split("-");
+          productIngredients = productIngredients.map(e => e.trim());
+          console.log(searchIngredients);
+          let coincidense = false
+          searchIngredients.map(e =>
+            productIngredients.map(i => {
+              if (e === i) coincidense = true;
+            })
+          )
+          return coincidense;
+        })
       };
 
     case GET_PRODUCTS_AMOUNT:
@@ -49,26 +80,46 @@ function rootReducer(state = initialState, action) {
         }),
       };
 
-    case GET_ALL_INGREDIENTS:
-      const ingredients = [];
+    case ORDER_BY_PRICE:
+      let orderArray = [...state.products]
+      console.log(orderArray) //desordenado
+      action.payload == 'asc' ?
+        orderArray.sort(function (a, b) {
+          a = a.price.split("$")[1]
+          b = b.price.split("$")[1]
+          return parseInt(b) - parseInt(a);
 
-      for (const product of state.products) {
-        for (const ingredient of product.ingredients.split(" - ")) {
-          if (!ingredients.includes(ingredient)) {
-            ingredients.push(ingredient);
-          }
-        }
+        }) : orderArray.sort(function (a, b) {
+          a = a.price.split("$")[1]
+          b = b.price.split("$")[1]
+          return parseInt(a) - parseInt(b);
+        })
+      console.log(orderArray) //ordenado
+      return {
+        ...state,
+        products: orderArray,
       }
 
+
+    case ADD_TO_CART:
+      //le llega un producto
       return {
         ...state,
-        ingredients,
-      };
-    case FILTER_BY_INGREDIENT:
+        cart: [...state.cart, action.payload]
+      }
+
+    case RESTART_CART:
       return {
         ...state,
-        products: state.products.filter((p) => p.ingredients.includes(action.payload)),
-      };
+        cart: []
+      }
+
+    case DELETE_FROM_CART:
+      // llega producto que queremos elminar
+      return {
+        ...state,
+        cart: state.cart.filter(e => e.id !== action.payload)
+      }
 
     default:
       return { ...state };
