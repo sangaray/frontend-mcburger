@@ -5,6 +5,9 @@ import {
   GET_PRODUCTS_CATEGORY,
   ORDER_BY_PRICE,
   GET_PRODUCTS_BY_INGREDIENT,
+  ADD_TO_CART,
+  RESTART_CART,
+  DELETE_FROM_CART,
 } from "../actions/index";
 
 const initialState = {
@@ -12,11 +15,16 @@ const initialState = {
   products: [],
   productsCategory: [],
   product: {},
+  cart: [
+    {id: 1, name: 'Cheeseburger', ingredients: 'Regular Bun - 100% Beef Patty - Pasteurized Proces…eese - Ketchup - Pickle Slices - Onions - Mustard', summary: 'Our simple, classic cheeseburger begins with a 100…ervatives or added colors from artificial sources', price: '$2'},
+    {id: 1, name: 'Cheeseburger', ingredients: 'Regular Bun - 100% Beef Patty - Pasteurized Proces…eese - Ketchup - Pickle Slices - Onions - Mustard', summary: 'Our simple, classic cheeseburger begins with a 100…ervatives or added colors from artificial sources', price: '$2'}  
+  ],
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_PRODUCTS:
+      console.log(action.payload)
       return {
         ...state,
         products: action.payload,
@@ -30,6 +38,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_PRODUCTS_CATEGORY:
+      
       return {
         ...state,
         productsCategory: state.allProducts.filter((p) => p.idCategory === action.payload),
@@ -89,6 +98,27 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: orderArray,
+      }
+
+
+    case ADD_TO_CART:
+      //le llega un producto
+      return {
+        ...state,
+        cart: [...state.cart, action.payload]
+      }
+
+    case RESTART_CART:
+      return {
+        ...state,
+        cart: []
+      }
+
+    case DELETE_FROM_CART:
+      // llega producto que queremos elminar
+      return {
+        ...state,
+        cart: state.cart.filter(e => e.id !== action.payload)
       }
 
     default:

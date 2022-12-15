@@ -8,6 +8,12 @@ export const ORDER_BY_PRICE = "ORDER_BY_PRICE"
 export const GET_PRODUCTS_BY_INGREDIENT = "GET_PRODUCTS_BY_INGREDIENT"
 
 
+//CART
+export const ADD_TO_CART = "ADD_TO_CART"
+export const RESTART_CART = "RESTART_CART"
+export const DELETE_FROM_CART = "RESTART_CART"
+
+
 export function getAllProducts() {
     return async function (dispatch) {
         var json = await axios.get("http://localhost:3001/products")
@@ -46,6 +52,27 @@ export function orderByPrice(payload) {
 export function getProductsByIgredient(params) {
     return {
         type: "GET_PRODUCTS_BY_INGREDIENT",
+        payload: params
+    }
+}
+
+export function deleteFromCart(params) {
+    return {
+        type: "DELETE_FROM_CART",
+        payload: params
+    }
+}
+
+export function addToCart(params) {
+    return {
+        type: "ADD_TO_CART",
+        payload: params
+    }
+}
+
+export function restartCart(params) {
+    return {
+        type: "RESTART_CART",
         payload: params
     }
 }
