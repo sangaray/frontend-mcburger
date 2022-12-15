@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function FilterIngredients() {
 
+
     const dispatch = useDispatch();
 
     function handleFilterIngredient(e) {
         e.preventDefault();
+
         let ingredient = ["All"]
         switch (e.target.value) {
             case "bread":

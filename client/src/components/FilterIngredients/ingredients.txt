@@ -1,3 +1,17 @@
+  bread
+  beef
+  chicken
+  cheese
+  sauces and dressings
+  vegetable
+  milk
+  fish
+  fruits
+  bacon
+  cream
+  chocolate
+  
+  
   bread = {
     'Regular Bun',
     'Quarter Pound Bun',
