@@ -31,7 +31,6 @@ export default function CartList() {
                     <button onClick={e => handleOnAdd(p.id)}>+</button>
                     <button onClick={e => handleOnDelete(p.id)}>-</button>
                 </div>
-
             )}
 
             <button onClick={handleOnRestart}>restart cart</button>
