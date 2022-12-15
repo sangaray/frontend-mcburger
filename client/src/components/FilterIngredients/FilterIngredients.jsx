@@ -12,6 +12,8 @@ export default function FilterIngredients() {
 
         let ingredient = ["All"]
         switch (e.target.value) {
+            case "All": 
+                ingredient = ["All"]
             case "bread":
                 ingredient = [
                     'Regular Bun',

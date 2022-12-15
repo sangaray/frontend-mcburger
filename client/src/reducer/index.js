@@ -44,8 +44,7 @@ function rootReducer(state = initialState, action) {
 
       return {
         ...state,
-        products: products.filter((p) => {
-
+        products: action.payload === ["All"] ? state.productsCategory : products.filter((p) => {
           let productIngredients = p.ingredients
           productIngredients = productIngredients.split("-");
           productIngredients = productIngredients.map(e => e.trim());
