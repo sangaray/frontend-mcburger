@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState }  from "react"
+import React  from "react"
 import "./NavBar.css"
 import BurgerLogo from "./BurgerLogo.png"
 import { Link } from "react-router-dom"
@@ -14,10 +14,8 @@ import {
     PopoverContent,
     PopoverHeader,
     PopoverBody,
-    PopoverFooter,
     PopoverArrow,
     PopoverCloseButton,
-    PopoverAnchor,
   } from '@chakra-ui/react'
 
 
