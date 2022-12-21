@@ -63,6 +63,7 @@ function Details() {
             )}
           </div>
         </div>
+<<<<<<< HEAD
       ) : (
         <div className="detailContainer">
           <div className="innerDetailContainer">
@@ -70,6 +71,15 @@ function Details() {
               404 Opps, it seems we don't have that product :(
             </h1>
           </div>
+=======
+      </div> 
+      :
+      <div className="detailContainer">
+        <div className="innerDetailContainer">
+          <h1 className="unknownProduct">
+            404 Opps, it seems we don't have that product
+          </h1>
+>>>>>>> 92922a6ad0be9e90aa03e86619adf7afd0c2e700
         </div>
       )}
     </div>

@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { getProductsByIgredient } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function FilterIngredients() {
-
 
     const dispatch = useDispatch();
 

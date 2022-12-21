@@ -15,12 +15,39 @@ const initialState = {
   products: [],
   productsCategory: [],
   product: {},
+<<<<<<< HEAD
   cart: {},
 };
 
 function rootReducer(state = initialState, action) {
   let newCart = { ...state.cart };
   switch (action.type) {
+=======
+  cart: {
+    '1': {
+      id: 1,
+      name: 'Cheeseburger',
+      image: 'asdf.com',
+      price: "$2",
+      quantity: 2
+    },
+    '2': {
+      id: 2,
+      name: 'Chicken Nuggets',
+      image: 'asdf.com',
+      price: "$2",
+      quantity: 3
+    }
+  },
+};
+
+function rootReducer(state = initialState, action) {
+
+  let newCart = { ...state.cart };
+
+  switch (action.type) {
+
+>>>>>>> 92922a6ad0be9e90aa03e86619adf7afd0c2e700
     case GET_ALL_PRODUCTS:
       return {
         ...state,
@@ -28,6 +55,10 @@ function rootReducer(state = initialState, action) {
         allProducts: action.payload,
       };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 92922a6ad0be9e90aa03e86619adf7afd0c2e700
     case GET_PRODUCTS_ID:
       return {
         ...state,
@@ -35,6 +66,10 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_PRODUCTS_CATEGORY:
+<<<<<<< HEAD
+=======
+
+>>>>>>> 92922a6ad0be9e90aa03e86619adf7afd0c2e700
       return {
         ...state,
         productsCategory: state.allProducts.filter(
@@ -130,6 +165,14 @@ function rootReducer(state = initialState, action) {
           delete newCart[action.payload.id];
         }
       }
+<<<<<<< HEAD
+=======
+
+      return {
+        ...state,
+        cart: newCart
+      };
+>>>>>>> 92922a6ad0be9e90aa03e86619adf7afd0c2e700
 
       return { ...state, cart: newCart };
 
