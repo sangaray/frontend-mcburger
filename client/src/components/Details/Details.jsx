@@ -67,7 +67,7 @@ function Details() {
         <div className="detailContainer">
           <div className="innerDetailContainer">
             <h1 className="unknownProduct">
-              404 Opps, it seems we don't have that product :(
+              404 Opps, it seems we don't have that product
             </h1>
           </div>
         </div>
