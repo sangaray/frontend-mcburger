@@ -1,4 +1,3 @@
-
 import { useDispatch } from 'react-redux';
 import { getProductsByCategory } from '../../actions/index';
 import { Link } from "react-router-dom";
