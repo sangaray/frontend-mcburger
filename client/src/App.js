@@ -11,7 +11,6 @@ import Details from "./components/Details/Details";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
 
-
 function App() {
   const dispatch = useDispatch();
 

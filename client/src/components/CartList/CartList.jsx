@@ -13,7 +13,7 @@ export default function CartList() {
       function handleOnRemove(p) {
         dispatch(removeFromCart(p));
       }
-    
+
     function handleOnRestart() {
         dispatch(restartCart())
     }

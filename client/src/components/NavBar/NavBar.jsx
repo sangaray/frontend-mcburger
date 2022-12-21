@@ -1,9 +1,11 @@
+
 import React, { useEffect, useState }  from "react"
 import "./NavBar.css"
 import BurgerLogo from "./BurgerLogo.png"
 import { Link } from "react-router-dom"
 import { BsCart2 } from 'react-icons/bs'
 import CartList from "../CartList/CartList"
+
 import {
     Button,
     Box,
@@ -30,7 +32,6 @@ export default function NavBar() {
 //   const handleMouseOut = () => {
 //     setHover(false);
 //   };
-
 
 
     return (
@@ -63,6 +64,7 @@ export default function NavBar() {
                
                
                 {/* <button onMouseOver={handleMouseIn} onMouseOut={handleMouseOut}>{hover ?
+
                     <div>
                         <BsCart2 />
                         <CartList />

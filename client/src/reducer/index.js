@@ -30,12 +30,11 @@ const initialState = {
     price: "$2",
     quantity: 3
   }
-},
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
-
+  
     case GET_ALL_PRODUCTS:
       console.log(action.payload)
       return {
@@ -43,8 +42,8 @@ function rootReducer(state = initialState, action) {
         products: action.payload,
         allProducts: action.payload,
       };
-    
-    
+      
+      
     case GET_PRODUCTS_ID:
       return {
         ...state,
@@ -137,6 +136,7 @@ function rootReducer(state = initialState, action) {
 
     case DELETE_FROM_CART:
       // llega producto que queremos elminar
+      
       if (state.cart.hasOwnProperty(action.payload)) {
         state.cart[action.payload].quantity -= 1;
         if (state.cart[action.payload].quantity < 1) {
