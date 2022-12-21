@@ -1,0 +1,24 @@
+.news-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 300px;
+    margin-left: 300px;
+    margin-top: 200px;
+    flex-wrap: wrap;
+}
+
+.art-1{
+    width: 300px;
+    text-align: center;
+}
+
+.art-1 img{
+    height: 300px;
+    width: 400px;
+    border-radius: 10px;
+}
+
+.art-1 p{
+    font-size: 24px;
+}

@@ -1,0 +1,40 @@
+.nav-container li{
+    display: inline;
+    margin: 30px;
+    color: white;
+}
+
+.nav-container{
+    background-color: #651616;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10  0px;
+}
+
+.nav-container a{
+ text-decoration: none;
+ color: white;
+ font-size: 24px;
+}
+.button-login{
+    background-color:#EF7E63; 
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+
+}
+
+.nav-container img{
+    height: 120px;
+    width: 200px;
+}
