@@ -30,7 +30,7 @@ const initialState = {
     price: "$2",
     quantity: 3
   }
-};
+}};
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -154,5 +154,6 @@ function rootReducer(state = initialState, action) {
       return { ...state };
   }
 }
+
 
 export default rootReducer;

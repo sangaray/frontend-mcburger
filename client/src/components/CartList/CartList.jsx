@@ -11,7 +11,7 @@ export default function CartList() {
       }
     
       function handleOnRemove(p) {
-        dispatch(removeFromCart(p));
+        dispatch(deleteFromCart(p));
       }
 
     function handleOnRestart() {
@@ -32,4 +32,4 @@ export default function CartList() {
             }
         </div>
     )
-}
+} 
