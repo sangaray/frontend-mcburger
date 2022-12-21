@@ -1,39 +1,35 @@
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { restartCart, deleteFromCart, addToCart } from '../../actions/index';
 
-
-
 export default function CartList() {
-
     const dispatch = useDispatch();
-
-    function handleOnAdd(id) {
-        dispatch(addToCart(id))
-    }
-
-    function handleOnDelete(id) {
-        dispatch(deleteFromCart(id))
-    }
+    const cartProducts = useSelector(state => state.cart);
+  
+    function handleOnAdd(p) {
+        dispatch(addToCart(p));
+      }
+    
+      function handleOnRemove(p) {
+        dispatch(removeFromCart(p));
+      }
 
     function handleOnRestart() {
         dispatch(restartCart())
     }
 
-
-    const cartProducts = useSelector(state => state.cart);
-
     return (
         <div>
-            <h1></h1>
-            {cartProducts.map(p =>
-                <div>
-                    <h2>{p.name}</h2>
-                    <button onClick={e => handleOnAdd(p.id)}>+</button>
-                    <button onClick={e => handleOnDelete(p.id)}>-</button>
-                </div>
-            )}
-
-            <button onClick={handleOnRestart}>restart cart</button>
+            {
+                Object.values(cartProducts).map(product => (
+                    <div key={product.id+""+product.name}>
+                        <h1>{product.name}</h1>
+                        <button onClick={() => handleOnRemove(product)}>-</button>
+                        <p>{product.quantity}</p>
+                        <button onClick={() => handleOnAdd(product)}>+</button>
+                    </div>
+                ))
+            }
         </div>
     )
 }

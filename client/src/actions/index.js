@@ -11,7 +11,7 @@ export const GET_PRODUCTS_BY_INGREDIENT = "GET_PRODUCTS_BY_INGREDIENT"
 //CART
 export const ADD_TO_CART = "ADD_TO_CART"
 export const RESTART_CART = "RESTART_CART"
-export const DELETE_FROM_CART = "RESTART_CART"
+export const DELETE_FROM_CART = "DELETE_FROM_CART"
 
 
 export function getAllProducts() {
@@ -64,9 +64,18 @@ export function deleteFromCart(params) {
 }
 
 export function addToCart(params) {
+
+    let object = {
+        id:params.id,
+        name:params.name,
+        image:params.image,
+        price:params.price,
+        quantity:1,
+    }
+
     return {
         type: "ADD_TO_CART",
-        payload: params
+        payload: object
     }
 }
 

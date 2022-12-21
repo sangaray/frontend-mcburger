@@ -15,14 +15,26 @@ const initialState = {
   products: [],
   productsCategory: [],
   product: {},
-  cart: [
-    {id: 1, name: 'Cheeseburger', ingredients: 'Regular Bun - 100% Beef Patty - Pasteurized Proces…eese - Ketchup - Pickle Slices - Onions - Mustard', summary: 'Our simple, classic cheeseburger begins with a 100…ervatives or added colors from artificial sources', price: '$2'},
-    {id: 1, name: 'Cheeseburger', ingredients: 'Regular Bun - 100% Beef Patty - Pasteurized Proces…eese - Ketchup - Pickle Slices - Onions - Mustard', summary: 'Our simple, classic cheeseburger begins with a 100…ervatives or added colors from artificial sources', price: '$2'}  
-  ],
+  cart: { 
+    '1': {
+    id: 1,
+    name: 'Cheeseburger',
+    image: 'asdf.com',
+    price: "$2",
+    quantity: 2
+  },
+  '2': {
+    id: 2,
+    name: 'Chicken Nuggets',
+    image: 'asdf.com',
+    price: "$2",
+    quantity: 3
+  }
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+  
     case GET_ALL_PRODUCTS:
       console.log(action.payload)
       return {
@@ -30,7 +42,8 @@ function rootReducer(state = initialState, action) {
         products: action.payload,
         allProducts: action.payload,
       };
-
+      
+      
     case GET_PRODUCTS_ID:
       return {
         ...state,
@@ -103,22 +116,38 @@ function rootReducer(state = initialState, action) {
 
     case ADD_TO_CART:
       //le llega un producto
+      if (state.cart.hasOwnProperty(action.payload.id)) {
+        state.cart[action.payload.id].quantity += 1;
+      } else {
+        state.cart[action.payload.id] = action.payload;
+      }
+      console.log(state.cart)
+      
       return {
         ...state,
-        cart: [...state.cart, action.payload]
+        cart: state.cart,
       }
 
     case RESTART_CART:
       return {
         ...state,
-        cart: []
+        cart: {}
       }
 
     case DELETE_FROM_CART:
       // llega producto que queremos elminar
+      
+      if (state.cart.hasOwnProperty(action.payload)) {
+        state.cart[action.payload].quantity -= 1;
+        if (state.cart[action.payload].quantity < 1) {
+          delete state.cart[action.payload]
+        }
+      } 
+
+      console.log(state.cart)
       return {
         ...state,
-        cart: state.cart.filter(e => e.id !== action.payload)
+        cart: state.cart
       }
 
     default:
