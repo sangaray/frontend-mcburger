@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Menu from "./components/Menu/Menu";
 import News from "./components/News/News";
@@ -11,6 +11,7 @@ import Details from "./components/Details/Details";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
 
+
 function App() {
   const dispatch = useDispatch();
 
@@ -20,15 +21,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/menu" element={<Menu />} />
-        <Route exact path="/selectMenu" element={<SelectMenu />} />
-        <Route exact path="/news" element={<News />} />
-        <Route exact path="/locations" element={<Locations />} />
-        <Route exact path="/delivery" element={<Delivery />} />
-        <Route exact path="/product/:id" element={<Details />} />
-      </Routes>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/menu" component={Menu} />
+      <Route exact path="/selectMenu" component={SelectMenu} />
+      <Route exact path="/news" component={News} />
+      <Route exact path="/locations" component={Locations} />
+      <Route exact path="/delivery" component={Delivery} />
+      <Route exact path="/product/:id" component={Details} />
     </BrowserRouter>
   );
 }

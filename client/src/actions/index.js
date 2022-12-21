@@ -7,12 +7,10 @@ export const GET_PRODUCTS_CATEGORY = "GET_PRODUCTS_CATEGORY"
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE"
 export const GET_PRODUCTS_BY_INGREDIENT = "GET_PRODUCTS_BY_INGREDIENT"
 
-
 //CART
 export const ADD_TO_CART = "ADD_TO_CART"
 export const RESTART_CART = "RESTART_CART"
 export const DELETE_FROM_CART = "DELETE_FROM_CART"
-
 
 export function getAllProducts() {
     return async function (dispatch) {
@@ -72,7 +70,6 @@ export function addToCart(params) {
         price:params.price,
         quantity:1,
     }
-
     return {
         type: "ADD_TO_CART",
         payload: object
