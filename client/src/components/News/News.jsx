@@ -11,18 +11,18 @@ export default function News(){
 
             <div className="news-container">
                 <div className="art-1">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at suscipit dui, posuere pulvinar magna. In at rhoncus neque, finibus consequat nibh. Cras elementum consectetur sem eget tempus. Aliquam molestie tellus et lorem scelerisque, porta euismod urna malesuada. Sed id placerat ante. Nullam ornare vehicula massa molestie egestas. Nunc libero mauris, facilisis non scelerisque id, tempus ac sem.</p>
-                    <img src="http://www.selvaadentro.com.ar/wp-content/uploads/2020/04/zoco1-700x394.jpeg" alt="imagen" />
+                    <img src="https://s3-eu-central-1.amazonaws.com/www.burgerking.com.ar.v2/wp-media-folder-bk-argentina//home/ubuntu/preview/menu-app/frontend/apps/marketing-website-wordpress-app/web/app/uploads/sites/5/novedeades-muzzasticks.png" alt="imagen" />
+                    <p>Our McBurger Muzzarella Sticks Nuggets are coming!</p>
                 </div>
 
-                <div className="art-2">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at suscipit dui, posuere pulvinar magna. In at rhoncus neque, finibus consequat nibh. Cras elementum consectetur sem eget tempus. Aliquam molestie tellus et lorem scelerisque, porta euismod urna malesuada. Sed id placerat ante. Nullam ornare vehicula massa molestie egestas. Nunc libero mauris, facilisis non scelerisque id, tempus ac sem.</p>
-                    <img src="http://www.selvaadentro.com.ar/wp-content/uploads/2020/04/zoco1-700x394.jpeg" alt="imagen" />
+                <div className="art-1">
+                    <img src="https://s3-eu-central-1.amazonaws.com/www.burgerking.com.ar.v2/wp-media-folder-burger-king-argentina//home/ubuntu/preview/menu-app/frontend/apps/marketing-website-wordpress-app/web/app/uploads/sites/5/NovedadesBanner_KINGVEGETAL.jpg" alt="imagen" />
+                    <p>you will see our new line of vegan food soon #Environment</p>
                 </div>
 
-                <div className="art-3">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at suscipit dui, posuere pulvinar magna. In at rhoncus neque, finibus consequat nibh. Cras elementum consectetur sem eget tempus. Aliquam molestie tellus et lorem scelerisque, porta euismod urna malesuada. Sed id placerat ante. Nullam ornare vehicula massa molestie egestas. Nunc libero mauris, facilisis non scelerisque id, tempus ac sem.</p>
-                    <img src="http://www.selvaadentro.com.ar/wp-content/uploads/2020/04/zoco1-700x394.jpeg" alt="imagen" />
+                <div className="art-1">
+                    <img src="https://img.freepik.com/vector-premium/entrega-rapida-estilo-plano-servicio-entrega-alimentos-mensajero-monta-moto-mercancias_194782-1002.jpg?w=2000" alt="imagen" />
+                    <p>Home delivery coming soon at McBuger!!!</p>
                 </div>
             </div>
         </div>

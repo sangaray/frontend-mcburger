@@ -3,6 +3,7 @@
     "react-error-overlay": "^6.0.9"
   },
   "dependencies": {
+    "react-icons": "^4.7.1",
     "redux-devtools-extension": "^2.13.9"
   }
 }

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import FilterIngredients from "../FilterIngredients/FilterIngredients";
 import FilterAmount from "../FilterAmount/FilterAmount";
 import Ordering from "../Ordering/Ordering";
@@ -7,15 +7,9 @@ import Cards from "../Cards/Cards";
 import NavBar from "../NavBar/NavBar";
 import "./Menu.css";
 import { Link } from "react-router-dom";
-import { getAllIngredients } from "../../actions";
 
 export default function Menu() {
   const products = useSelector((state) => state.products);
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(getAllIngredients())
-  })
 
   return (
     <div>

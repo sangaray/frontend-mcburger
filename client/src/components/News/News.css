@@ -2,36 +2,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 100px;
+    margin-right: 300px;
+    margin-left: 300px;
+    margin-top: 200px;
+    flex-wrap: wrap;
 }
 
 .art-1{
-    width: 200px;
-    text-align: justify;
-    
-}
-
-.art-2{
-    width: 200px;
-    text-align: justify;
-}
-
-.art-3{
-    width: 200px;
-    text-align: justify;
+    width: 300px;
+    text-align: center;
 }
 
 .art-1 img{
-    height: 100px;
-    width: 200px;
+    height: 300px;
+    width: 400px;
+    border-radius: 10px;
 }
 
-.art-2 img{
-    height: 100px;
-    width: 200px;
-}
-
-.art-3 img{
-    height: 100px;
-    width: 200px;
+.art-1 p{
+    font-size: 24px;
 }

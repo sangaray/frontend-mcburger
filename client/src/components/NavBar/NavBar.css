@@ -1,6 +1,6 @@
 .nav-container li{
     display: inline;
-    margin: 20px;
+    margin: 30px;
     color: white;
 }
 
@@ -9,11 +9,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 10  0px;
 }
 
 .nav-container a{
  text-decoration: none;
  color: white;
+ font-size: 24px;
 }
 .button-login{
     background-color:#EF7E63; 
@@ -33,6 +35,6 @@
 }
 
 .nav-container img{
-    height: 80px;
-    width: 120px;
+    height: 120px;
+    width: 200px;
 }
