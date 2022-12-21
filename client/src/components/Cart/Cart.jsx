@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {} from '../../actions/index';
+import { } from '../../actions/index';
 
 
 export default function Cart() {
