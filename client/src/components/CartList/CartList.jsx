@@ -1,31 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { restartCart, deleteFromCart, addToCart } from "../../actions/index";
+import { restartCart, removeFromCart, addToCart } from "../../actions/index";
 
 export default function CartList() {
-    const dispatch = useDispatch();
-    const cartProducts = useSelector(state => state.cart);
-  
-    function handleOnAdd(p) {
-        dispatch(addToCart(p));
-      }
-    
-      function handleOnRemove(p) {
-        dispatch(deleteFromCart(p));
-      }
-  
+  const dispatch = useDispatch();
+  const cartProducts = useSelector((state) => state.cart);
 
   function handleOnAdd(p) {
     dispatch(addToCart(p));
   }
 
   function handleOnRemove(p) {
-    dispatch(deleteFromCart(p));
+    dispatch(removeFromCart(p));
   }
 
   function handleOnRestart() {
     dispatch(restartCart());
-
+  }
 
   return (
     <div>
@@ -36,15 +27,10 @@ export default function CartList() {
           <p>{product.quantity}</p>
           <button onClick={() => handleOnAdd(product)}>+</button>
         </div>
-
-    
-
       ))}
       <div>
         <button onClick={handleOnRestart}>Restart cart</button>
       </div>
     </div>
   );
-}
-
 }
