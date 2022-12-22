@@ -25,7 +25,7 @@ export default function CartList() {
 
   function handleOnRestart() {
     dispatch(restartCart());
-  }
+
 
   return (
     <div>
@@ -47,3 +47,4 @@ export default function CartList() {
   );
 }
 
+}
