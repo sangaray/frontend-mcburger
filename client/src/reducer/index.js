@@ -15,7 +15,7 @@ const initialState = {
   products: [],
   productsCategory: [],
   product: {},
-<<<<<<< HEAD
+
   cart: { 
     '1': {
     id: 1,
@@ -32,10 +32,10 @@ const initialState = {
     quantity: 3
   }
 }};
-=======
-  cart: {}
-};
->>>>>>> 62a2c6b6ec8b0ae83ed296f7239498e75c57b01c
+
+  
+
+
 
 function rootReducer(state = initialState, action) {
   let newCart = { ...state.cart };

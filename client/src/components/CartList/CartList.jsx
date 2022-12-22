@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { restartCart, deleteFromCart, addToCart } from "../../actions/index";
 
 export default function CartList() {
-<<<<<<< HEAD
     const dispatch = useDispatch();
     const cartProducts = useSelector(state => state.cart);
   
@@ -14,10 +13,7 @@ export default function CartList() {
       function handleOnRemove(p) {
         dispatch(deleteFromCart(p));
       }
-=======
-  const dispatch = useDispatch();
-  const cartProducts = useSelector((state) => state.cart);
->>>>>>> 62a2c6b6ec8b0ae83ed296f7239498e75c57b01c
+  
 
   function handleOnAdd(p) {
     dispatch(addToCart(p));
@@ -40,10 +36,9 @@ export default function CartList() {
           <p>{product.quantity}</p>
           <button onClick={() => handleOnAdd(product)}>+</button>
         </div>
-<<<<<<< HEAD
-    )
-} 
-=======
+
+    
+
       ))}
       <div>
         <button onClick={handleOnRestart}>Restart cart</button>
@@ -51,4 +46,4 @@ export default function CartList() {
     </div>
   );
 }
->>>>>>> 62a2c6b6ec8b0ae83ed296f7239498e75c57b01c
+

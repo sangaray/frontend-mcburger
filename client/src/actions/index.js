@@ -17,48 +17,48 @@ export const DELETE_FROM_CART = "DELETE_FROM_CART"
 export function getAllProducts() {
     return async function (dispatch) {
         var json = await axios.get("http://localhost:3001/products")
-        return dispatch({ type: "GET_ALL_PRODUCTS", payload: json.data })
+        return dispatch({ type: GET_ALL_PRODUCTS, payload: json.data })
     }
 }
 
 export function getProductID(id) {
     return async function (dispatch) {
         var json = await axios.get("http://localhost:3001/products/" + id)
-        return dispatch({ type: "GET_PRODUCTS_ID", payload: json.data })
+        return dispatch({ type: GET_PRODUCTS_ID, payload: json.data })
     }
 }
 
 export function getProductByAmount(params) {
     return {
-        type: "GET_PRODUCTS_AMOUNT",
+        type: GET_PRODUCTS_AMOUNT,
         payload: params
     }
 }
 
 export function getProductsByCategory(params) {
     return {
-        type: "GET_PRODUCTS_CATEGORY",
+        type: GET_PRODUCTS_CATEGORY,
         payload: params
     }
 }
 
 export function orderByPrice(payload) {
     return {
-        type: 'ORDER_BY_PRICE',
+        type: ORDER_BY_PRICE,
         payload
     }
 }
 
 export function getProductsByIgredient(params) {
     return {
-        type: "GET_PRODUCTS_BY_INGREDIENT",
+        type: GET_PRODUCTS_BY_INGREDIENT,
         payload: params
     }
 }
 
 export function deleteFromCart(params) {
     return {
-        type: "DELETE_FROM_CART",
+        type: DELETE_FROM_CART,
         payload: params
     }
 }
@@ -74,14 +74,14 @@ export function addToCart(params) {
     }
 
     return {
-        type: "ADD_TO_CART",
+        type: ADD_TO_CART,
         payload: object
     }
 }
 
 export function restartCart(params) {
     return {
-        type: "RESTART_CART",
+        type: RESTART_CART,
         payload: params
     }
 }
