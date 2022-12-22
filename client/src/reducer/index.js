@@ -4,7 +4,7 @@ import {
   GET_PRODUCTS_AMOUNT,
   GET_PRODUCTS_CATEGORY,
   ORDER_BY_PRICE,
-  // GET_PRODUCTS_BY_INGREDIENT,
+  GET_PRODUCTS_BY_INGREDIENT,
   ADD_TO_CART,
   RESTART_CART,
   DELETE_FROM_CART,
@@ -15,50 +15,36 @@ const initialState = {
   products: [],
   productsCategory: [],
   product: {},
-<<<<<<< HEAD
-  cart: {},
-};
-
-function rootReducer(state = initialState, action) {
-  let newCart = { ...state.cart };
-  switch (action.type) {
-=======
   cart: {
-    '1': {
+    1: {
       id: 1,
-      name: 'Cheeseburger',
-      image: 'asdf.com',
+      name: "Cheeseburger",
+      image: "asdf.com",
       price: "$2",
-      quantity: 2
+      quantity: 2,
     },
-    '2': {
+    2: {
       id: 2,
-      name: 'Chicken Nuggets',
-      image: 'asdf.com',
+      name: "Chicken Nuggets",
+      image: "asdf.com",
       price: "$2",
-      quantity: 3
-    }
+      quantity: 3,
+    },
   },
 };
 
 function rootReducer(state = initialState, action) {
-
   let newCart = { ...state.cart };
 
   switch (action.type) {
-
->>>>>>> 92922a6ad0be9e90aa03e86619adf7afd0c2e700
     case GET_ALL_PRODUCTS:
+      console.log(action.payload);
       return {
         ...state,
         products: action.payload,
         allProducts: action.payload,
       };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 92922a6ad0be9e90aa03e86619adf7afd0c2e700
     case GET_PRODUCTS_ID:
       return {
         ...state,
@@ -66,10 +52,6 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_PRODUCTS_CATEGORY:
-<<<<<<< HEAD
-=======
-
->>>>>>> 92922a6ad0be9e90aa03e86619adf7afd0c2e700
       return {
         ...state,
         productsCategory: state.allProducts.filter(
@@ -80,31 +62,31 @@ function rootReducer(state = initialState, action) {
         ),
       };
 
-    // case GET_PRODUCTS_BY_INGREDIENT:
-    //   //recibe uno o muchos "productIngredients"
-    //   console.log("llegue");
-    //   const products = state.productsCategory; //los que estan cargados
-    //   const searchIngredients = action.payload; //los que envio
+    case GET_PRODUCTS_BY_INGREDIENT:
+      //recibe uno o muchos "productIngredients"
+      console.log("llegue");
+      const products = state.productsCategory; //los que estan cargados
+      const searchIngredients = action.payload; //los que envio
 
-    //   return {
-    //     ...state,
-    //     products:
-    //       action.payload === ["All"]
-    //         ? state.productsCategory
-    //         : products.filter((p) => {
-    //             let productIngredients = p.ingredients;
-    //             productIngredients = productIngredients.split("-");
-    //             productIngredients = productIngredients.map((e) => e.trim());
-    //             console.log(searchIngredients);
-    //             let coincidense = false;
-    //             searchIngredients.map((e) =>
-    //               productIngredients.map((i) => {
-    //                 if (e === i) coincidense = true;
-    //               })
-    //             );
-    //             return coincidense;
-    //           }),
-    //   };
+      return {
+        ...state,
+        products:
+          action.payload === ["All"]
+            ? state.productsCategory
+            : products.filter((p) => {
+                let productIngredients = p.ingredients;
+                productIngredients = productIngredients.split("-");
+                productIngredients = productIngredients.map((e) => e.trim());
+                console.log(searchIngredients);
+                let coincidense = false;
+                searchIngredients.map((e) =>
+                  productIngredients.map((i) => {
+                    if (e === i) coincidense = true;
+                  })
+                );
+                return coincidense;
+              }),
+      };
 
     case GET_PRODUCTS_AMOUNT:
       return {
@@ -120,7 +102,8 @@ function rootReducer(state = initialState, action) {
 
     case ORDER_BY_PRICE:
       let orderArray = [...state.products];
-      action.payload === "asc"
+      console.log(orderArray); //desordenado
+      action.payload == "asc"
         ? orderArray.sort(function (a, b) {
             a = a.price.split("$")[1];
             b = b.price.split("$")[1];
@@ -165,16 +148,11 @@ function rootReducer(state = initialState, action) {
           delete newCart[action.payload.id];
         }
       }
-<<<<<<< HEAD
-=======
 
       return {
         ...state,
-        cart: newCart
+        cart: newCart,
       };
->>>>>>> 92922a6ad0be9e90aa03e86619adf7afd0c2e700
-
-      return { ...state, cart: newCart };
 
     default:
       return { ...state };
