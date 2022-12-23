@@ -8,7 +8,10 @@ import {
   ADD_TO_CART,
   RESTART_CART,
   REMOVE_FROM_CART,
-  DELETE_PRODUCTS_CART
+  DELETE_PRODUCTS_CART,
+  SAVE_USER,
+  ERASE_USER,
+  ACTIVE_USER
 } from "../actions/index";
 
 const initialState = {
@@ -16,6 +19,8 @@ const initialState = {
   products: [],
   productsCategory: [],
   product: {},
+  user: [],
+  activeUser: false,
   cart: {
     1: {
       id: 1,
@@ -150,6 +155,24 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         cart: prodCart
+      };
+    case SAVE_USER:
+      //console.log(action.payload + ' saving user...');
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case ERASE_USER:
+      //console.log(action.payload + ' saving user...');
+      return {
+        ...state,
+        user: [],
+      };
+    case ACTIVE_USER:
+      //console.log(action.payload + ' saving user...');
+      return {
+        ...state,
+        activeUser: action.payload,
       };
 
     default:

@@ -11,7 +11,7 @@ import SelectMenu from "./components/SelectMenu/SelectMenu";
 import Details from "./components/Details/Details";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
-
+import Login from './components/Login/Login'
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +30,7 @@ function App() {
       <Route exact path="/delivery" component={Delivery} />
       <Route exact path="/product/:id" component={Details} />
       <Route exact path="/Cart" component={Cart} />
+      <Route exact path="/login" component={Login} />
     </BrowserRouter>
   );
 }

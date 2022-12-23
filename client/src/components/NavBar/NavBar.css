@@ -30,11 +30,22 @@
     margin: 4px 2px;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
-
+    transition-duration: 0.5s;
+}
+.button-login:hover{
+    background-color: rgb(47, 47, 72);
 }
 
-.nav-container img{
-    height: 120px;
-    width: 200px;
+.image-nav-container{
+    height: 100px;
+    width: 180px;
+}
+
+.image-logo{
+    width: 40px;
+    border-radius: 20px;
+}
+
+.name-login{
+    color: white;
 }
