@@ -6,10 +6,10 @@ import {
   addToCart,
   deleteProductsCart,
 } from "../../actions/index";
-import { Box, Text, Button } from "@chakra-ui/react";
+import { Box, Image, Text, Button,  Divider } from '@chakra-ui/react';
 import CartCards from "../CartCards/CartCards";
 import NavBar from "../NavBar/NavBar";
-import { isDisabled, onClick } from "@chakra-ui/utils";
+import { auto } from '@popperjs/core';
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -65,49 +65,55 @@ export default function Cart() {
 
       <Box display="flex" justifyContent="center" alignItems="center">
         <Box
+          textAlign="center"
           bg="#D9D9D9"
           marginTop="10px"
           borderRadius="10px"
-          height="700px"
+          height="auto"
           width="1500px"
+          marginBottom="20px"
         >
+        <Text as="b" fontSize='3xl'>Cart</Text>
+          <hr style={{border:"grey solid 1px"}}></hr>
+          
           {Object.values(cartProducts).map((p) => {
             return (
+              <Box display="flex" alignItems="center">
               <Box key={p.id + p.name}>
                 <CartCards name={p.name} image={p.image} price={p.price} />
                 <Button
                   onClick={(e) => handleOnRemove(p)}
                   isDisabled={disableBtns}
-                >
-                  -
-                </Button>
-                <Text>{p.quantity}</Text>
-                <Button
+                >-</Button>
+                <Text marginLeft="10px" marginRight="10px" as="b" fontSize='2xl'>{p.quantity}</Text>
+                <Button 
                   onClick={(e) => handleOnAdd(p)}
                   isDisabled={disableBtns}
-                >
-                  +
-                </Button>
-                <Button
+                >+</Button>
+
+                <Button marginLeft="10px"
                   onClick={(e) => handleOnDelete(p)}
                   isDisabled={disableBtns}
                 >
-                  Eliminar
+                  Delete
                 </Button>
+                <Text as="b" color="green" fontSize='3xl' marginLeft="200px">{"price" + " " + p.price}</Text>
+              </Box>
               </Box>
             );
           })}
-          <Text>Ubicación</Text>
-          <Text>Precio</Text>
-          <Text>Total</Text>
-          <Text>{"Precio Total: $" + totalPrice}</Text>
-          <Button
+          <Text as="b" color="green" fontSize='2xl' marginLeft="100px">Location</Text>
+          <hr style={{border:"grey solid 1px"}}></hr>
+          <Text as="b" color="green" fontSize='2xl' marginLeft="165px">{"Total Price: $" + totalPrice}</Text>
+          <Box  marginLeft="-600px" marginBottom="50px" marginTop="40px">
+          <Button  marginLeft="1300px" marginBottom="50px" marginTop="40px"
             onClick={(e) => handleOnPay(arrProducts)}
             isDisabled={!disableBtns && arrProducts.length ? false : true}
           >
-            {loading ? <p>Loading</p> : <p>Pagar</p>}
+            {loading ? <p>Loading</p> : <p>Pay Product</p>}
           </Button>
           {paymentLink ? <a href={paymentLink}>Go to payment</a> : <></>}
+        </Box>
         </Box>
       </Box>
     </Box>
