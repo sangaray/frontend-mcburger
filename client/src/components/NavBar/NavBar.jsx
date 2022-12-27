@@ -1,11 +1,9 @@
-
-import React, { useEffect, useState }  from "react"
+import React, { useEffect, useState } from "react"
 import "./NavBar.css"
 import BurgerLogo from "./BurgerLogo.png"
 import { Link } from "react-router-dom"
 import { BsCart2 } from 'react-icons/bs'
 import CartList from "../CartList/CartList"
-
 import {
     Button,
     Box,
@@ -18,20 +16,21 @@ import {
     PopoverArrow,
     PopoverCloseButton,
     PopoverAnchor,
-  } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 
 
 export default function NavBar() {
 
-//     const [hover, setHover] = useState(false);
+    //     const [hover, setHover] = useState(false);
 
-//   const handleMouseIn = () => {
-//     setHover(true);
-//   };
+    //   const handleMouseIn = () => {
+    //     setHover(true);
+    //   };
 
-//   const handleMouseOut = () => {
-//     setHover(false);
-//   };
+    //   const handleMouseOut = () => {
+    //     setHover(false);
+    //   };
+
 
 
     return (
@@ -44,27 +43,29 @@ export default function NavBar() {
                     <li><Link to="/news">News</Link></li>
                 </ul>
                 <Box>
-                <Popover>
-                    <PopoverTrigger>
-                        <Button>
-                            <BsCart2/>
-                        </Button>
-                    </PopoverTrigger>
-                    <PopoverContent>
-                        <PopoverArrow />
-                        <PopoverCloseButton />
-                        <PopoverHeader>Cart</PopoverHeader>
-                        <PopoverBody>
-                            <CartList/>
-                        </PopoverBody>
-                    </PopoverContent>
-                </Popover>
-                </Box>
-               
-               
-               
-                {/* <button onMouseOver={handleMouseIn} onMouseOut={handleMouseOut}>{hover ?
+                    <Popover isLazy trigger="hover" >
+                        <PopoverTrigger >
+                            <Button size="sm">
+                                <Link to="/Cart">
+                                    <BsCart2 color="black" />
+                                </Link>
+                            </Button>
 
+                        </PopoverTrigger>
+                        <PopoverContent>
+                            <PopoverArrow />
+                            <PopoverCloseButton />
+                            <PopoverHeader>Cart</PopoverHeader>
+                            <PopoverBody>
+                                <CartList />
+                            </PopoverBody>
+                        </PopoverContent>
+                    </Popover>
+                </Box>
+
+
+
+                {/* <button onMouseOver={handleMouseIn} onMouseOut={handleMouseOut}>{hover ?
                     <div>
                         <BsCart2 />
                         <CartList />

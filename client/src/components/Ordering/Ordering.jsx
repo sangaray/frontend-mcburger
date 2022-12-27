@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { orderByPrice } from '../../actions/index';
 import { useDispatch } from 'react-redux';
+import "./Ordering.css"
 
 
 
@@ -16,10 +17,10 @@ export default function Ordering() {
     return (
         <div>
             <div>
-                <select name="" id="" onChange={e => handleSortPrice(e)}>
+                <select className="select-order" name="" id="" onChange={e => handleSortPrice(e)}>
                     <option value="cost"> Cost </option>
-                    <option value="asc">higher price</option>
-                    <option value="des">lower price</option>
+                    <option value="asc">Higher price</option>
+                    <option value="des">Lower price</option>
                 </select>
 
             </div>

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { getProductsByIgredient } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import "./FilterIngredients.css"
 
 export default function FilterIngredients() {
-
 
     const dispatch = useDispatch();
 
@@ -130,8 +130,8 @@ export default function FilterIngredients() {
     return (
         <div>
             <div>
-                <select onChange={e => handleFilterIngredient(e)}>
-                    <option value="All">-</option>
+                <select className="select-ingredient" onChange={e => handleFilterIngredient(e)}>
+                    <option value="All">Ingredients</option>
                     <option value="bread">bread</option>
                     <option value="beef">beef</option>
                     <option value="chicken">chicken</option>

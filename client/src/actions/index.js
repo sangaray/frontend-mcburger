@@ -11,8 +11,8 @@ export const GET_PRODUCTS_BY_INGREDIENT = "GET_PRODUCTS_BY_INGREDIENT"
 //CART
 export const ADD_TO_CART = "ADD_TO_CART"
 export const RESTART_CART = "RESTART_CART"
-export const DELETE_FROM_CART = "DELETE_FROM_CART"
-
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART"
+export const DELETE_PRODUCTS_CART = "DELETE_PRODUCTS_CART"
 
 export function getAllProducts() {
     return async function (dispatch) {
@@ -56,23 +56,31 @@ export function getProductsByIgredient(params) {
     }
 }
 
-export function deleteFromCart(params) {
+export function removeFromCart(params) {
     return {
-        type: "DELETE_FROM_CART",
+        type: "REMOVE_FROM_CART",
         payload: params
     }
 }
 
+export function deleteProductsCart(params) {
+    return {
+        type: "DELETE_PRODUCTS_CART",
+        payload: params
+    }
+}
+
+
 export function addToCart(params) {
 
     let object = {
-        id:params.id,
-        name:params.name,
-        image:params.image,
-        price:params.price,
-        quantity:1,
+        id: params.id,
+        name: params.name,
+        image: params.image,
+        price: params.price,
+        quantity: 1,
+        description:params.summary,
     }
-
     return {
         type: "ADD_TO_CART",
         payload: object
@@ -83,5 +91,12 @@ export function restartCart(params) {
     return {
         type: "RESTART_CART",
         payload: params
+    }
+}
+
+export function addProductsToCart(payload) {
+    return async function () {
+        console.log("la action funciona, y el payload es:")
+        console.log(payload)
     }
 }

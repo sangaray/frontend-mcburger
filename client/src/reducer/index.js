@@ -7,7 +7,8 @@ import {
   GET_PRODUCTS_BY_INGREDIENT,
   ADD_TO_CART,
   RESTART_CART,
-  DELETE_FROM_CART,
+  REMOVE_FROM_CART,
+  DELETE_PRODUCTS_CART
 } from "../actions/index";
 
 const initialState = {
@@ -15,35 +16,39 @@ const initialState = {
   products: [],
   productsCategory: [],
   product: {},
-  cart: { 
-    '1': {
-    id: 1,
-    name: 'Cheeseburger',
-    image: 'asdf.com',
-    price: "$2",
-    quantity: 2
+  cart: {
+  //   1: {
+  //     id: 1,
+  //     name: 'Cheeseburger',
+  //     image: 'asdf.com',
+  //     price: "$2",
+  //     quantity: 2
+  //   },
+  //   2: {
+  //     id: 2,
+  //     name: 'Chicken Nuggets',
+  //     image: 'asdf.com',
+  //     price: "$2",
+  //     quantity: 3
+  //   }
   },
-  '2': {
-    id: 2,
-    name: 'Chicken Nuggets',
-    image: 'asdf.com',
-    price: "$2",
-    quantity: 3
-  }
+  
 };
 
 function rootReducer(state = initialState, action) {
+
+  let newCart = { ...state.cart };
+
   switch (action.type) {
-  
+
     case GET_ALL_PRODUCTS:
-      console.log(action.payload)
       return {
         ...state,
         products: action.payload,
         allProducts: action.payload,
       };
-      
-      
+
+
     case GET_PRODUCTS_ID:
       return {
         ...state,
@@ -51,7 +56,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_PRODUCTS_CATEGORY:
-      
+
       return {
         ...state,
         productsCategory: state.allProducts.filter((p) => p.idCategory === action.payload),
@@ -60,7 +65,6 @@ function rootReducer(state = initialState, action) {
 
     case GET_PRODUCTS_BY_INGREDIENT:
       //recibe uno o muchos "productIngredients"
-      console.log("llegue")
       const products = state.productsCategory //los que estan cargados
       const searchIngredients = action.payload //los que envio
 
@@ -70,7 +74,6 @@ function rootReducer(state = initialState, action) {
           let productIngredients = p.ingredients
           productIngredients = productIngredients.split("-");
           productIngredients = productIngredients.map(e => e.trim());
-          console.log(searchIngredients);
           let coincidense = false
           searchIngredients.map(e =>
             productIngredients.map(i => {
@@ -95,7 +98,6 @@ function rootReducer(state = initialState, action) {
 
     case ORDER_BY_PRICE:
       let orderArray = [...state.products]
-      console.log(orderArray) //desordenado
       action.payload == 'asc' ?
         orderArray.sort(function (a, b) {
           a = a.price.split("$")[1]
@@ -107,7 +109,6 @@ function rootReducer(state = initialState, action) {
           b = b.price.split("$")[1]
           return parseInt(a) - parseInt(b);
         })
-      console.log(orderArray) //ordenado
       return {
         ...state,
         products: orderArray,
@@ -115,18 +116,17 @@ function rootReducer(state = initialState, action) {
 
 
     case ADD_TO_CART:
-      //le llega un producto
       if (state.cart.hasOwnProperty(action.payload.id)) {
         state.cart[action.payload.id].quantity += 1;
+        newCart[action.payload.id] = state.cart[action.payload.id];
       } else {
-        state.cart[action.payload.id] = action.payload;
+        newCart[action.payload.id] = action.payload;
       }
-      console.log(state.cart)
-      
+
       return {
         ...state,
-        cart: state.cart,
-      }
+        cart: newCart,
+      };
 
     case RESTART_CART:
       return {
@@ -134,21 +134,23 @@ function rootReducer(state = initialState, action) {
         cart: {}
       }
 
-    case DELETE_FROM_CART:
-      // llega producto que queremos elminar
-      
-      if (state.cart.hasOwnProperty(action.payload)) {
-        state.cart[action.payload].quantity -= 1;
-        if (state.cart[action.payload].quantity < 1) {
-          delete state.cart[action.payload]
+    case REMOVE_FROM_CART:
+      if (state.cart.hasOwnProperty(action.payload.id)) {
+        state.cart[action.payload.id].quantity -= 1;
+        if (!state.cart[action.payload.id].quantity < 1) {
+          newCart[action.payload.id] = state.cart[action.payload.id];
+        } else {
+          delete newCart[action.payload.id];
         }
-      } 
+      }
+      return { ...state, cart: newCart };
 
-      console.log(state.cart)
+    case DELETE_PRODUCTS_CART:
+      delete newCart[action.payload.id]
       return {
         ...state,
-        cart: state.cart
-      }
+        cart: newCart
+      };
 
     default:
       return { ...state };

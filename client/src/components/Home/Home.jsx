@@ -1,4 +1,5 @@
 import NavBar from "../NavBar/NavBar"
+import Footer from "../Footer/Footer"
 import "./Home.css" 
 
 
@@ -13,14 +14,13 @@ export default function Home(){
             <div className="p-b-main">
              <div className="phrase-button">
                 <div className="phrase">
-                    <h1 className="phrase-home">¿QUÉ TE APETECE PEDIR</h1>
-                    <span className="phrase-span">HOY?</span>
+                    <h1 className="phrase-home">¿QUÉ TE APETECE PEDIR HOY?</h1>
                 </div>
 
-                <div>
+             </div>   
+                <div className="button-p">
                     <button className="button-pediya">Pedí Ya</button>
                 </div>
-             </div>   
             </div>    
 
             <div className="container-acceso-directo">
@@ -42,6 +42,7 @@ export default function Home(){
                     <button className="button-pediya">Pedí Ya</button>
                 </div>
             </div>
+            <Footer/>
 
         </div>
 
