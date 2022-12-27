@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { restartCart, deleteFromCart, addToCart } from "../../actions/index";
+import { restartCart, removeFromCart, addToCart } from "../../actions/index";
 
 export default function CartList() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export default function CartList() {
   }
 
   function handleOnRemove(p) {
-    dispatch(deleteFromCart(p));
+    dispatch(removeFromCart(p));
   }
 
   function handleOnRestart() {

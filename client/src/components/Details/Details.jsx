@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
-import { getProductID, addToCart, deleteFromCart } from "../../actions";
+import {
+  getProductID,
+  addToCart,
+  removeFromCart,
+  addProductFavorite,
+} from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
 
@@ -13,7 +18,11 @@ function Details() {
     dispatch(getProductID(id));
   }, [id, dispatch]);
 
-  const [product, cart] = useSelector((state) => [state.product, state.cart]);
+  const [product, cart] = useSelector((state) => [
+    state.product,
+    state.cart,
+    state.productsFavourites,
+  ]);
 
   return (
     <div>
@@ -52,7 +61,7 @@ function Details() {
               </button>
             ) : (
               <div>
-                <button onClick={() => dispatch(deleteFromCart(product[0]))}>
+                <button onClick={() => dispatch(removeFromCart(product[0]))}>
                   -
                 </button>
                 <p>{cart[product[0].id].quantity}</p>
@@ -62,12 +71,17 @@ function Details() {
               </div>
             )}
           </div>
+          <div>
+            <button onClick={() => dispatch(addProductFavorite(product[0]))}>
+              🤍
+            </button>
+          </div>
         </div>
       ) : (
         <div className="detailContainer">
           <div className="innerDetailContainer">
             <h1 className="unknownProduct">
-              404 Opps, it seems we don't have that product :(
+              404 Opps, it seems we don't have that product
             </h1>
           </div>
         </div>
