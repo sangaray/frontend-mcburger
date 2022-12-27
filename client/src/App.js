@@ -9,6 +9,13 @@ import Locations from "./components/Locations/Locations";
 import Delivery from "./components/Delivery/Delivery";
 import SelectMenu from "./components/SelectMenu/SelectMenu";
 import Details from "./components/Details/Details";
+import Success from "./components/Succes/Succes";
+import Failure from "./components/Failure/Failure";
+import AboutUs from "./components/AboutUs/AboutUs";
+import History from "./components/History/History";
+import Team from "./components/Team/Team";
+import Values from "./components/Values/Values";
+import Quality from "./components/Quality/Quality";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
 
@@ -30,6 +37,13 @@ function App() {
       <Route exact path="/delivery" component={Delivery} />
       <Route exact path="/product/:id" component={Details} />
       <Route exact path="/Cart" component={Cart} />
+      <Route exact path="/Cart/success" component={Success} />
+      <Route exact path="/Cart/failure" component={Failure} />
+      <Route exact path="/about" component={AboutUs} />
+      <Route exact path="/history" component={History} />
+      <Route exact path="/team" component={Team} />
+      <Route exact path="/values" component={Values} />
+      <Route exact path="/quality" component={Quality} />
     </BrowserRouter>
   );
 }

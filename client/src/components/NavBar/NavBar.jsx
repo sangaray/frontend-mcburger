@@ -41,6 +41,7 @@ export default function NavBar() {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/Selectmenu">Menu</Link></li>
                     <li><Link to="/news">News</Link></li>
+                    <li><Link to="/about">About Us</Link></li>
                 </ul>
                 <Box>
                     <Popover isLazy trigger="hover" >
