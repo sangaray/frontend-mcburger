@@ -5,6 +5,7 @@ import FilterAmount from "../FilterAmount/FilterAmount";
 import Ordering from "../Ordering/Ordering";
 import Cards from "../Cards/Cards";
 import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer"
 import "./Menu.css";
 import { Link } from "react-router-dom";
 
@@ -47,6 +48,9 @@ export default function Menu() {
             </Link>
           );
         })}
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   );

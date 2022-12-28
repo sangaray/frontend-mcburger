@@ -9,6 +9,8 @@ import {
   RESTART_CART,
   REMOVE_FROM_CART,
   DELETE_PRODUCTS_CART,
+  ADD_PRODUCT_FAVORITE,
+  REMOVE_PRODUCT_FAVORITE,
 } from "../actions/index";
 
 const initialState = {
@@ -17,6 +19,7 @@ const initialState = {
   productsCategory: [],
   product: {},
   cart: {},
+  productsFavourites: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -85,7 +88,7 @@ function rootReducer(state = initialState, action) {
 
     case ORDER_BY_PRICE:
       let orderArray = [...state.products];
-      action.payload == "asc"
+      action.payload === "asc"
         ? orderArray.sort(function (a, b) {
             a = a.price.split("$")[1];
             b = b.price.split("$")[1];
@@ -138,10 +141,21 @@ function rootReducer(state = initialState, action) {
         ...state,
         cart: newCart,
       };
-
+    case ADD_PRODUCT_FAVORITE:
+      return {
+        ...state,
+        productsFavourites: [...state.productsFavourites, action.payload],
+      };
+    case REMOVE_PRODUCT_FAVORITE:
+      return {
+        ...state,
+        productsFavourites: state.productsFavourites.filter(
+          (p) => p.id !== action.payload.id
+        ),
+      };
     default:
       return { ...state };
   }
 }
 
-export default rootReducer;
+export default rootReducer

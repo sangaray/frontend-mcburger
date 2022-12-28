@@ -16,6 +16,7 @@ import History from "./components/History/History";
 import Team from "./components/Team/Team";
 import Values from "./components/Values/Values";
 import Quality from "./components/Quality/Quality";
+import Favorites from "./components/Favorites/Favorites.jsx";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
 
@@ -44,6 +45,7 @@ function App() {
       <Route exact path="/team" component={Team} />
       <Route exact path="/values" component={Values} />
       <Route exact path="/quality" component={Quality} />
+      <Route exact path="/favs" component={Favorites} />
     </BrowserRouter>
   );
 }

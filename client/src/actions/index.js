@@ -12,6 +12,8 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const RESTART_CART = "RESTART_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const DELETE_PRODUCTS_CART = "DELETE_PRODUCTS_CART";
+export const ADD_PRODUCT_FAVORITE = "ADD_PRODUCT_FAVORITE";
+export const REMOVE_PRODUCT_FAVORITE = "REMOVE_PRODUCT_FAVORITE";
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -95,5 +97,14 @@ export function addProductsToCart(params) {
   return async function () {
     var json = await axios.post("http://localhost:3001/payment", params);
     return json.data;
+  };
+}
+export function addProductFavorite(payload) {
+  return { type: "ADD_PRODUCT_FAVORITE", payload };
+}
+export function removeProductFavorite(id) {
+  return {
+    type: "REMOVE_PRODUCT_FAVORITE",
+    payload: id,
   };
 }

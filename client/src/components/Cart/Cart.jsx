@@ -9,6 +9,7 @@ import {
 import { Box, Image, Text, Button,  Divider } from '@chakra-ui/react';
 import CartCards from "../CartCards/CartCards";
 import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer"
 import { auto } from '@popperjs/core';
 
 export default function Cart() {
@@ -115,6 +116,9 @@ export default function Cart() {
           {paymentLink ? <a href={paymentLink}>Go to payment</a> : <></>}
         </Box>
         </Box>
+      </Box>
+      <Box>
+        <Footer/>
       </Box>
     </Box>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer"
 import "./News.css"
 
 export default function News(){
@@ -22,9 +23,12 @@ export default function News(){
 
                 <div className="art-1">
                     <img src="https://img.freepik.com/vector-premium/entrega-rapida-estilo-plano-servicio-entrega-alimentos-mensajero-monta-moto-mercancias_194782-1002.jpg?w=2000" alt="imagen" />
-                    <p>Home delivery coming soon at McBuger!!!</p>
+                    <p>Home delivery coming soon at McBurger!!!</p>
                 </div>
             </div>
+            <div>
+        <Footer/>
+      </div>
         </div>
     )
 }
