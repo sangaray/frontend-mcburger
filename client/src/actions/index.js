@@ -97,3 +97,10 @@ export function addProductsToCart(params) {
     return json.data;
   };
 }
+
+export function addOrderToDB(params) {
+  return async function () {
+    var json = await axios.post("http://localhost:3001/orders", params);
+    return json.data;
+  };
+}

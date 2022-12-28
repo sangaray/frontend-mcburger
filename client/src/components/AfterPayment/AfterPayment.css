@@ -1,0 +1,13 @@
+.paymentContainer {
+  height: fit-content;
+}
+
+.success {
+  background-color: #76b046;
+  color: #fff;
+}
+
+.error {
+  background-color: #d3524d;
+  color: #fff;
+}

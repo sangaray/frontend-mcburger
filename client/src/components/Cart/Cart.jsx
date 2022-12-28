@@ -9,7 +9,6 @@ import {
 import { Box, Text, Button } from "@chakra-ui/react";
 import CartCards from "../CartCards/CartCards";
 import NavBar from "../NavBar/NavBar";
-import { isDisabled, onClick } from "@chakra-ui/utils";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -20,6 +19,8 @@ export default function Cart() {
 
   let arrProducts = [];
   let totalPrice = 0;
+  let product_ids = [];
+  let quantities = [];
 
   Object.values(cartProducts).map((p) => {
     totalPrice += parseFloat(p.price.match(/\d+/g).join(".")) * p.quantity;
@@ -30,14 +31,26 @@ export default function Cart() {
       quantity: p.quantity,
       picture_url: p.image,
     });
+
+    product_ids.push(p.id);
+    quantities.push(p.quantity);
+
+    return totalPrice;
   });
 
   async function handleOnPay(p) {
     setLoading(true);
     setDisableBtns(true);
     try {
+      localStorage.setItem("shippingAddress", "shipping address");
+      localStorage.setItem("billingAddress", "billing address");
+      localStorage.setItem("productId", product_ids.join("-"));
+      localStorage.setItem("quantity", quantities.join("-"));
+      localStorage.setItem("totalPrice", totalPrice);
+      localStorage.setItem("branchId", "1234");
+
       const link = await addProductsToCart(p)();
-      setLink(link.split('"')[1]);
+      setLink(link);
     } catch (error) {
       alert(error.message);
     } finally {
