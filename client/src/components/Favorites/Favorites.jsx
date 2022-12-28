@@ -1,5 +1,8 @@
-import { removeProductFavorite } from "../../actions";
+import { removeProductFavorite, addToCart, removeFromCart, } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
+import {  Button, Box, Text } from '@chakra-ui/react';
+import { RiDeleteBin6Line } from 'react-icons/ri'
+import React from "react";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer"
 import { Link } from "react-router-dom";
@@ -9,9 +12,10 @@ import "./Favorites.css";
 function Favorites() {
   const dispatch = useDispatch();
 
-  const [productsFavourites] = useSelector((state) => [
-    state.productsFavourites,
+  const [productsFavorites,] = useSelector((state) => [
+    state.productsFavorites,
   ]);
+  const [product, cart] = useSelector((state) => [state.product, state.cart]);
 
   return (
     <div className="cont">
@@ -23,10 +27,15 @@ function Favorites() {
         <img src={img}></img>
       </div>
       </Link>
-      {productsFavourites.map((p) => (
-        <div>
+      {productsFavorites.map((p) => (
+        <div className="cards-container-fav">
           <div>
-            <img className="detailImg" src={p.image} alt={p.name} />
+          <div className="bt">
+              <button onClick={() => dispatch(removeProductFavorite(p))}>
+                <RiDeleteBin6Line/>
+              </button>
+            </div>
+            <img className="detailImg" src={p.image}  />
           </div>
           <div className="detailTextContainer">
             <h2 className="detailTitle">{p.name}</h2>
@@ -35,18 +44,29 @@ function Favorites() {
               <p className="detailPrice">{p.price}</p>
             </div>
             <div className="detailLabelContainer">
-              <p className="detailLabel">Details:</p>
-              <p>{p.summary}</p>
+              <p className="detailLabel">Detail:</p>
+              <p className="detailSummary">{p.summary}</p>
             </div>
-            <div className="detailLabelContainer">
+           {/*  <div className="detailLabelContainer">
               <p className="detailLabel">Ingredients:</p>
               <p>{p.ingredients}</p>
-            </div>
-            <div className="bt">
-              <button onClick={() => dispatch(removeProductFavorite(p))}>
-                X
-              </button>
-            </div>
+            </div> */}
+
+              {!cart.hasOwnProperty(product[0].id) ? (
+              <Button size='sm'  colorScheme='green' marginTop="20px" marginLeft='140px' onClick={() => dispatch(addToCart(product[0]))}>
+                Add to cart
+              </Button>
+            ) : (
+              <Box display="flex" justifyContent="center" alignItems="center" marginLeft='130px' color='green'  marginTop="15px"  >
+                <Button marginRight="20px"  size='sm' onClick={() => dispatch(removeFromCart(product[0]))}>
+                  -
+                </Button>
+                <Text as="b" fontSize='3xl'>{cart[product[0].id].quantity}</Text>
+                <Button marginLeft="20px"  size='sm' onClick={() => dispatch(addToCart(product[0]))}>
+                  +
+                </Button>
+              </Box>
+            )}
           </div>
         </div>
       ))}

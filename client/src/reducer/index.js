@@ -19,7 +19,7 @@ const initialState = {
   productsCategory: [],
   product: {},
   cart: {},
-  productsFavourites: [],
+  productsFavorites: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -144,12 +144,12 @@ function rootReducer(state = initialState, action) {
     case ADD_PRODUCT_FAVORITE:
       return {
         ...state,
-        productsFavourites: [...state.productsFavourites, action.payload],
+        productsFavorites: [...state.productsFavorites, action.payload],
       };
     case REMOVE_PRODUCT_FAVORITE:
       return {
         ...state,
-        productsFavourites: state.productsFavourites.filter(
+        productsFavorites: state.productsFavorites.filter(
           (p) => p.id !== action.payload.id
         ),
       };

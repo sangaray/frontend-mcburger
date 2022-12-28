@@ -15,7 +15,7 @@ function Details() {
     dispatch(getProductID(id));
   }, [id, dispatch]);
 
-  const [product, cart] = useSelector((state) => [state.product, state.cart, state.productsFavourites,]);
+  const [product, cart] = useSelector((state) => [state.product, state.cart, state.productsFavorites,]);
 
   return (
     <div>
