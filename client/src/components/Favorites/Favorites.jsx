@@ -47,10 +47,7 @@ function Favorites() {
               <p className="detailLabel">Detail:</p>
               <p className="detailSummary">{p.summary}</p>
             </div>
-           {/*  <div className="detailLabelContainer">
-              <p className="detailLabel">Ingredients:</p>
-              <p>{p.ingredients}</p>
-            </div> */}
+          
 
               {!cart.hasOwnProperty(product[0].id) ? (
               <Button size='sm'  colorScheme='green' marginTop="20px" marginLeft='140px' onClick={() => dispatch(addToCart(product[0]))}>

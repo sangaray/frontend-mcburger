@@ -17,6 +17,9 @@ import Team from "./components/Team/Team";
 import Values from "./components/Values/Values";
 import Quality from "./components/Quality/Quality";
 import Favorites from "./components/Favorites/Favorites.jsx";
+import Login from './components/Login/Login'
+import FormUser from './components/FormUser/FormUser'
+import FormUser2 from './components/FormUser/FormUser2'
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
 
@@ -46,6 +49,9 @@ function App() {
       <Route exact path="/values" component={Values} />
       <Route exact path="/quality" component={Quality} />
       <Route exact path="/favs" component={Favorites} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/formUser" component={FormUser} />
+      <Route exact path="/formUser2" component={FormUser2} />
     </BrowserRouter>
   );
 }

@@ -11,6 +11,9 @@ import {
   DELETE_PRODUCTS_CART,
   ADD_PRODUCT_FAVORITE,
   REMOVE_PRODUCT_FAVORITE,
+  SAVE_USER,
+  ERASE_USER,
+  ACTIVE_USER
 } from "../actions/index";
 
 const initialState = {
@@ -153,6 +156,24 @@ function rootReducer(state = initialState, action) {
           (p) => p.id !== action.payload.id
         ),
       };
+      case SAVE_USER:
+        //console.log(action.payload + ' saving user...');
+        return {
+          ...state,
+          user: action.payload,
+        };
+      case ERASE_USER:
+        //console.log(action.payload + ' saving user...');
+        return {
+          ...state,
+          user: [],
+        };
+      case ACTIVE_USER:
+        //console.log(action.payload + ' saving user...');
+        return {
+          ...state,
+          activeUser: action.payload,
+        };
     default:
       return { ...state };
   }

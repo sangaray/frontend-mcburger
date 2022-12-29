@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from 'react-redux'
 import "./NavBar.css"
 import BurgerLogo from "./BurgerLogo.png"
 import { Link } from "react-router-dom"
@@ -20,17 +21,28 @@ import {
 
 
 export default function NavBar() {
+    const userN = useSelector((state) => state.user);
+    //console.log(userN, '*');
 
-    //     const [hover, setHover] = useState(false);
+    const getUserData = () => {
+        if (userN) {
+            //console.log('entrando...');
+            return (
+                <>
+                    <label className="name-login"><b>{userN.name}</b></label>&nbsp;&nbsp;&nbsp;
+                   {/*  <img className="image-logo" src={userN.picture} alt="image" /> */}
+                </>
+            )
+        } else {
+            return (
+                <></>
+            )
+        }
+    }
 
-    //   const handleMouseIn = () => {
-    //     setHover(true);
-    //   };
+    useEffect(()=>{
 
-    //   const handleMouseOut = () => {
-    //     setHover(false);
-    //   };
-
+    },[userN])
 
 
     return (
@@ -63,9 +75,13 @@ export default function NavBar() {
                             </PopoverBody>
                         </PopoverContent>
                     </Popover>
-                </Box>
+                </Box>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+                <Link to="/login"><button className="button-login">Log in</button></Link>&nbsp;&nbsp;&nbsp;
 
+             {
+                  getUserData()
+            }
 
                 {/* <button onMouseOver={handleMouseIn} onMouseOut={handleMouseOut}>{hover ?
                     <div>
