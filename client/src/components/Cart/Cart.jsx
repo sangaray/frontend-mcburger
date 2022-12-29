@@ -21,8 +21,9 @@ export default function Cart() {
   let totalPrice = 0;
   let product_ids = [];
   let quantities = [];
+  let products = "";
 
-  Object.values(cartProducts).map((p) => {
+  Object.values(cartProducts).forEach((p) => {
     totalPrice += parseFloat(p.price.match(/\d+/g).join(".")) * p.quantity;
     arrProducts.push({
       title: p.name,
@@ -34,20 +35,27 @@ export default function Cart() {
 
     product_ids.push(p.id);
     quantities.push(p.quantity);
-
-    return totalPrice;
+    products +=
+      "<br/>Name: " +
+      p.name +
+      ", Quantity: " +
+      p.quantity +
+      ", Total: $" +
+      parseFloat(p.price.match(/\d+/g).join(".")) * p.quantity;
   });
 
   async function handleOnPay(p) {
     setLoading(true);
     setDisableBtns(true);
     try {
+      products += "<br/>Total price: $" + totalPrice;
       localStorage.setItem("shippingAddress", "shipping address");
       localStorage.setItem("billingAddress", "billing address");
       localStorage.setItem("productId", product_ids.join("-"));
       localStorage.setItem("quantity", quantities.join("-"));
       localStorage.setItem("totalPrice", totalPrice);
       localStorage.setItem("branchId", "1234");
+      localStorage.setItem("msg", products);
 
       const link = await addProductsToCart(p)();
       setLink(link);

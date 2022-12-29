@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { addOrderToDB } from "../../actions";
 import NavBar from "../NavBar/NavBar";
+import { Button } from "@chakra-ui/react";
 import "./AfterPayment.css";
 
 function AfterPayment() {
@@ -14,7 +15,7 @@ function AfterPayment() {
     const sendData = async () => {
       let data = {
         status,
-        userId: "1234567",
+        userId: "franjrm20119@gmail.com",
       };
 
       if (status !== "approved") {
@@ -28,6 +29,7 @@ function AfterPayment() {
         "quantity",
         "totalPrice",
         "branchId",
+        "msg",
       ]) {
         if (!localStorage.getItem(item)) {
           setFailure(true);
@@ -47,6 +49,7 @@ function AfterPayment() {
           "quantity",
           "totalPrice",
           "branchId",
+          "msg",
         ]) {
           localStorage.removeItem(item);
         }
@@ -69,6 +72,14 @@ function AfterPayment() {
             <h1>Your payment was successful! :)</h1>
           </div>
         )}
+        <div className="buttonContainer">
+          <Link to="/Cart">
+            <Button>Back To Cart</Button>
+          </Link>
+          <Link to="/">
+            <Button>Back Home</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

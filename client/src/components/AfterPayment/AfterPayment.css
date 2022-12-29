@@ -1,13 +1,37 @@
 .paymentContainer {
-  height: fit-content;
+  height: 40vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .success {
   background-color: #76b046;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
+  padding: 50px 40px 50px 40px;
+  font-size: 2rem;
 }
 
 .error {
   background-color: #d3524d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
+  padding: 50px 40px 50px 40px;
+  font-size: 2rem;
+}
+
+.buttonContainer {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }
