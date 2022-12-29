@@ -15,7 +15,7 @@ function AfterPayment() {
     const sendData = async () => {
       let data = {
         status,
-        userId: "franjrm20119@gmail.com",
+        userId: "agusdlmonzon@gmail.com",
       };
 
       if (status !== "approved") {
