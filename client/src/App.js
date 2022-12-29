@@ -17,12 +17,12 @@ import Team from "./components/Team/Team";
 import Values from "./components/Values/Values";
 import Quality from "./components/Quality/Quality";
 import Favorites from "./components/Favorites/Favorites.jsx";
-import Login from './components/Login/Login'
-import FormUser from './components/FormUser/FormUser'
-import FormUser2 from './components/FormUser/FormUser2'
+import Login from "./components/Login/Login";
+import FormUser from "./components/FormUser/FormUser";
+import FormUser2 from "./components/FormUser/FormUser2";
+import AfterPayment from "./components/AfterPayment/AfterPayment";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
-
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +52,7 @@ function App() {
       <Route exact path="/login" component={Login} />
       <Route exact path="/formUser" component={FormUser} />
       <Route exact path="/formUser2" component={FormUser2} />
+      <Route exact path="/payment" component={AfterPayment} />
     </BrowserRouter>
   );
 }
