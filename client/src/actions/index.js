@@ -6,7 +6,9 @@ export const GET_PRODUCTS_AMOUNT = "GET_PRODUCTS_AMOUNT";
 export const GET_PRODUCTS_CATEGORY = "GET_PRODUCTS_CATEGORY";
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
 export const GET_PRODUCTS_BY_INGREDIENT = "GET_PRODUCTS_BY_INGREDIENT";
-
+export const SAVE_USER = 'SAVE_USER'
+export const ERASE_USER = 'ERASE_USER'
+export const ACTIVE_USER = 'ACTIVE_USER'
 //CART
 export const ADD_TO_CART = "ADD_TO_CART";
 export const RESTART_CART = "RESTART_CART";
@@ -107,4 +109,15 @@ export function removeProductFavorite(id) {
     type: "REMOVE_PRODUCT_FAVORITE",
     payload: id,
   };
+}
+export function saveUser(params) {
+  return { type: "SAVE_USER", payload: params }
+}
+
+export function eraseUser() {
+  return { type: "ERASE_USER" }
+}
+
+export function userActive(state) {
+  return { type: "ACTIVE_USER", payload: state }
 }

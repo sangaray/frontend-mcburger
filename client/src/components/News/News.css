@@ -4,7 +4,7 @@
     align-items: center;
     margin-right: 300px;
     margin-left: 300px;
-    margin-top: 200px;
+    margin-top: 100px;
     flex-wrap: wrap;
 }
 
@@ -21,4 +21,5 @@
 
 .art-1 p{
     font-size: 24px;
+    margin-bottom: 20px;
 }

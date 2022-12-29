@@ -1,91 +1,205 @@
 .cont{
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
+ 
 }
-.detailContainer {
-    width: 100%;
-    height: calc(100vh + 80px);
-    background-color: #c1c1c1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .innerDetailContainer {
-    max-width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    padding: 50px;
-  }
-  .detailImgContainer {
-    overflow: hidden;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    width: 500px;
-    margin-bottom: 20px;
-  }
+.cards-container-fav{
+  flex-wrap: wrap;
+  width: 400px;
+  height: 560px;
+  background-color: #888888;
+  text-align: left;
+  border-radius: 0px;
+  color: white;
+  transition: 0.3s;
+  margin: 50px;
+  
+}
   .detailImg {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0;
+    margin-top: -20px;
     width: 100%;
     object-fit: cover;
-    height: 300px;
+    height: 260px;
   }
-  .detailTextContainer {
+   .detailTextContainer {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-  }
+  } 
   .detailTitle {
     padding: 0;
     margin: 0;
-    font-size: 2.2rem;
-    text-transform: capitalize;
-    font-family: dincond, Arial, Helvetica, sans-serif;
+    margin-top: 7px;
+    font-size: 1.4rem;
+    text-align:left;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
-  .detailLabelContainer {
-    display: flex;
-    align-items: flex-start;
-    justify-content: left;
-    flex-direction: column;
-    margin-top: 20px;
-  }
+ 
   .detailLabel {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #651616;
     font-weight: 500;
-    padding: 0;
+    padding: 0px;
     margin: 0;
+    margin-top: -15px;
   }
-  .detailLabelContainerPrice {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    flex-direction: row;
-    margin-top: 20px;
-    gap: 1rem;
+  .detailSummary{
+    font-size: 13px;
+    
   }
+  
   .detailLabelPrice {
     font-size: 1.2rem;
     color: #651616;
     font-weight: 500;
-    padding: 0;
-    margin: 0;
+    margin-top: -15px;
   }
   .detailPrice {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin-top: -15px;
   }
-.btnRemove {
-  background-color: red;
-  font-size: 1.2rem;
-  justify-content: right;
+.bt {
+  background-color: rgba(247, 230, 230, 0.521);
+  font-size: 1rem;
+  padding: 2px;
+  margin-left: 92%; 
+  padding-left: 11px;
+  color:#651616;
+ 
 }
+ .bt:hover {
+  background-color: rgba(247, 230, 230, 0.685);
+  transform: scale(1.1, 1.1);
+    box-shadow: 0 0 20px 0 rgba(239, 246, 247, 0.699);
+ }
+
+
+
+
+{/* todo lo de abajo es de los productos order now que estan en home*/}
+
+.container-acceso-directo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 283px;
+}
+
+.acceso-directo1{
+ 
+  width: 33.33%;
+  height: 600px;
+  background-color: #FE3838;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.acceso-directo1 img{
+  height: 200px;
+  width: 300px;
+}
+.button-pediya1{
+  background-color:#EF7E63; 
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  margin-top: 5px;
+}
+
+
+.acceso-directo2 img{
+  height: 230px;
+  width: 230px;
+  margin-top: -27px;
+}
+.button-pediya2{
+  background-color:#EF7E63; 
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  margin-top: 5px;
+}
+
+
+.acceso-directo3 img{
+  height: 280px;
+  width: 280px;
+  margin-top: -22px;
+}
+
+.button-pediya3{
+  background-color:#EF7E63; 
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  margin-top: 5px;
+}
+
+.acceso-directo1 h4{
+  color: white;
+}
+
+.acceso-directo2 h4{
+  color: white;
+}
+
+.acceso-directo3 h4{
+  color: white;
+ margin-top: -55px;
+}
+
+
+.acceso-directo2{
+ 
+  width: 33.33%;
+  height: 600px;
+  background-color: #E49F36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ flex-direction: column;
+  
+}
+.acceso-directo3{
+
+  width: 33.33%;
+  height: 600px;
+  background-color: #651616;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ flex-direction: column;
+  
+}
+ 

@@ -18,18 +18,68 @@
 }
 
 .acceso-directo1 img{
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 300px;
 }
+.button-pediya1{
+    background-color:#EF7E63; 
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    margin-top: 5px;
+}
+
 
 .acceso-directo2 img{
-    height: 250px;
-    width: 250px;
+    height: 230px;
+    width: 230px;
+    margin-top: -27px;
+}
+.button-pediya2{
+    background-color:#EF7E63; 
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    margin-top: 5px;
 }
 
+
 .acceso-directo3 img{
-    height: 250px;
-    width: 250px;
+    height: 280px;
+    width: 280px;
+    margin-top: -22px;
+}
+
+.button-pediya3{
+    background-color:#EF7E63; 
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    margin-top: 5px;
 }
 
 .acceso-directo1 h4{
@@ -42,6 +92,7 @@
 
 .acceso-directo3 h4{
     color: white;
+   margin-top: -55px;
 }
 
 
@@ -113,6 +164,7 @@
     -webkit-transition-duration: 0.4s; 
     transition-duration: 0.4s;
 }
+
 
 .carousel{
     height:90%;
