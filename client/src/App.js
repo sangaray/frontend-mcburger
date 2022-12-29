@@ -12,6 +12,8 @@ import Details from "./components/Details/Details";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
 import Login from './components/Login/Login'
+import FormUser from './components/FormUser/FormUser'
+import FormUser2 from './components/FormUser/FormUser2'
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +33,8 @@ function App() {
       <Route exact path="/product/:id" component={Details} />
       <Route exact path="/Cart" component={Cart} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/formUser" component={FormUser} />
+      <Route exact path="/formUser2" component={FormUser2} />
     </BrowserRouter>
   );
 }

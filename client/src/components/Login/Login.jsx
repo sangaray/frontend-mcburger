@@ -34,6 +34,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+
+import { Card, CardContent, Divider, Stack } from '@mui/material'
+import logo1 from './login-picture.png'
 //
 
 
@@ -56,10 +59,11 @@ const theme = createTheme();
 
 export default function SignInSide() {
 
-    const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
+    const { loginWithRedirect, user, isAuthenticated, logout, isLoading } = useAuth0();
     //console.log(JSON.stringify(user) + 'OKAOKA');
 
     const activeUser = useSelector((state) => state.activeUser);
+    const userN = useSelector((state) => state.user);
 
     const [buttonGoogle, setButtonGoogle] = useState(false)
 
@@ -88,10 +92,9 @@ export default function SignInSide() {
             dispatch(saveUser(json.data));
             dispatch(userActive(true));
             handleClickOpen();
-            //    console.log(stateButtonGoogle + ' state button google');
+            // console.log(stateButtonGoogle + ' state button google');
         } else {
             document.cookie = `token=''; max-age=${60 * 0}; path=/; samesite=strict`;
-
         }
     };
     // -----------------------------------------------------------------
@@ -114,6 +117,7 @@ export default function SignInSide() {
                         fullWidth
                         variant="contained"
                         onClick={() => {
+                            dispatch(userActive(false));
                             logout();
                         }}
                         sx={{ mt: 3, mb: 2 }}
@@ -151,6 +155,7 @@ export default function SignInSide() {
 
     const logoutBbdd = (e) => {
         e.preventDefault();
+        document.cookie = `token=''; max-age=${60 * 0}; path=/; samesite=strict`;
         dispatch(eraseUser());
         setButtonGoogle(false)
         dispatch(userActive(false));
@@ -203,45 +208,37 @@ export default function SignInSide() {
         }
     }
 
-
-    /*     const autenticated = async () => {
-    
-            if (isAuthenticated) {
-                //console.log('eeeeeeeeeeeeeeeeeeeeee');
-                let dat = {
-                    email: user.email,
-                    name: user.name,
-                    picture: user.picture,
-                }
-    
-                let json = await axios.post("http://localhost:3001/user", dat);
-                console.log(json.data); // porque no lo alcanzo a ver
-            }
-        } */
-
-    // const a = Navigate();
     const goRoute = useHistory();
+
+
     useEffect(() => {
         const autenticated = async () => {
 
-            if (isAuthenticated) {
+            if (isAuthenticated && activeUser == false) {
                 let dat = {
                     email: user.email,
                     name: user.name,
                     picture: user.picture,
                 }
                 let json = await axios.post("http://localhost:3001/user", dat);
-                console.log(json.data); // porque no lo alcanzo a ver
+      
+                //console.log(json.data + '<<<<<'); // porque no lo alcanzo a ver
                 dispatch(saveUser(json.data));
+                dispatch(userActive(true));
+                //if (!json.data.address) {
+                    handleClickOpen(); //*****
+                //}
                 //goRoute.push('/')
             }
         }
         autenticated();
     }, [isAuthenticated])
 
+    //    console.log(userN);
+
     // ------------------------------------------------------------
 
-    //dialog
+    // ------------------ DIALOG ---------------------------------------
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -253,9 +250,209 @@ export default function SignInSide() {
         goRoute.push('/')
     };
 
-    //--------
+    //-----------------------------------------------------------------
+
+    const prueba = async (e) => {
+        e.preventDefault();
+        //const token1 = document.cookie.replace('token=', '')
+        const token = document.cookie;
+        let pos = token.lastIndexOf("token")
+        let b = token.slice(pos + 6)
+        //   console.log(b + '****');
+        let dat = {
+            email: 'crgs@gmailll',
+            token: b
+        }
+
+        const test = await axios.post("http://localhost:3001/user/test", dat);
+
+    }
 
 
+
+    // ------------ CONTROL DE FORMULARIO -------------------
+
+    const [input, setInput] = useState({
+        first_name: '',
+        last_name: '',
+        password: '',
+        phone_number: '',
+        address: '',
+        email: ''
+    })
+
+    const changeHandler = (e) => {
+        // console.log(e.target.name);
+        const property = e.target.name;
+        const value = e.target.value;
+
+        setInput({
+            ...input,
+            [property]: value,
+            email: user.email
+        })
+        
+       // console.log(input);
+    }
+
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        //console.log(input);
+        const updateSend = await axios.put('http://localhost:3001/user', input)
+        goRoute.push('/')
+    }
+
+
+    //-------------------------------------------------------
+    const updateUser = () => {
+        let state;
+        //console.log(userN);
+        (!userN.first_name || !userN.last_name || !userN.phone || !userN.address) ? state = true : state = false
+        if (state === true) {
+            return (
+                <>
+                    <Grid sx={{ marginTop: 0 }}>
+                        <Card style={{ maxWidth: 450, padding: "20px 5px", margin: "auto" }} sx={{ border: 1, borderColor: 'white' }}>
+                            <Stack direction="row" spacing={3} sx={{ marginLeft: 2 }}>
+                                <img src={logo1} alt="1" />
+                                {/*   <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" /> */}
+                                <Typography gutterBottom variant="h3" align="center">
+                                    Mc Burguer
+                                </Typography>
+                            </Stack>
+                            <br />
+                            <Divider />
+                            <CardContent>
+                                <Typography gutterBottom variant="h6">
+                                    Please, complete the registration! <b></b>
+                                </Typography>
+
+                                <Typography gutterBottom variant="h5">
+                                    Contact User: {userN.name}
+                                </Typography>
+                                {/*  <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
+                                    Please, complete your data.
+                                </Typography> */}
+                                <form>
+                                    <Grid container spacing={1} >
+                                        <Grid xs={12} sm={6} item>
+                                            <TextField
+                                                placeholder="Enter first name"
+                                                label="First Name"
+                                                variant="outlined"
+                                                fullWidth
+                                                required
+                                                name='first_name'
+                                                onChange={(e) => changeHandler(e)}
+                                            />
+                                        </Grid>
+                                        <Grid xs={12} sm={6} item>
+                                            <TextField
+                                                placeholder="Enter last name"
+                                                label="Last Name"
+                                                variant="outlined"
+                                                fullWidth
+                                                required
+                                                name='last_name'
+                                                onChange={(e) => changeHandler(e)}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                type="password"
+                                                placeholder="Enter password"
+                                                label="Password"
+                                                variant="outlined"
+                                                fullWidth
+                                                required
+                                                name='password'
+                                                onChange={(e) => changeHandler(e)}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                placeholder="Enter phone number"
+                                                label="Phone"
+                                                variant="outlined"
+                                                fullWidth
+                                                required
+                                                name='phone_number'
+                                                onChange={(e) => changeHandler(e)}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                placeholder="Address"
+                                                label="Address"
+                                                variant="outlined"
+                                                fullWidth
+                                                required
+                                                name='address'
+                                                onChange={(e) => changeHandler(e)}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <Button type="submit"
+                                                variant="contained"
+                                                color="primary"
+                                                fullWidth
+                                                onClick={handleUpdate}
+                                            >
+                                                Update User
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </form>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Grid sx={{ marginTop: 0 }}>
+                        <Card style={{ maxWidth: 450, padding: "20px 5px", margin: "auto" }} sx={{ border: 1, borderColor: 'green' }}>
+                            <Stack direction="row" spacing={3} sx={{ marginLeft: 2 }}>
+                                <img src={logo1} alt="1" />
+                                {/*   <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" /> */}
+                                <Typography gutterBottom variant="h3" align="center">
+                                    Mc Burguer
+                                </Typography>
+                            </Stack>
+                            <br />
+                            <Divider />
+                            <CardContent>
+                                <Typography gutterBottom variant="h6">
+                                    <b>User registered!</b>
+                                </Typography>
+
+                                <Typography gutterBottom variant="h5">
+                                    <b>Welcome: </b>{userN.first_name + ' ' + userN.last_name}
+                                </Typography>
+                                {/*  <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
+                                    Please, complete your data.
+                                </Typography> */}
+                                <br />
+                                <Grid item xs={12}>
+                                    <Button
+                                        type="submit"
+                                        variant="contained"
+                                        color="primary"
+                                        fullWidth
+                                        onClick={handleClose}
+                                        sx={{ backgroundColor: 'green' }}
+                                    >
+                                        OK
+                                    </Button>
+                                </Grid>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </>
+            )
+        }
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -313,19 +510,7 @@ export default function SignInSide() {
                                 id="password"
                                 autoComplete="current-password"
                             />
-                            {/* <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
-                            /> */}
-                            {/* <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
-                                disabled={stateButtonBbdd}
-                            >
-                                Sign In
-                            </Button> */}
+                            <button onClick={prueba}> PROBAR </button>
                             {
                                 isLoginBD()
                             }
@@ -344,20 +529,22 @@ export default function SignInSide() {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">
+                {/* <DialogTitle id="alert-dialog-title">
                     {"Usuario logueado con éxito!"}
-                </DialogTitle>
+                </DialogTitle> */}
                 <DialogContent>
-                   {/*  <DialogContentText id="alert-dialog-description">
+                    {/*  <DialogContentText id="alert-dialog-description">
                         Dale 'OK' para redirigir...
                     </DialogContentText> */}
-                      <Alert severity="success">Click 'OK' for redirect...!</Alert>
+                    {/*  <Alert severity="success">Click 'OK' for redirect...!</Alert> */}
+                    {updateUser()}
                 </DialogContent>
-                <DialogActions>
+                {/*  <DialogActions>
                     <Button onClick={handleClose}>OK</Button>
-                   {/*  <Button onClick={handleClose} autoFocus>Agree</Button> */}
-                </DialogActions>
+                    <Button onClick={handleUpdate} autoFocus>Update data</Button>
+                </DialogActions> */}
             </Dialog>
+
         </ThemeProvider>
     );
 }

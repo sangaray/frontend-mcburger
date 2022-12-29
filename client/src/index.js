@@ -8,16 +8,20 @@ import store from "./store/index.js"
 import { createRoot } from 'react-dom/client';
 import { ChakraProvider } from '@chakra-ui/react'
 import { Auth0Provider } from '@auth0/auth0-react';
+const {REACT_APP_DOMAIN, REACT_APP_CLIENTID} = process.env
 
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+console.log(REACT_APP_DOMAIN + '<<<<<=======');
 root.render(
+  
   <React.StrictMode>
     <ChakraProvider>
       <Provider store={store}>
         <Auth0Provider
-          domain='dev-1vxprzx7maxyjwv7.us.auth0.com'
+           domain='dev-1vxprzx7maxyjwv7.us.auth0.com'
+          //domain={REACT_APP_DOMAIN}
           clientId='CbwboB0RC7xwrSjegPeeYip5otVij30L'
           //redirectUri= {window.location.origin}
           redirectUri='http://localhost:3000/login'

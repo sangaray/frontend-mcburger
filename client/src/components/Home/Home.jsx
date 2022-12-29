@@ -9,20 +9,6 @@ export default function Home(){
             <div>
                 <NavBar/>
             </div>
-
-            <div className="p-b-main">
-             <div className="phrase-button">
-                <div className="phrase">
-                    <h1 className="phrase-home">¿QUÉ TE APETECE PEDIR</h1>
-                    <span className="phrase-span">HOY?</span>
-                </div>
-
-                <div>
-                    <button className="button-pediya">Pedí Ya</button>
-                </div>
-             </div>   
-            </div>    
-
             <div className="container-acceso-directo">
                 <div className="acceso-directo1">
                     <img src="https://freepngimg.com/thumb/burger/2-2-burger-free-download-png.png" alt="Imagen" />
@@ -43,8 +29,17 @@ export default function Home(){
                 </div>
             </div>
 
+            
+            <div className="p-b-main">
+             <div className="phrase-button">
+                <div className="phrase">
+                    <h1 className="phrase-home">¿QUÉ TE APETECE PEDIR HOY?</h1>
+                    <button className="button-pediya">Pedí Ya</button>
+                </div>
+             </div>   
+            </div>    
+
         </div>
 
-      
     )
 }
