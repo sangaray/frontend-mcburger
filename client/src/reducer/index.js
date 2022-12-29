@@ -16,22 +16,7 @@ const initialState = {
   products: [],
   productsCategory: [],
   product: {},
-  cart: {
-    1: {
-      id: 1,
-      name: 'Cheeseburger',
-      image: 'asdf.com',
-      price: "$2",
-      quantity: 2
-    },
-    2: {
-      id: 2,
-      name: 'Chicken Nuggets',
-      image: 'asdf.com',
-      price: "$2",
-      quantity: 3
-    }
-  },
+  cart: {},
 };
 
 function rootReducer(state = initialState, action) {

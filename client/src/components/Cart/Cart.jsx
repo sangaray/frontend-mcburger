@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductsToCart, removeFromCart, addToCart, deleteProductsCart } from '../../actions/index';
-import { Box, Image, Text, Button } from '@chakra-ui/react';
+import { Box, Text, Button } from '@chakra-ui/react';
 import CartCards from '../CartCards/CartCards';
 import NavBar from '../NavBar/NavBar';
 
@@ -24,8 +24,7 @@ export default function Cart() {
     })
 
     function handleOnPay() {
-        console.log(arrProducts)
-        addProductsToCart();
+        addProductsToCart(arrProducts)();
     }
 
     function handleOnAdd(p) {

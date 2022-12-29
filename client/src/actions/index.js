@@ -79,7 +79,7 @@ export function addToCart(params) {
         image: params.image,
         price: params.price,
         quantity: 1,
-        description:params.summary,
+        description: params.summary,
     }
     return {
         type: "ADD_TO_CART",
@@ -94,9 +94,14 @@ export function restartCart(params) {
     }
 }
 
-export function addProductsToCart(payload) {
+export function addProductsToCart(params) {
     return async function () {
-        console.log("la action funciona, y el payload es:")
-        console.log(payload)
-    }
+        try {
+            console.log("entre a try")
+          const json = await axios.post("http://localhost:3001/payment", params);
+          return json;
+        } catch (error) {
+          alert("PAYMENT ERROR")
+        }
+      };
 }
