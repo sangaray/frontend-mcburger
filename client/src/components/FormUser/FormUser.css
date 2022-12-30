@@ -1,0 +1,10 @@
+.main-container{
+    display: flex;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
