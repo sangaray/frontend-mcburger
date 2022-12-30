@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Box,
   Image,
@@ -20,6 +21,7 @@ export default function Footer() {
         <Text fontSize="1.8rem" mt="40px" fontWeight="bold" color="white">
           McBurger
         </Text>
+
         <Box ml="1350px"></Box>
       </Box>
       <Box display="flex" justifyContent="space-between" mt="20px">
@@ -51,20 +53,36 @@ export default function Footer() {
             Social Media
           </Text>
           <Box mt="60px">
-            <a href="https://www.facebook.com/profile.php?id=100088481538660&is_tour_dismissed=true">
+            <a
+              href="https://www.facebook.com/profile.php?id=100088481538660&is_tour_dismissed=true"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <IconButton
                 m="5px"
                 colorScheme="facebook"
                 icon={<FaFacebook />}
               />
             </a>
-            <a href="https://www.instagram.com/mcburger_pf/">
+            <a
+              href="https://www.instagram.com/mcburger_pf/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <IconButton m="5px" colorScheme="pink" icon={<FaInstagram />} />
             </a>
-            <a href="https://twitter.com/McBurgerPF">
+            <a
+              href="https://twitter.com/McBurgerPF"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <IconButton m="5px" colorScheme="twitter" icon={<FaTwitter />} />
             </a>
-            <a href="https://www.tiktok.com/@mcburgerpf?lang=es">
+            <a
+              href="https://www.tiktok.com/@mcburgerpf?lang=es"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <IconButton m="5px" colorScheme="gray" icon={<FaTiktok />} />
             </a>
           </Box>
