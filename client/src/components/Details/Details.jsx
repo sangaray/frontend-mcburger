@@ -1,11 +1,17 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Footer"
-import {  Button, Box, Text } from '@chakra-ui/react';
-import { getProductID, addToCart, removeFromCart, addProductFavorite, } from "../../actions";
+import Footer from "../Footer/Footer";
+import { Button, Box, Text } from "@chakra-ui/react";
+import {
+  getProductID,
+  addToCart,
+  removeFromCart,
+  addProductFavorite,
+} from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
+import StarRating from "../StarRating";
 
 function Details() {
   const { id } = useParams();
@@ -15,7 +21,11 @@ function Details() {
     dispatch(getProductID(id));
   }, [id, dispatch]);
 
-  const [product, cart] = useSelector((state) => [state.product, state.cart, state.productsFavorites,]);
+  const [product, cart] = useSelector((state) => [
+    state.product,
+    state.cart,
+    state.productsFavorites,
+  ]);
 
   return (
     <div>
@@ -29,6 +39,9 @@ function Details() {
                 src={product[0]?.image}
                 alt={product[0]?.name}
               />
+            </div>
+            <div>
+              <StarRating />
             </div>
             <div className="detailTextContainer">
               <h2 className="detailTitle">{product[0]?.name}</h2>
@@ -48,27 +61,43 @@ function Details() {
                 <p>{product[0]?.ingredients}</p>
               </div>
             </div>
+            <Button
+              mt={"30px"}
+              mb={"30px"}
+              colorScheme="yellow"
+              onClick={() => dispatch(addProductFavorite(product[0]))}
+            >
+              🤍
+            </Button>
             {!cart.hasOwnProperty(product[0].id) ? (
-              <Button size='lg' colorScheme='green' marginTop="30px" onClick={() => dispatch(addToCart(product[0]))}>
+              <Button
+                size="lg"
+                colorScheme="green"
+                onClick={() => dispatch(addToCart(product[0]))}
+              >
                 Add to cart
               </Button>
             ) : (
               <Box display="flex" justifyContent="center" alignItems="center">
-                <Button marginRight="20px" onClick={() => dispatch(removeFromCart(product[0]))}>
+                <Button
+                  marginRight="20px"
+                  onClick={() => dispatch(removeFromCart(product[0]))}
+                >
                   -
                 </Button>
-                <Text as="b" fontSize='3xl'>{cart[product[0].id].quantity}</Text>
-                <Button marginLeft="20px" onClick={() => dispatch(addToCart(product[0]))}>
+                <Text as="b" fontSize="3xl">
+                  {cart[product[0].id].quantity}
+                </Text>
+                <Button
+                  marginLeft="20px"
+                  onClick={() => dispatch(addToCart(product[0]))}
+                >
                   +
                 </Button>
               </Box>
             )}
           </div>
-          <div>
-          <Button onClick={() => dispatch(addProductFavorite(product[0]))}>
-            🤍
-          </Button>
-          </div>
+          <div></div>
         </div>
       ) : (
         <div className="detailContainer">
@@ -79,8 +108,8 @@ function Details() {
           </div>
         </div>
       )}
-       <div>
-        <Footer/>
+      <div>
+        <Footer />
       </div>
     </div>
   );

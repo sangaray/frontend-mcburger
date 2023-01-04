@@ -86,15 +86,13 @@ export default function Cart() {
 
       <Box display="flex" justifyContent="center" alignItems="center">
         <Box
-          bg="#D9D9D9"
-          marginTop="10px"
-          borderRadius="10px"
-          height="700px"
-          width="1500px"
+          textAlign="center" bg="#D9D9D9" marginTop="10px" borderRadius="10px" height="auto" width="1500px" marginBottom="20px"
         >
+          <Text as="b" fontSize='3xl'>Carrito</Text>
+          <hr style={{border:"grey solid 1px"}}></hr>
           {Object.values(cartProducts).map((p) => {
             return (
-              <Box key={p.id + p.name}>
+              <Box display="flex" alignItems="center" key={p.id + p.name}>
                 <CartCards name={p.name} image={p.image} price={p.price} />
                 <Button
                   onClick={(e) => handleOnRemove(p)}
@@ -102,14 +100,14 @@ export default function Cart() {
                 >
                   -
                 </Button>
-                <Text>{p.quantity}</Text>
+                <Text marginLeft="10px" marginRight="10px" as="b" fontSize='2xl'>{p.quantity}</Text>
                 <Button
                   onClick={(e) => handleOnAdd(p)}
                   isDisabled={disableBtns}
                 >
                   +
                 </Button>
-                <Button
+                <Button marginLeft="10px"
                   onClick={(e) => handleOnDelete(p)}
                   isDisabled={disableBtns}
                 >
@@ -118,17 +116,18 @@ export default function Cart() {
               </Box>
             );
           })}
-          <Text>Ubicación</Text>
-          <Text>Precio</Text>
-          <Text>Total</Text>
-          <Text>{"Precio Total: $" + totalPrice}</Text>
-          <Button
+
+          <Text as="b" color="green" fontSize='3xl' marginLeft="1180px">{"Precio Total: $" + totalPrice}</Text>
+          <hr style={{border:"grey solid 1px"}}></hr>
+          <Box marginLeft="1300px" marginBottom="50px" marginTop="40px">
+          <Button size='lg' colorScheme='green'
             onClick={(e) => handleOnPay(arrProducts)}
             isDisabled={!disableBtns && arrProducts.length ? false : true}
           >
             {loading ? <p>Loading</p> : <p>Pagar</p>}
           </Button>
           {paymentLink ? <a href={paymentLink}>Go to payment</a> : <></>}
+          </Box>
         </Box>
       </Box>
     </Box>

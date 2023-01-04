@@ -14,6 +14,7 @@ import {
   SAVE_USER,
   ERASE_USER,
   ACTIVE_USER,
+  SET_NEW_POSITION,
 } from "../actions/index";
 
 const initialState = {
@@ -25,12 +26,21 @@ const initialState = {
   productsFavorites: [],
   user: [],
   activeUser: false,
+  mapPosition: {
+    status: "user",
+    coordenates: [-34.603743591667396, -58.38151982455165],
+  },
 };
 
 function rootReducer(state = initialState, action) {
   let newCart = { ...state.cart };
 
   switch (action.type) {
+    case SET_NEW_POSITION:
+      return {
+        ...state,
+        mapPosition: action.payload,
+      };
     case GET_ALL_PRODUCTS:
       return {
         ...state,

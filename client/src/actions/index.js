@@ -16,6 +16,12 @@ export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const DELETE_PRODUCTS_CART = "DELETE_PRODUCTS_CART";
 export const ADD_PRODUCT_FAVORITE = "ADD_PRODUCT_FAVORITE";
 export const REMOVE_PRODUCT_FAVORITE = "REMOVE_PRODUCT_FAVORITE";
+//MAPS
+export const SET_NEW_POSITION = "SET_NEW_POSITION";
+
+export function setNewPosition(params) {
+  return { type: "SET_NEW_POSITION", payload: params };
+}
 
 export function getAllProducts() {
   return async function (dispatch) {

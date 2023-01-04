@@ -3,19 +3,25 @@
   height: 100%;
  
 }
-.cards-container-fav{
+.cont-fav-cards{
+  display: flex;
   flex-wrap: wrap;
+  margin-left: 150px ;
+}
+.cards-container-fav{
+  
   width: 400px;
-  height: 560px;
+  height: 450px;
   background-color: #888888;
-  text-align: left;
   border-radius: 0px;
   color: white;
   transition: 0.3s;
   margin: 50px;
+  border-radius: 10px;
+ 
   
 }
-  .detailImg {
+  .detail-Img {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -23,19 +29,14 @@
     width: 100%;
     object-fit: cover;
     height: 260px;
+    
   }
-   .detailTextContainer {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-  } 
-  .detailTitle {
+ 
+  .detail-Title {
     padding: 0;
     margin: 0;
     margin-top: 7px;
     font-size: 1.4rem;
-    text-align:left;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
  
@@ -51,16 +52,23 @@
     font-size: 13px;
     
   }
+  .detail-Label-Container-Price{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+  }
   
   .detailLabelPrice {
     font-size: 1.2rem;
     color: #651616;
-    font-weight: 500;
-    margin-top: -15px;
+    font-weight: bold;
+  
   }
   .detailPrice {
     font-size: 1.2rem;
-    margin-top: -15px;
+    font-weight: bold;
+   
   }
 .bt {
   background-color: rgba(247, 230, 230, 0.521);
@@ -80,7 +88,7 @@
 
 
 
-{/* todo lo de abajo es de los productos order now que estan en home*/}
+/* todo lo de abajo es de los productos order now que estan en home*/
 
 .container-acceso-directo{
   display: flex;

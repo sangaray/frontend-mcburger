@@ -2,10 +2,14 @@
     display: inline;
     margin: 30px;
     color: white;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    
+    
+    
 }
 
 .nav-container{
-    background-color: #651616;
+    background-color: #f5ebdc;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,23 +18,30 @@
 
 .nav-container a{
  text-decoration: none;
- color: white;
- font-size: 24px;
+ color: #651616;
+ font-size: 18px;
+ font-weight: bold;
 }
+.nav-container a:hover{
+    text-decoration: underline;
+    color: #651616;
+    font-size: 18px;
+   }
+
+   
 .button-login{
-    background-color:#EF7E63; 
-    border: none;
-    border-radius: 10px;
-    color: white;
-    padding: 10px;
+     
+    
+    
+    
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
+    
+   
+    
 
 }
 

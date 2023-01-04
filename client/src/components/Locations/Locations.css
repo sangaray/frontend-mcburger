@@ -1,0 +1,32 @@
+.leaflet-map-container{
+    width: 950px;
+    height: 500px;
+    border: 2px;
+    border-style: outset;
+    border-radius: 15px;
+    border-color: black;
+    margin-top: 16px;
+}
+
+.map-main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.ubications{
+    width: 35%;
+    height: 2000px;
+  
+}
+
+
+.map{
+    width: 65%;
+    height: 600px;
+    border: solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

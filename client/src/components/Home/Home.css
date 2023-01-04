@@ -1,24 +1,14 @@
-.container-acceso-directo{
+.container-directo{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 283px;
+    border-radius: 20px;
+    width: 1400px;
+    margin-bottom:-20px;
 }
 
-.acceso-directo1{
-   
-    width: 33.33%;
-    height: 600px;
-    background-color: #FE3838;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-.acceso-directo1 img{
-    height: 200px;
+.acceso-directo11 img{
+    height: 230px;
     width: 300px;
 }
 .button-pediya1{
@@ -38,9 +28,9 @@
 }
 
 
-.acceso-directo2 img{
-    height: 230px;
-    width: 230px;
+.acceso-directo22 img{
+    height: 250px;
+    width: 250px;
     margin-top: -27px;
 }
 .button-pediya2{
@@ -60,10 +50,11 @@
 }
 
 
-.acceso-directo3 img{
-    height: 280px;
-    width: 280px;
-    margin-top: -22px;
+.acceso-directo33 img{
+    height: 250px;
+    width: 250px;
+    margin-top: 20px;
+    
 }
 
 .button-pediya3{
@@ -82,21 +73,41 @@
     margin-top: 5px;
 }
 
-.acceso-directo1 h4{
+.acceso-directo11 h4{
     color: white;
+    font-size: 2rem;
+
+    font-family: 'Lilita One', cursive;
 }
 
-.acceso-directo2 h4{
+.acceso-directo22 h4{
     color: white;
+    font-size: 1.8rem;
+
+    font-family: 'Lilita One', cursive;
 }
 
-.acceso-directo3 h4{
+.acceso-directo33 h4{
     color: white;
-   margin-top: -55px;
+    font-size: 1.8rem;
+    margin-top: -45px;
+    font-family: 'Lilita One', cursive;
 }
 
+.acceso-directo11{
+   
+    width: 33.33%;
+    height: 600px;
+    background-color: #FE3838;
+    color: #1b1b1b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   
+}
 
-.acceso-directo2{
+.acceso-directo22{
    
     width: 33.33%;
     height: 600px;
@@ -107,20 +118,22 @@
    flex-direction: column;
     
 }
-.acceso-directo3{
+.acceso-directo33{
 
     width: 33.33%;
     height: 600px;
-    background-color: #651616;
+    background-color: #502314;
     display: flex;
     align-items: center;
     justify-content: center;
    flex-direction: column;
+  
     
 }
 
 .main-container-home{
-    background-color: #D9D9D9;
+    background-image: url('./fondoproyecto.png');
+
 }
 .phrase-home{
     color: #EF7E63;
@@ -171,4 +184,10 @@
     width: 90%;
    padding: auto;
    margin-left: 5%;
+}
+
+.w-d-y{
+    font-family: 'Lilita One', cursive;
+    font-size: 4.5rem; 
+    color: #502314;
 }

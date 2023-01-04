@@ -8,6 +8,7 @@ import CartList from "../CartList/CartList";
 import {
   Button,
   Box,
+  Text,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -31,7 +32,7 @@ export default function NavBar() {
           <label className="name-login">
             <b>{userN.name}</b>
           </label>
-          &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;
           {/*  <img className="image-logo" src={userN.picture} alt="image" /> */}
         </>
       );
@@ -50,19 +51,22 @@ export default function NavBar() {
         </Link>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">HOME</Link>
           </li>
           <li>
-            <Link to="/Selectmenu">Menu</Link>
+            <Link to="/Selectmenu">MENU</Link>
           </li>
           <li>
-            <Link to="/news">News</Link>
+            <Link to="/news">NEWS</Link>
           </li>
           <li>
-            <Link to="/about">About Us</Link>
+            <Link to="/about">ABOUT US</Link>
           </li>
           <li>
-            <Link to="/favs">Favorites</Link>
+            <Link to="/favs">FAVORITES</Link>
+          </li>
+          <li>
+            <Link to="/locations">LOCATIONS</Link>
           </li>
         </ul>
         <Box>
@@ -70,7 +74,7 @@ export default function NavBar() {
             <PopoverTrigger>
               <Button>
                 <Link to="/Cart">
-                  <BsCart2 />
+                  <BsCart2 color="black" />
                 </Link>
               </Button>
             </PopoverTrigger>
@@ -86,7 +90,7 @@ export default function NavBar() {
         </Box>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <Link to="/login">
-          <button className="button-login">Log in</button>
+          <Button colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG IN</Text></Button>
         </Link>
         &nbsp;&nbsp;&nbsp;
         {getUserData()}

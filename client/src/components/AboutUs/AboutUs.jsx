@@ -1,84 +1,163 @@
-import React from 'react'
-import NavBar from '../NavBar/NavBar'
-import { Link } from 'react-router-dom'
-import { Button } from "@chakra-ui/react";
+import React from "react";
+import NavBar from "../NavBar/NavBar";
+import { Link } from "react-router-dom";
+import { Button, Box, Text, Image } from "@chakra-ui/react";
 //footer
 
-
 export default function AboutUs() {
-    return (
-        <div>
-        <NavBar/>
-        <br/>
-        <br/>
-        <h1>About Us</h1>
-        <br/>
-        <br/>
-        <img src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672087651/McBurgerExtras/frente_blanco_y_negro_n7worh.jpg"/>
-        <br/>
-        <br/>
-        <h2>Our story starts with one dream.</h2>
-        <br/>
-        <p>Back in 2020 in the middle of a global pandemic, a group of friends come up with the idea of opening a small hamburger restaurant that can satisfy the customer's appetite without leaving their own home. They were able to carry out this national success bringing to the doors of every home the best quality burgers, thus becoming the largest chain of fast food restaurants, with more than 65 locations in more than 65 cities around the country.    
-        </p>
-        <br/>
-        <br/>
-        <br/>
-        <div>
-            <img src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672084662/McBurgerExtras/foto_restaurante_m71erw.jpg" width={600}/>
-        <br/>
-            <h2>Our History</h2>
-            <br/>
-            <p>See how far we’ve come and how we got to now.</p>
-            <br/>
-        <div>
-          <Link to="/history">
-          <Button>Learn More</Button>
-          </Link>
-        </div>
-        </div>
-        <div>
-        <br/>
-            <img src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672087214/McBurgerExtras/fondo_negro_con_logo_cuadrado_ztzzrx.jpg" width={600}/>
-            <br/>
-            <h2>Leadership Team</h2>
-            <br/>
-            <p>We wouldn’t be here today without our leaders.</p>
-            <br/>
-        <div>
-          <Link to="/team">
-          <Button>Learn More</Button>
-          </Link>
-        </div>
-        </div>
-        <div>
-        <br/>
-            <img src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672084663/McBurgerExtras/solidaridad2_mf1z2b.jpg" width={600}/>
-            <br/>
-            <h2>Values In Action</h2>
-            <br/>
-            <p>See the steps we take to be a good community leader.</p>
-            <br/>
-        <div>
-          <Link to="/values">
-          <Button>Learn More</Button>
-          </Link>
-        </div>
-        </div>
-        <div>
-        <br/>
-            <img src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672087214/McBurgerExtras/quality_fbqslc.jpg" width={600}/>
-            <br/>
-            <h2>The Roots of Quality</h2>
-            <br/>
-            <p>McBurger’s passion for quality meant that ingredients were tested, tasted and perfected to fit the operating system. The team shared their vision of McBurger’s future, selling his early suppliers on future volumes. They believed in them and the restaurant boomed.</p>
-            <br/>
-        <div>
-          <Link to="/quality">
-          <Button>Learn More</Button>
-          </Link>
-        </div>
-        </div>
-        </div>
-    )
+  return (
+    <div>
+      <NavBar />
+      <Box textAlign="center" mt="50px">
+        <Text fontWeight="bold" fontSize="4rem" >
+          About Us
+        </Text>
+      </Box>
+      <Box display="flex" justifyContent="center" mt="10px">
+        <Image
+          h="600px"
+          src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672087651/McBurgerExtras/frente_blanco_y_negro_n7worh.jpg"
+        />
+      </Box>
+      <Box display="flex" justifyContent="center">
+        <Box textAlign="center" w="1000px" mt="100px" mb="100px">
+          <Text fontWeight="bold" fontSize="2rem">
+            Our story starts with one dream.
+          </Text>
+
+          <Text>
+            Back in 2020 in the middle of a global pandemic, a group of friends
+            come up with the idea of opening a small hamburger restaurant that
+            can satisfy the customer's appetite without leaving their own home.
+            They were able to carry out this national success bringing to the
+            doors of every home the best quality burgers, thus becoming the
+            largest chain of fast food restaurants, with more than 65 locations
+            in more than 65 cities around the country.
+          </Text>
+        </Box>
+      </Box>
+      <Box display="flex" alignItems="center" justifyContent="center">
+        <Box
+          w="1100px"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Box
+            h="600px"
+            w="50%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
+            <Image
+              objectFit="cover"
+              src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672150894/McBurgerExtras/foto_restaurante_ip7dtt.jpg"
+              width={500}
+            />
+            <Box w="750px" textAlign="center">
+              <Text mt="50px" fontSize="1.8rem" fontWeight="bold">
+                Our History
+              </Text>
+
+              <Text mt="20px">
+                See how far we’ve come and how we got to now.
+              </Text>
+            </Box>
+
+            <Box mt="20px">
+              <Link to="/history">
+                <Button colorScheme="yellow">Learn More</Button>
+              </Link>
+            </Box>
+          </Box>
+          <Box
+            mt="10px"
+            h="500px"
+            w="50%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
+            <Image
+              mb="10px"
+              objectFit="cover"
+              src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672150894/McBurgerExtras/fondo_negro_con_logo_cuadrado_gmhz9r.jpg"
+              width={500}
+            />
+            <Box w="750px" textAlign="center">
+              <Text mt="20px" fontSize="1.8rem" fontWeight="bold">
+                Leadership Team
+              </Text>
+
+              <Text mt="20px">
+                We wouldn’t be here today without our leaders.
+              </Text>
+            </Box>
+            <Box mt="20px">
+              <Link to="/team">
+                <Button colorScheme="yellow">Learn More</Button>
+              </Link>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+      <Box display="flex" alignItems="center" justifyContent="center">
+        <Box w="1100px"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center">
+          <Box h="600px"
+            w="50%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column">
+            <Image
+              src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672150894/McBurgerExtras/solidaridad2_yer8wf.jpg"
+              width={500}
+            />
+
+            <Text mt="20px" fontSize="1.8rem" fontWeight="bold">Values In Action</Text>
+            <Text mt="20px">See the steps we take to be a good community leader.</Text>
+
+            <Box>
+              <Link to="/values">
+                <Button colorScheme="yellow" mt="70px">Learn More</Button>
+              </Link>
+            </Box>
+          </Box>
+
+          <Box h="600px"
+            w="50%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column">
+            <Image mt="20px"
+              src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672150894/McBurgerExtras/quality_hjc0mx.jpg"
+              width={500}
+            />
+
+            <Text mt="20px" fontSize="1.8rem" fontWeight="bold">The Roots of Quality</Text>
+
+            <Text mt="20px">
+              McBurger’s passion for quality meant that ingredients were tested,
+              tasted and perfected to fit the operating system. The team shared
+              their vision of McBurger’s future, selling his early suppliers on
+              future volumes. They believed in them and the restaurant boomed.
+            </Text>
+
+            <Box>
+              <Link to="/quality">
+                <Button colorScheme="yellow" mt="30px">Learn More</Button>
+              </Link>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </div>
+  );
 }

@@ -15,7 +15,7 @@ import BurgerLogo from "./BurgerLogo.png";
 
 export default function Footer() {
   return (
-    <Box h="400px" w="auto" backgroundColor="black">
+    <Box h="440px" w="auto" backgroundColor="#1b1b1b">
       <Box display="flex">
         <Image h="120px" w="200px" src={BurgerLogo} alt="." />
         <Text fontSize="1.8rem" mt="40px" fontWeight="bold" color="white">
@@ -47,6 +47,7 @@ export default function Footer() {
           <Input backgroundColor="white" mb="10px" placeholder="Name" />
           <Input backgroundColor="white" mb="10px" placeholder="E-Mail" />
           <Textarea backgroundColor="white" placeholder="Comments... " />
+          <Button mt={"10px"}>Submit</Button>
         </Box>
         <Box w="33.3%" textAlign="center">
           <Text color="white" fontWeight="bold" fontSize="20px">
