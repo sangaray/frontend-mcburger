@@ -74,12 +74,12 @@ export default function Team() {
             </Box>
             <Box mt={"20px"} mb="20px">
               <a
-                href="linkedin"
+                href="https://www.linkedin.com/in/melina-veyrat-durbex-b66b3b227/"
                 target="_BLANK"
               >
                 <Image
                   src="https://res.cloudinary.com/deirkmhyd/image/upload/v1668422608/sintetico/linkedin_rxgsl3.png"
-                  alt="https://www.linkedin.com/in/melina-veyrat-durbex-b66b3b227/"
+                  alt="linkdin"
                   width={50}
                 />
               </a>

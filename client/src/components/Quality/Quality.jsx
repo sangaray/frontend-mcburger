@@ -7,9 +7,9 @@ import { Button, Text, Image, Box } from "@chakra-ui/react";
 
 export default function Quality() {
     return (
-        <Box>
+        <Box >
             <NavBar />
-            <Text display={"flex"} justifyContent={"center"} fontSize="2.5rem" >Our Commitment to Quality</Text>
+            <Text textAlign="center"  fontWeight="bold" fontSize="4rem" >Our Commitment to Quality</Text>
             <Box display={"flex"} justifyContent={"center"}>
                 <Image
                     margin={"30px"}

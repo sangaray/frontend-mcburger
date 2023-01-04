@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../NavBar/NavBar";
 import { Link } from "react-router-dom";
 import { Button, Box, Text, Image } from "@chakra-ui/react";
+import Footer from '../Footer/Footer';
 //footer
 
 export default function AboutUs() {
@@ -19,9 +20,9 @@ export default function AboutUs() {
           src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672087651/McBurgerExtras/frente_blanco_y_negro_n7worh.jpg"
         />
       </Box>
-      <Box display="flex" justifyContent="center">
-        <Box textAlign="center" w="1000px" mt="100px" mb="100px">
-          <Text fontWeight="bold" fontSize="2rem">
+      <Box display="flex" justifyContent="center" marginBottom={"-20"}>
+        <Box textAlign="center" w="1000px" mt="100px" mb="100px" >
+          <Text fontWeight="bold" fontSize="2rem" >
             Our story starts with one dream.
           </Text>
 
@@ -55,6 +56,7 @@ export default function AboutUs() {
               objectFit="cover"
               src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672150894/McBurgerExtras/foto_restaurante_ip7dtt.jpg"
               width={500}
+              marginBottom={-30}
             />
             <Box w="750px" textAlign="center">
               <Text mt="50px" fontSize="1.8rem" fontWeight="bold">
@@ -87,7 +89,7 @@ export default function AboutUs() {
               src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672150894/McBurgerExtras/fondo_negro_con_logo_cuadrado_gmhz9r.jpg"
               width={500}
             />
-            <Box w="750px" textAlign="center">
+            <Box w="750px" textAlign="center" >
               <Text mt="20px" fontSize="1.8rem" fontWeight="bold">
                 Leadership Team
               </Text>
@@ -118,6 +120,7 @@ export default function AboutUs() {
             <Image
               src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672150894/McBurgerExtras/solidaridad2_yer8wf.jpg"
               width={500}
+               marginBottom={2} 
             />
 
             <Text mt="20px" fontSize="1.8rem" fontWeight="bold">Values In Action</Text>
@@ -125,7 +128,7 @@ export default function AboutUs() {
 
             <Box>
               <Link to="/values">
-                <Button colorScheme="yellow" mt="70px">Learn More</Button>
+                <Button colorScheme="yellow" mt="70px" marginTop={"10"}>Learn More</Button>
               </Link>
             </Box>
           </Box>
@@ -139,15 +142,13 @@ export default function AboutUs() {
             <Image mt="20px"
               src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672150894/McBurgerExtras/quality_hjc0mx.jpg"
               width={500}
+               marginTop={"-4"} 
             />
 
             <Text mt="20px" fontSize="1.8rem" fontWeight="bold">The Roots of Quality</Text>
 
             <Text mt="20px">
-              McBurger’s passion for quality meant that ingredients were tested,
-              tasted and perfected to fit the operating system. The team shared
-              their vision of McBurger’s future, selling his early suppliers on
-              future volumes. They believed in them and the restaurant boomed.
+              See our passion for ingredients quality.
             </Text>
 
             <Box>
@@ -158,6 +159,7 @@ export default function AboutUs() {
           </Box>
         </Box>
       </Box>
+      <Footer mt={"100px"}/>
     </div>
   );
 }

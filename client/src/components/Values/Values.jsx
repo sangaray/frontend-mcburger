@@ -7,17 +7,17 @@ import { Button, Box, Text, Image, Textarea } from "@chakra-ui/react";
 
 export default function Values() {
     return (
-        <Box>
+        <Box >
             <NavBar />
-            <Text>Values In Action</Text>
+            <Text textAlign="center" mt="50px" fontWeight="bold" fontSize="4rem" >Values In Action</Text>
             <Image src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672087214/McBurgerExtras/values_in_action_d0b6sp.jpg" />
-            <Text display={"flex"} textAlign={"center"} fontSize={"2rem"}>Our journey towards good.</Text>
+            <Text display={"flex"} textAlign={"center"} fontSize={"2rem"} marginLeft={"450px"}>Our journey towards good.</Text>
             <p>From the start, we've been committed to doing the right thing. And every day, all around the globe, we put people, processes and practices into place to make quality food, more responsible sourcing choices, a stronger community and a better planet. In accordance with our McBurger’s values, we’re here to make a difference, and here’s how.</p>
             <Box mb={"100px"}>
 
                 <Box display={"flex"} m={"50px"} ml={"50px"} mr={"50px"}>
                     <Box ml={"50px"} mr={"50px"}>
-                        <Box className='image' display={"flex"} justifyContent={"center"} >
+                        <Box className='image' display={"flex"} justifyContent={"center"} width={"500px"} >
                             <Image src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672084663/McBurgerExtras/sustentabilidad_tmibiu.jpg" />
                         </Box>
                         <Box>
@@ -27,7 +27,7 @@ export default function Values() {
                     </Box>
 
                     <Box ml={"50px"} mr={"50px"}>
-                        <Box className='image' display={"flex"} justifyContent={"center"}>
+                        <Box className='image' display={"flex"} justifyContent={"center"} width={"500px"}>
                             <Image src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672086014/McBurgerExtras/nuestravariedad_mq0h6s.jpg" />
                         </Box>
                         <Box>
@@ -40,7 +40,7 @@ export default function Values() {
                 </Box>
 
                 <Box className='image' display={"flex"} justifyContent={"center"}>
-                    <Image h={"600px"}
+                    <Image h={"400px"}
                         justifyContent={"center"} src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672085499/McBurgerExtras/elequipo_jt8wbx.jpg" />
                 </Box>
                 <Box>

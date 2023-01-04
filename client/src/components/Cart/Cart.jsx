@@ -88,7 +88,7 @@ export default function Cart() {
         <Box
           textAlign="center" bg="#D9D9D9" marginTop="10px" borderRadius="10px" height="auto" width="1500px" marginBottom="20px"
         >
-          <Text as="b" fontSize='3xl'>Carrito</Text>
+          <Text as="b" fontSize='3xl'>Cart</Text>
           <hr style={{border:"grey solid 1px"}}></hr>
           {Object.values(cartProducts).map((p) => {
             return (
@@ -111,22 +111,24 @@ export default function Cart() {
                   onClick={(e) => handleOnDelete(p)}
                   isDisabled={disableBtns}
                 >
-                  Eliminar
+                  Delete
                 </Button>
               </Box>
             );
           })}
 
-          <Text as="b" color="green" fontSize='3xl' marginLeft="1180px">{"Precio Total: $" + totalPrice}</Text>
+          <Text as="b" color="green" fontSize='3xl' marginLeft="1180px">{"Total Price: $" + totalPrice}</Text>
           <hr style={{border:"grey solid 1px"}}></hr>
           <Box marginLeft="1300px" marginBottom="50px" marginTop="40px">
           <Button size='lg' colorScheme='green'
             onClick={(e) => handleOnPay(arrProducts)}
             isDisabled={!disableBtns && arrProducts.length ? false : true}
           >
-            {loading ? <p>Loading</p> : <p>Pagar</p>}
+            {loading ? <p>Loading</p> : <p>Pay</p>}
+          </Button >
+          <Button size='lg' colorScheme='green'>
+          {paymentLink ? <a href={paymentLink} >Go to payment</a> : <></>}
           </Button>
-          {paymentLink ? <a href={paymentLink}>Go to payment</a> : <></>}
           </Box>
         </Box>
       </Box>

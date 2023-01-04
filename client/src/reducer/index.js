@@ -26,10 +26,7 @@ const initialState = {
   productsFavorites: [],
   user: [],
   activeUser: false,
-  mapPosition: {
-    status: "user",
-    coordenates: [-34.603743591667396, -58.38151982455165],
-  },
+  mapPosition:{status:"user" , coordenates: [-34.603743591667396, -58.38151982455165]}
 };
 
 function rootReducer(state = initialState, action) {
@@ -39,8 +36,8 @@ function rootReducer(state = initialState, action) {
     case SET_NEW_POSITION:
       return {
         ...state,
-        mapPosition: action.payload,
-      };
+        mapPosition:action.payload
+      };
     case GET_ALL_PRODUCTS:
       return {
         ...state,

@@ -33,7 +33,7 @@ function Favorites() {
 
       <div className="cont-fav-cards">
         {productsFavorites.map((p) => (
-          <Link to={"/product/" + p.id} key={p.id}>
+         
             <div className="cards-container-fav">
               <div>
                 <div className="bt">
@@ -53,8 +53,10 @@ function Favorites() {
                   <p className="detailPrice">{p.price}</p>
                 </div>
                 <div className="detailLabelContainer"></div>
-
-                {!cart.hasOwnProperty(product[0].id) ? (
+              <Link to={"/product/" + p.id} key={p.id}>
+                <Button size='lg' colorScheme='orange' marginLeft={"40"}>Detail</Button>
+              </Link>
+                {/* {!cart.hasOwnProperty(product[0].id) ? (
                   <Button
                     size="sm"
                     colorScheme="green"
@@ -90,10 +92,10 @@ function Favorites() {
                       +
                     </Button>
                   </Box>
-                )}
+                )} */}
               </div>
             </div>
-          </Link>
+          
         ))}
       </div>
       <div>

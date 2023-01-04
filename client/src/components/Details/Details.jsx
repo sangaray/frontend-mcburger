@@ -11,7 +11,7 @@ import {
 } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
-import StarRating from "../StarRating";
+import StarRankings from "../StarRating/index.js";
 
 function Details() {
   const { id } = useParams();
@@ -30,6 +30,7 @@ function Details() {
   return (
     <div>
       <NavBar />
+
       {product[0] ? (
         <div className="detailContainer">
           <div className="innerDetailContainer">
@@ -40,9 +41,7 @@ function Details() {
                 alt={product[0]?.name}
               />
             </div>
-            <div>
-              <StarRating />
-            </div>
+            <StarRankings />
             <div className="detailTextContainer">
               <h2 className="detailTitle">{product[0]?.name}</h2>
 
