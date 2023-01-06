@@ -15,6 +15,11 @@ import {
   ERASE_USER,
   ACTIVE_USER,
   SET_NEW_POSITION,
+  GET_ALL_COMMENTS,
+  CREATE_COMMENT,
+  UPDATE_COMMENT,
+  DELETE_COMMENT,
+  UPDATE_RATING,
 } from "../actions/index";
 
 const initialState = {
@@ -22,11 +27,16 @@ const initialState = {
   products: [],
   productsCategory: [],
   product: {},
+  productDetail: {},
   cart: {},
   productsFavorites: [],
   user: [],
   activeUser: false,
-  mapPosition:{status:"user" , coordenates: [-34.603743591667396, -58.38151982455165]}
+  mapPosition: {
+    status: "user",
+    coordenates: [-34.603743591667396, -58.38151982455165],
+  },
+  productComments: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -36,8 +46,8 @@ function rootReducer(state = initialState, action) {
     case SET_NEW_POSITION:
       return {
         ...state,
-        mapPosition:action.payload
-      };
+        mapPosition: action.payload,
+      };
     case GET_ALL_PRODUCTS:
       return {
         ...state,
@@ -183,6 +193,35 @@ function rootReducer(state = initialState, action) {
         ...state,
         activeUser: action.payload,
       };
+
+    case GET_ALL_COMMENTS:
+      return {
+        ...state,
+        productComments: action.payload,
+      };
+
+    case CREATE_COMMENT:
+      return {
+        ...state,
+        productComment: action.payload,
+      };
+    case UPDATE_RATING:
+      return {
+        ...state,
+        productComment: action.payload,
+      };
+
+    case UPDATE_COMMENT:
+      return {
+        ...state,
+        productComments: action.payload,
+      };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        productComments: action.payload,
+      };
+
     default:
       return { ...state };
   }

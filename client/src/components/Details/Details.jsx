@@ -11,7 +11,7 @@ import {
 } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
-import StarRankings from "../StarRating/index.js";
+import CreateComment from "../CreateComment/CreateComment";
 
 function Details() {
   const { id } = useParams();
@@ -30,7 +30,6 @@ function Details() {
   return (
     <div>
       <NavBar />
-
       {product[0] ? (
         <div className="detailContainer">
           <div className="innerDetailContainer">
@@ -41,7 +40,6 @@ function Details() {
                 alt={product[0]?.name}
               />
             </div>
-            <StarRankings />
             <div className="detailTextContainer">
               <h2 className="detailTitle">{product[0]?.name}</h2>
 
@@ -107,6 +105,9 @@ function Details() {
           </div>
         </div>
       )}
+      <>
+        <CreateComment />
+      </>
       <div>
         <Footer />
       </div>

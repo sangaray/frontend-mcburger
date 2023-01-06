@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.12.0",
+    "@chakra-ui/icons": "^2.0.15",
     "@chakra-ui/react": "^2.4.6",
+    "@emailjs/browser": "^3.10.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -29,13 +31,18 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.29.0",
+    "react-stars": "^2.2.5",
     "reactstrap": "^9.1.5",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^2.1.4",
+    "stars": "^1.0.0",
     "styled-components": "^5.3.6",
-    "web-vitals": "^2.1.4",
-    "@emailjs/browser": "^3.10.0"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.6.16",
+    "sweetalert2-react-content": "^5.0.7",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -60,6 +67,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-    
   }
 }
