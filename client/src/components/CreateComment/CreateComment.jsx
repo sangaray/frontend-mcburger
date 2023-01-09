@@ -1,208 +1,244 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import swal from "sweetalert";
+import { useAuth0 } from "@auth0/auth0-react";
+import { FaStar } from "react-icons/fa";
 
 import {
   createComment,
   deleteComment,
   getAllComments,
   updateComment,
-  updateRatingProduct,
 } from "../../actions";
 import "./CreateComment.css";
-import star from "./puntajes.png";
 
 const CreateComment = () => {
   const dispatch = useDispatch();
-  const [flag, setFlag] = useState(true);
-  const [show, setShow] = useState(true);
+  const { isAuthenticated } = useAuth0();
+  const [show, setShow] = useState(false);
 
-  const product = useSelector((state) => state.productDetail);
-  let comments = useSelector((state) => state.productComments);
+  const product = useSelector((state) => state.product);
+  const comments = useSelector((state) => state.productComments);
   const user = useSelector((state) => state.user);
-  const ratings = useSelector((state) => state.productDetail.rating);
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+  const [generalRating, setGeneralRating] = useState(0);
 
   const userComment = comments.filter((c) => {
-    return c.users[0].id === user.id;
+    return c.idUser === user.email;
   });
 
-  const [comment, setComment] = useState({
-    comment: "",
-    rating: 1,
-  });
+  const [comment, setComment] = useState("");
+
+  useEffect(() => {
+    setGeneralRating(() => {
+      let newRating = 0;
+      if (comments.length) {
+        for (const c of comments) {
+          newRating += c.rating;
+        }
+        newRating /= comments.length;
+      }
+
+      return newRating.toFixed(1);
+    });
+  }, [generalRating, comments]);
 
   function handleComment(e) {
     e.preventDefault();
-    setComment({
-      ...comment,
-      [e.target.name]: e.target.value,
-    });
+    setComment(e.target.value);
     return comment;
   }
 
-  const setRating = (e) => {
+  async function sendComment(e) {
     e.preventDefault();
-    let newRating = 0;
-    for (const c of comments) {
-      newRating += c.rating;
-    }
-    newRating /= comments.length;
-    if (newRating > 0) {
-      dispatch(updateRatingProduct({ rating: newRating, id: product.id }));
-    }
-    return newRating;
-  };
+    if (!comment || !rating) return swal("Please! Fill in the fields");
 
-  async function sendComment(e, idUser) {
-    e.preventDefault();
-    if (!comment.comment || !comment.rating)
-      return swal(" Please! Fill in the fields");
-
-    setFlag(!flag);
-    let idProduct = product.id;
     dispatch(
       createComment({
-        ...comment,
-        idUser,
-        idProduct,
+        rating: parseInt(rating),
+        idProduct: product[0].id,
+        userName: user.name,
+        comment: comment,
+        idUser: user.email,
+      })
+      //swal("You made a comment!", "Thanks!", "success")
+    );
+
+    setComment("");
+    setRating(1);
+    dispatch(getAllComments(product[0].id));
+    window.location.reload();
+  }
+
+  async function deleteComments(e) {
+    e.preventDefault();
+
+    dispatch(
+      deleteComment({
+        idProduct: product[0].id,
+        idUser: user.email,
+      }),
+      swal("Are you sure?", {
+        dangerMode: true,
+        buttons: true,
       })
     );
-    setComment({ ...comment, comment: "" });
-    setRating(e);
-    window.location.reload();
+    setComment("");
+    setRating(1);
+    dispatch(getAllComments(product[0].id));
   }
 
-  async function deleteComments(e, idUser) {
+  async function editComment(e) {
     e.preventDefault();
-    setShow(false);
-    let idProduct = product.id;
-    dispatch(deleteComment(idUser, idProduct));
-    dispatch(getAllComments(idProduct));
-    setComment({ ...comment, comment: "" });
-    setRating(e);
-    window.location.reload();
-  }
-
-  async function editComment(e, idUser) {
-    e.preventDefault();
-    if (!comment.comment || !comment.rating) return alert("Fill in the fields");
+    if (!comment || !rating) return swal("Fill in the blanks");
     setShow(!show);
-    let idProduct = product.id;
+
     dispatch(
       updateComment({
-        ...comment,
-        idUser,
-        idProduct,
+        rating: parseInt(rating),
+        idProduct: product[0].id,
+        userName: user.name,
+        comment: comment,
+        idUser: user.email,
       })
     );
-    dispatch(getAllComments(idProduct));
-    setRating(e);
-    window.location.reload();
+    setComment("");
+    setRating(1);
+    dispatch(getAllComments(product[0].id));
   }
-
-  useEffect(() => {
-    if (product.id) {
-      dispatch(getAllComments());
-    }
-  }, [dispatch]);
 
   return (
     <div className="conten">
-      {ratings > 0 ? (
-        <label>
-          Rating General del Producto: {ratings.toFixed(1)} ({comments.length})
-        </label>
-      ) : (
-        ""
-      )}
+      <label>Overall product rating: {generalRating}</label>
       <>
-        {user.name ? (
-          userComment.length === 0 && flag ? (
+        {isAuthenticated && user.name ? (
+          userComment.length === 0 ? (
             <div>
               <div className="rating">
                 <label>Rating:</label>
                 <br />
-                <select
-                  className="select"
-                  name="rating"
-                  onChange={(e) => handleComment(e)}
-                >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
+                <div>
+                  {[...Array(5)].map((star, i) => {
+                    const ratingValue = i + 1;
+                    return (
+                      <label key={ratingValue}>
+                        <input
+                          type="radio"
+                          name="rating"
+                          value={ratingValue}
+                          onClick={() => setRating(ratingValue)}
+                        />
+                        <FaStar
+                          className="star"
+                          color={
+                            ratingValue <= (hover || rating)
+                              ? "#ffc107"
+                              : "#e4e5e9"
+                          }
+                          size={30}
+                          onMouseEnter={() => setHover(ratingValue)}
+                          onMouseLeave={() => setHover(null)}
+                        />
+                      </label>
+                    );
+                  })}
+                </div>
                 <br />
               </div>
               <div className="comment">
                 <textarea
                   className="textarea"
-                  cols={80}
+                  cols={90}
                   name="comment"
                   placeholder={"Please, write a comment"}
                   value={comment.comment}
                   onChange={(e) => handleComment(e)}
                 />
-                <button
-                  className="btn"
-                  onClick={(e) => sendComment(e, user.id)}
-                >
-                  enviar Comment
+                <button className="btn" onClick={(e) => sendComment(e)}>
+                  Send comment
                 </button>
               </div>
             </div>
           ) : (
             <div>
-              <p className="parafo">¡Ya hiciste un comentario!</p>
+              <p>You already made your comment!</p>
             </div>
           )
         ) : (
-          <p className="parafo">
-            Para dejar un comentario, por favor{" "}
-            <Link to="/login"> inicie sesión </Link>{" "}
-          </p>
+          <p> To leave a comment, please login</p>
         )}
       </>
 
       <div>
         {comments.length ? (
           <div>
-            <h3 className="h3">Comments:</h3>
-            {comments.map((c, index) => {
+            <h3>Comments:</h3>
+            {comments.map((c) => {
               return (
-                <div className="contenComments" key={index}>
-                  <p>{c.users.length ? c.users[0].name : ""}</p>
-                  <div className="divrow">
-                    <h4 className="h3">Rating:</h4>
-                    <div className="divrow">
-                      <p className="par">{c.rating}</p>
-                      <img src={star} alt="" height={"30px"} className="immg" />
+                <div key={c.comment + c.idUser} className="contenComments">
+                  {!show ? (
+                    <div>
+                      <p>{c.userName}</p>
+                      <h4>Rating:</h4>
+                      <div>
+                        <p>{c.rating}</p>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {[...Array(c.rating)].map((star, i) => (
+                            <FaStar
+                              key={star}
+                              className="star"
+                              color={"#ffc107"}
+                              size={30}
+                            />
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <></>
+                  )}
 
-                  <p className="parafo">{c.comment}</p>
+                  <p>{c.comment}</p>
 
-                  <div className="contenedores">
-                    {c.users[0].id === user.id ? (
+                  <div>
+                    {c.idUser === user.email ? (
                       <div>
                         {show ? (
                           <div>
                             <div className="rating">
                               <label>Rating:</label>
                               <br />
-                              <select
-                                className="select"
-                                name="rating"
-                                onChange={(e) => handleComment(e)}
-                              >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                              </select>
+                              {[...Array(5)].map((star, i) => {
+                                const ratingValue = i + 1;
+                                return (
+                                  <label key={ratingValue}>
+                                    <input
+                                      type="radio"
+                                      name="rating"
+                                      value={ratingValue}
+                                      onClick={() => setRating(ratingValue)}
+                                    />
+                                    <FaStar
+                                      className="star"
+                                      color={
+                                        ratingValue <= (hover || rating)
+                                          ? "#ffc107"
+                                          : "#e4e5e9"
+                                      }
+                                      size={30}
+                                      onMouseEnter={() => setHover(ratingValue)}
+                                      onMouseLeave={() => setHover(null)}
+                                    />
+                                  </label>
+                                );
+                              })}
                               <br />
                             </div>
                             <div className="comment">
@@ -211,14 +247,27 @@ const CreateComment = () => {
                                 cols={50}
                                 name="comment"
                                 rows={10}
-                                placeholder={"Please, write a comment"}
+                                placeholder={c.comment}
                                 value={comment.comment}
                                 onChange={(e) => handleComment(e)}
                               />
                             </div>
+                            <button
+                              className="btn"
+                              onClick={(e) => editComment(e)}
+                            >
+                              Accept
+                            </button>
+                            <br />
+                            <button
+                              className="btn"
+                              onClick={(e) => setShow(!show)}
+                            >
+                              Cancel
+                            </button>
                           </div>
                         ) : (
-                          ""
+                          <></>
                         )}
 
                         <div>
@@ -227,27 +276,17 @@ const CreateComment = () => {
                               className="btn"
                               onClick={(e) => setShow(!show)}
                             >
-                              Edita tu Comment
+                              Edit your comment
                             </button>
                           ) : (
                             ""
                           )}
-
-                          {show ? (
-                            <button
-                              className="btn"
-                              onClick={(e) => editComment(e, user.id)}
-                            >
-                              Accept Comment
-                            </button>
-                          ) : (
-                            ""
-                          )}
+                          <br />
                           <button
                             className="btn"
-                            onClick={(e) => deleteComments(e, user.id)}
+                            onClick={(e) => deleteComments(e)}
                           >
-                            Borrar Comment
+                            Delete your comment
                           </button>
                         </div>
                       </div>
@@ -260,7 +299,7 @@ const CreateComment = () => {
             })}
           </div>
         ) : (
-          <p className="parafo">Sin comentarioss</p>
+          <p>No comment</p>
         )}
       </div>
     </div>

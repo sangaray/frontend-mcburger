@@ -21,7 +21,6 @@ import Login from "./components/Login/Login";
 import FormUser from "./components/FormUser/FormUser";
 import FormUser2 from "./components/FormUser/FormUser2";
 import AfterPayment from "./components/AfterPayment/AfterPayment";
-import CreateComment from "./components/CreateComment/CreateComment";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
 
@@ -54,7 +53,6 @@ function App() {
       <Route exact path="/formUser" component={FormUser} />
       <Route exact path="/formUser2" component={FormUser2} />
       <Route exact path="/payment" component={AfterPayment} />
-      <Route exact path="/createComment" component={CreateComment} />
     </BrowserRouter>
   );
 }

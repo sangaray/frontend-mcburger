@@ -19,7 +19,6 @@ import {
   CREATE_COMMENT,
   UPDATE_COMMENT,
   DELETE_COMMENT,
-  UPDATE_RATING,
 } from "../actions/index";
 
 const initialState = {
@@ -27,7 +26,6 @@ const initialState = {
   products: [],
   productsCategory: [],
   product: {},
-  productDetail: {},
   cart: {},
   productsFavorites: [],
   user: [],
@@ -36,6 +34,7 @@ const initialState = {
     status: "user",
     coordenates: [-34.603743591667396, -58.38151982455165],
   },
+  productDetail: {},
   productComments: [],
 };
 
@@ -176,24 +175,20 @@ function rootReducer(state = initialState, action) {
         ),
       };
     case SAVE_USER:
-      //console.log(action.payload + ' saving user...');
       return {
         ...state,
         user: action.payload,
       };
     case ERASE_USER:
-      //console.log(action.payload + ' saving user...');
       return {
         ...state,
         user: [],
       };
     case ACTIVE_USER:
-      //console.log(action.payload + ' saving user...');
       return {
         ...state,
         activeUser: action.payload,
       };
-
     case GET_ALL_COMMENTS:
       return {
         ...state,
@@ -203,25 +198,13 @@ function rootReducer(state = initialState, action) {
     case CREATE_COMMENT:
       return {
         ...state,
-        productComment: action.payload,
+        productComments: Array.isArray(action.payload)
+          ? action.payload
+          : [action.payload],
       };
-    case UPDATE_RATING:
-      return {
-        ...state,
-        productComment: action.payload,
-      };
-
     case UPDATE_COMMENT:
-      return {
-        ...state,
-        productComments: action.payload,
-      };
     case DELETE_COMMENT:
-      return {
-        ...state,
-        productComments: action.payload,
-      };
-
+      return { ...state, productComments: action.payload };
     default:
       return { ...state };
   }

@@ -17,7 +17,7 @@ const Testimonial = ({ children }: { children: ReactNode }) => {
 const TestimonialContent = ({ children }: { children: ReactNode }) => {
   return (
     <Stack
-      bg={useColorModeValue("white", "gray.800")}
+      bg={useColorModeValue("rgba(251, 151, 0, 1)")}
       boxShadow={"lg"}
       p={8}
       rounded={"xl"}
@@ -76,7 +76,7 @@ const TestimonialAvatar = ({
 }) => {
   return (
     <Flex align={"center"} mt={8} direction={"column"}>
-      <Avatar src={src} alt={name} mb={2} />
+      <Avatar src={src} size="xl" alt={name} mb={2} />
       <Stack spacing={-1} align={"center"}>
         <Text fontWeight={600}>{name}</Text>
         <Text fontSize={"sm"} color={useColorModeValue("gray.600", "gray.400")}>
@@ -92,8 +92,9 @@ export default function WithSpeechBubbles() {
     <Box bg={useColorModeValue("gray.100", "gray.700")}>
       <Container maxW={"7xl"} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={"center"}>
-          <Heading>Our Clients Speak</Heading>
-          <Text>People think of Mc Burger</Text>
+          <Heading color={useColorModeValue("rgba(251, 151, 0, 1)")}>
+            People think of Mc Burger
+          </Heading>
         </Stack>
         <Stack
           direction={{ base: "column", md: "row" }}
@@ -108,10 +109,8 @@ export default function WithSpeechBubbles() {
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
-              src={
-                "https://ca.slack-edge.com/TPRS7H4PN-U03QJPR5Y4C-03f27603e3a5-512"
-              }
-              name={"Cristian Huscht"}
+              src={"https://bit.ly/dan-abramov"}
+              name={"Dan Abrahmov"}
               title={"Rosario, Santa Fe"}
             />
           </Testimonial>
@@ -126,10 +125,8 @@ export default function WithSpeechBubbles() {
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
-              src={
-                "https://ca.slack-edge.com/TPRS7H4PN-U03NT4WP3A8-2b6bed47311f-5120"
-              }
-              name={"Franco Gonzalez"}
+              src={"https://bit.ly/chakra-maya-shavin"}
+              name={"Maya Shavin"}
               title={"Victoria, Entre Rios"}
             />
           </Testimonial>
@@ -144,10 +141,8 @@ export default function WithSpeechBubbles() {
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
-              src={
-                "https://ca.slack-edge.com/TPRS7H4PN-U03LP8B8L6S-8a7c9d31e2bc-512"
-              }
-              name={"Imanol Malamud"}
+              src={"https://bit.ly/ryan-florence"}
+              name={"Ryan Florence"}
               title={"Santa Rosa de Calamuchita, Córdoba"}
             />
           </Testimonial>

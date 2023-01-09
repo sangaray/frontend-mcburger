@@ -129,7 +129,7 @@ export default function Footer(res) {
             errors.user_email ||
             errors.user_message ||
             input.user_name === "" ? (
-          <Button mt={'10px'} marginRight={"75px"} select disabled type="submit">Submit</Button>
+          <Button mt={'10px'} marginRight={"75px"} select="true" disabled type="submit">Submit</Button>
             ) : (
               <Button mt={'10px'} marginRight={"75px"} type="submit">
                 Submit

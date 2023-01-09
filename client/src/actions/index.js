@@ -18,14 +18,12 @@ export const ADD_PRODUCT_FAVORITE = "ADD_PRODUCT_FAVORITE";
 export const REMOVE_PRODUCT_FAVORITE = "REMOVE_PRODUCT_FAVORITE";
 //MAPS
 export const SET_NEW_POSITION = "SET_NEW_POSITION";
+
 //COMMENT
 export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
 export const CREATE_COMMENT = "CREATE_COMMENT";
 export const UPDATE_COMMENT = "UPDATE_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
-
-//RATING
-export const UPDATE_RATING = "UPDATE_RATING";
 
 export function setNewPosition(params) {
   return { type: "SET_NEW_POSITION", payload: params };
@@ -141,10 +139,11 @@ export function addOrderToDB(params) {
     return json.data;
   };
 }
+
 export function getAllComments(id) {
   return async function (dispatch) {
     const commentsInfo = await axios.get(
-      "http://localhost:3001/comments/" + id
+      "http://localhost:3001/comments/product/" + id
     );
     dispatch({
       type: GET_ALL_COMMENTS,
@@ -162,19 +161,7 @@ export function createComment(payload) {
     });
   };
 }
-export function updateRatingProduct(payload) {
-  let id = payload.id;
-  return async function (dispatch) {
-    const info = await axios.put(
-      "http://localhost:3001/products/" + id,
-      payload
-    );
-    dispatch({
-      type: UPDATE_RATING,
-      payload: info.data,
-    });
-  };
-}
+
 export function updateComment(payload) {
   return async function (dispatch) {
     const info = await axios.put("http://localhost:3001/comments", payload);
@@ -184,10 +171,13 @@ export function updateComment(payload) {
     });
   };
 }
-export function deleteComment(id) {
+export function deleteComment(payload) {
   return async function (dispatch) {
     const deletedComment = await axios.delete(
-      "http://localhost:3001/comments" + id
+      "http://localhost:3001/comments?idUser=" +
+        payload.idUser +
+        "&idProduct=" +
+        payload.idProduct
     );
     dispatch({
       type: DELETE_COMMENT,

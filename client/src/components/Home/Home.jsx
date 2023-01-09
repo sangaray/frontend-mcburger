@@ -6,7 +6,6 @@ import Carousel from "../carousel/carousel";
 import { MdOutlineDeliveryDining } from "react-icons/md";
 import { Button, Box, Text, Image, Textarea } from "@chakra-ui/react";
 import Testimonial from "../Testimonial/index.js";
-
 export default function Home() {
   return (
     <div className="main-container-home">

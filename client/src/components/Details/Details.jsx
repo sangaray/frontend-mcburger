@@ -8,6 +8,7 @@ import {
   addToCart,
   removeFromCart,
   addProductFavorite,
+  getAllComments,
 } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
@@ -19,18 +20,15 @@ function Details() {
 
   useEffect(() => {
     dispatch(getProductID(id));
+    dispatch(getAllComments(id));
   }, [id, dispatch]);
 
-  const [product, cart] = useSelector((state) => [
-    state.product,
-    state.cart,
-    state.productsFavorites,
-  ]);
+  const [product, cart] = useSelector((state) => [state.product, state.cart]);
 
   return (
     <div>
       <NavBar />
-      {product[0] ? (
+      {product.length ? (
         <div className="detailContainer">
           <div className="innerDetailContainer">
             <div className="detailImgContainer">
@@ -105,10 +103,9 @@ function Details() {
           </div>
         </div>
       )}
-      <>
-        <CreateComment />
-      </>
+
       <div>
+        <CreateComment />
         <Footer />
       </div>
     </div>
