@@ -8,7 +8,6 @@ import {
   addToCart,
   removeFromCart,
   addProductFavorite,
-  getAllComments,
 } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./Details.css";
@@ -20,15 +19,18 @@ function Details() {
 
   useEffect(() => {
     dispatch(getProductID(id));
-    dispatch(getAllComments(id));
   }, [id, dispatch]);
 
-  const [product, cart] = useSelector((state) => [state.product, state.cart]);
+  const [product, cart, user] = useSelector((state) => [
+    state.product,
+    state.cart,
+    state.user,
+  ]);
 
   return (
     <div>
       <NavBar />
-      {product.length ? (
+      {product[0] ? (
         <div className="detailContainer">
           <div className="innerDetailContainer">
             <div className="detailImgContainer">
@@ -56,18 +58,11 @@ function Details() {
                 <p>{product[0]?.ingredients}</p>
               </div>
             </div>
-            <Button
-              mt={"30px"}
-              mb={"30px"}
-              colorScheme="yellow"
-              onClick={() => dispatch(addProductFavorite(product[0]))}
-            >
-              🤍
-            </Button>
             {!cart.hasOwnProperty(product[0].id) ? (
               <Button
                 size="lg"
                 colorScheme="green"
+                marginTop="30px"
                 onClick={() => dispatch(addToCart(product[0]))}
               >
                 Add to cart
@@ -92,7 +87,17 @@ function Details() {
               </Box>
             )}
           </div>
-          <div></div>
+          <div>
+            <Button
+              onClick={() =>
+                addProductFavorite({ product: product[0], userId: user.email })(
+                  dispatch
+                )
+              }
+            >
+              🤍
+            </Button>
+          </div>
         </div>
       ) : (
         <div className="detailContainer">
@@ -103,7 +108,6 @@ function Details() {
           </div>
         </div>
       )}
-
       <div>
         <CreateComment />
         <Footer />
