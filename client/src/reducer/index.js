@@ -13,7 +13,8 @@ import {
   REMOVE_PRODUCT_FAVORITE,
   SAVE_USER,
   ERASE_USER,
-  ACTIVE_USER
+  ACTIVE_USER,
+  SET_NEW_POSITION,
 } from "../actions/index";
 
 const initialState = {
@@ -23,12 +24,20 @@ const initialState = {
   product: {},
   cart: {},
   productsFavorites: [],
+  user: [],
+  activeUser: false,
+  mapPosition:{status:"user" , coordenates: [-34.603743591667396, -58.38151982455165]}
 };
 
 function rootReducer(state = initialState, action) {
   let newCart = { ...state.cart };
 
   switch (action.type) {
+    case SET_NEW_POSITION:
+      return {
+        ...state,
+        mapPosition:action.payload
+      };
     case GET_ALL_PRODUCTS:
       return {
         ...state,
@@ -156,27 +165,27 @@ function rootReducer(state = initialState, action) {
           (p) => p.id !== action.payload.id
         ),
       };
-      case SAVE_USER:
-        //console.log(action.payload + ' saving user...');
-        return {
-          ...state,
-          user: action.payload,
-        };
-      case ERASE_USER:
-        //console.log(action.payload + ' saving user...');
-        return {
-          ...state,
-          user: [],
-        };
-      case ACTIVE_USER:
-        //console.log(action.payload + ' saving user...');
-        return {
-          ...state,
-          activeUser: action.payload,
-        };
+    case SAVE_USER:
+      //console.log(action.payload + ' saving user...');
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case ERASE_USER:
+      //console.log(action.payload + ' saving user...');
+      return {
+        ...state,
+        user: [],
+      };
+    case ACTIVE_USER:
+      //console.log(action.payload + ' saving user...');
+      return {
+        ...state,
+        activeUser: action.payload,
+      };
     default:
       return { ...state };
   }
 }
 
-export default rootReducer
+export default rootReducer;

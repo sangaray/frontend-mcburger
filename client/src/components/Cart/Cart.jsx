@@ -6,11 +6,11 @@ import {
   addToCart,
   deleteProductsCart,
 } from "../../actions/index";
-import { Box, Image, Text, Button,  Divider } from '@chakra-ui/react';
+import { Box, Text, Button } from "@chakra-ui/react";
 import CartCards from "../CartCards/CartCards";
 import NavBar from "../NavBar/NavBar";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import Footer from "../Footer/Footer"
-import { auto } from '@popperjs/core';
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -21,8 +21,11 @@ export default function Cart() {
 
   let arrProducts = [];
   let totalPrice = 0;
+  let product_ids = [];
+  let quantities = [];
+  let products = "";
 
-  Object.values(cartProducts).map((p) => {
+  Object.values(cartProducts).forEach((p) => {
     totalPrice += parseFloat(p.price.match(/\d+/g).join(".")) * p.quantity;
     arrProducts.push({
       title: p.name,
@@ -31,12 +34,31 @@ export default function Cart() {
       quantity: p.quantity,
       picture_url: p.image,
     });
+
+    product_ids.push(p.id);
+    quantities.push(p.quantity);
+    products +=
+      "<br/>Name: " +
+      p.name +
+      ", Quantity: " +
+      p.quantity +
+      ", Total: $" +
+      parseFloat(p.price.match(/\d+/g).join(".")) * p.quantity;
   });
 
   async function handleOnPay(p) {
     setLoading(true);
     setDisableBtns(true);
     try {
+      products += "<br/>Total price: $" + totalPrice;
+      localStorage.setItem("shippingAddress", "shipping address");
+      localStorage.setItem("billingAddress", "billing address");
+      localStorage.setItem("productId", product_ids.join("-"));
+      localStorage.setItem("quantity", quantities.join("-"));
+      localStorage.setItem("totalPrice", totalPrice);
+      localStorage.setItem("branchId", "1234");
+      localStorage.setItem("msg", products);
+
       const link = await addProductsToCart(p)();
       setLink(link);
     } catch (error) {
@@ -64,57 +86,70 @@ export default function Cart() {
         <NavBar />
       </Box>
 
-      <Box display="flex" justifyContent="center" alignItems="center">
+      <Box  display={"grid"} width={"100%"}  justifyContent={"center"}  grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))">
         <Box
-          textAlign="center"
-          bg="#D9D9D9"
-          marginTop="10px"
-          borderRadius="10px"
-          height="auto"
-          width="1500px"
-          marginBottom="20px"
+         display={"grid"}   textAlign="center" bg="#D9D9D9" marginTop="10px" borderRadius="10px" height="auto" width="100%" marginBottom="20px"
         >
-        <Text as="b" fontSize='3xl'>Cart</Text>
+          <Text as="b" fontSize='3xl'>Cart</Text>
           <hr style={{border:"grey solid 1px"}}></hr>
-          
           {Object.values(cartProducts).map((p) => {
             return (
-              <Box display="flex" alignItems="center">
-              <Box key={p.id + p.name}>
-                <CartCards name={p.name} image={p.image} price={p.price} />
+              <Box display="flex"  marginLeft={"-20px"}  alignItems="center" justifyContent={"center"} key={p.id + p.name}>
+              
+               <CartCards name={p.name} image={p.image} price={p.price}/> 
+               
                 <Button
+                  size={"sm"}
+                  marginTop={"320px"}
+                  marginLeft={"-220px"}
+                  colorScheme='green'
                   onClick={(e) => handleOnRemove(p)}
                   isDisabled={disableBtns}
-                >-</Button>
-                <Text marginLeft="10px" marginRight="10px" as="b" fontSize='2xl'>{p.quantity}</Text>
-                <Button 
+                >
+                  -
+                </Button>
+                <Text marginLeft="10px" marginRight="10px" as="b" fontSize='2xl' marginTop={"320px"}>{p.quantity}</Text>
+                <Button
+                  size={"sm"}
+                  marginTop={"320px"}
+                  colorScheme='green'
                   onClick={(e) => handleOnAdd(p)}
                   isDisabled={disableBtns}
-                >+</Button>
-
-                <Button marginLeft="10px"
+                >
+                  +
+                </Button>
+                <Button /* marginLeft="10px" size={"sm"} marginTop={"-50px"} */
+                 backgroundColor= "#8888884f"
+                 borderRadius= "5px"
+                 size={"sm"}
+                 fontSize={"18"}
+                 marginLeft="4.8%" 
+                 padding={"3px"}
+                 paddingTop= "2px"
+                 marginTop={"-360px"}
+                 color="#651616"
                   onClick={(e) => handleOnDelete(p)}
                   isDisabled={disableBtns}
                 >
-                  Delete
+                  <RiDeleteBin6Line />
                 </Button>
-                <Text as="b" color="green" fontSize='3xl' marginLeft="200px">{"price" + " " + p.price}</Text>
-              </Box>
               </Box>
             );
           })}
-          <Text as="b" color="green" fontSize='2xl' marginLeft="100px">Location</Text>
+
+          <Text as="b" color="black" fontSize='2xl' marginLeft="30px">{"Total Price: $" + totalPrice}</Text>
           <hr style={{border:"grey solid 1px"}}></hr>
-          <Text as="b" color="green" fontSize='2xl' marginLeft="165px">{"Total Price: $" + totalPrice}</Text>
-          <Box  marginLeft="-600px" marginBottom="50px" marginTop="40px">
-          <Button  marginLeft="1300px" marginBottom="50px" marginTop="40px"
+          <Box marginLeft="1300px" marginBottom="50px" marginTop="40px">
+          <Button size='md' colorScheme='green' marginLeft="-1285px"
             onClick={(e) => handleOnPay(arrProducts)}
             isDisabled={!disableBtns && arrProducts.length ? false : true}
           >
-            {loading ? <p>Loading</p> : <p>Pay Product</p>}
-          </Button>
-          {paymentLink ? <a href={paymentLink}>Go to payment</a> : <></>}
-        </Box>
+            {loading ? <p>Loading</p> : <p>Pay</p>}
+          </Button >
+        {/*   <Button> */}
+          {paymentLink ? <a href={paymentLink} >Go to payment</a> : <></>}
+         {/*  </Button> */}
+          </Box>
         </Box>
       </Box>
       <Box>

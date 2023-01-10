@@ -6,9 +6,9 @@ export const GET_PRODUCTS_AMOUNT = "GET_PRODUCTS_AMOUNT";
 export const GET_PRODUCTS_CATEGORY = "GET_PRODUCTS_CATEGORY";
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
 export const GET_PRODUCTS_BY_INGREDIENT = "GET_PRODUCTS_BY_INGREDIENT";
-export const SAVE_USER = 'SAVE_USER'
-export const ERASE_USER = 'ERASE_USER'
-export const ACTIVE_USER = 'ACTIVE_USER'
+export const SAVE_USER = "SAVE_USER";
+export const ERASE_USER = "ERASE_USER";
+export const ACTIVE_USER = "ACTIVE_USER";
 //CART
 export const ADD_TO_CART = "ADD_TO_CART";
 export const RESTART_CART = "RESTART_CART";
@@ -16,6 +16,12 @@ export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const DELETE_PRODUCTS_CART = "DELETE_PRODUCTS_CART";
 export const ADD_PRODUCT_FAVORITE = "ADD_PRODUCT_FAVORITE";
 export const REMOVE_PRODUCT_FAVORITE = "REMOVE_PRODUCT_FAVORITE";
+//MAPS
+export const SET_NEW_POSITION = "SET_NEW_POSITION";
+
+export function setNewPosition(params) {
+  return { type: "SET_NEW_POSITION", payload: params };
+}
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -111,13 +117,19 @@ export function removeProductFavorite(id) {
   };
 }
 export function saveUser(params) {
-  return { type: "SAVE_USER", payload: params }
+  return { type: "SAVE_USER", payload: params };
 }
 
 export function eraseUser() {
-  return { type: "ERASE_USER" }
+  return { type: "ERASE_USER" };
 }
 
 export function userActive(state) {
-  return { type: "ACTIVE_USER", payload: state }
+  return { type: "ACTIVE_USER", payload: state };
+}
+export function addOrderToDB(params) {
+  return async function () {
+    var json = await axios.post("http://localhost:3001/orders", params);
+    return json.data;
+  };
 }

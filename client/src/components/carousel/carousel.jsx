@@ -1,127 +1,142 @@
-import React, { Component } from "react";
+import React from 'react';
 import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption,
-} from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+  Box,
+  IconButton,
+  useBreakpointValue,
+  Stack,
+  Heading,
+  Text,
+  Container,
+} from '@chakra-ui/react';
+// Here we have used react-icons package for the icons
+import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
+// And react-slick as our Carousel Lib
+import Slider from 'react-slick';
+import { useState } from 'react';
+import fiesta from "./mcfiesta.png"
+import medioambiente from "./medioambiente.png"
+import cumpleaños from "./cumpleaños.png"
 
-const items = [
-  {
-    src: require("./Mc fiesta.png"),
-    altText: "",
-    caption: "",
-  },
-  //   {
-  //     src: require("./imagenes/cocacola.jpg"),
-  //     altText: "Slide 2",
-  //     caption: "Slide 2",
-  //   },
-  //   {
-  //     src: require("./imagenes/candy.jpg"),
-  //     altText: "Slide 3",
-  //     caption: "Slide 3",
-  //   },
-  {
-    src: require("./cumpleaños.png"),
-    altText: "",
-    caption: "",
-  },
-  {
-    src: require("./medioambiente.png"),
-    altText: "",
-    caption: "",
-  },
-];
+// Settings for the slider
+const settings = {
+  dots: true,
+  arrows: false,
+  fade: true,
+  infinite: true,
+  autoplay: true,
+  speed: 500,
+  autoplaySpeed: 5000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 
-class Example extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { activeIndex: 0 };
-    this.next = this.next.bind(this);
-    this.previous = this.previous.bind(this);
-    this.goToIndex = this.goToIndex.bind(this);
-    this.onExiting = this.onExiting.bind(this);
-    this.onExited = this.onExited.bind(this);
-  }
+export default function CaptionCarousel() {
+  // As we have used custom buttons, we need a reference variable to
+  // change the state
+  const [slider, setSlider] = useState('');
 
-  onExiting() {
-    this.animating = true;
-  }
+  // These are the breakpoints which changes the position of the
+  // buttons as the screen size changes
+  const top = useBreakpointValue({ base: '90%', md: '50%' });
+  const side = useBreakpointValue({ base: '30%', md: '40px' });
 
-  onExited() {
-    this.animating = false;
-  }
+  // This list contains all the data for carousels
+  // This can be static or loaded from a server
+  const cards = [
+    {
+      
+      image:
+        fiesta,
+    },
+    {
+      
+      image:
+       medioambiente
+    },
+    {
+      image:
+        cumpleaños,
+    },
+  ];
 
-  next() {
-    if (this.animating) return;
-    const nextIndex =
-      this.state.activeIndex === items.length - 1
-        ? 0
-        : this.state.activeIndex + 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  previous() {
-    if (this.animating) return;
-    const nextIndex =
-      this.state.activeIndex === 0
-        ? items.length - 1
-        : this.state.activeIndex - 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  goToIndex(newIndex) {
-    if (this.animating) return;
-    this.setState({ activeIndex: newIndex });
-  }
-
-  render() {
-    const { activeIndex } = this.state;
-
-    const slides = items.map((item) => {
-      return (
-        <CarouselItem
-          onExiting={this.onExiting}
-          onExited={this.onExited}
-          key={item.src}
-        >
-          <img src={item.src} alt={item.altText} />
-          <CarouselCaption
-            captionText={item.caption}
-            captionHeader={item.caption}
-          />
-        </CarouselItem>
-      );
-    });
-
-    return (
-      <Carousel
-        activeIndex={activeIndex}
-        next={this.next}
-        previous={this.previous}
-      >
-        <CarouselIndicators
-          items={items}
-          activeIndex={activeIndex}
-          onClickHandler={this.goToIndex}
-        />
-        {slides}
-        <CarouselControl
-          direction="prev"
-          directionText="Previous"
-          onClickHandler={this.previous}
-        />
-        <CarouselControl
-          direction="next"
-          directionText="Next"
-          onClickHandler={this.next}
-        />
-      </Carousel>
-    );
-  }
+  return (
+    <Box
+      position={'relative'}
+      height={'750px'}
+      width={'full'}
+      overflow={'hidden'}>
+      {/* CSS files for react-slick */}
+      <link
+        rel="stylesheet"
+        type="text/css"
+        charSet="UTF-8"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+      />
+      {/* Left Icon */}
+      <IconButton
+        aria-label="left-arrow"
+        variant="ghost"
+        position="absolute"
+        left={side}
+        top={top}
+        transform={'translate(0%, -50%)'}
+        zIndex={2}
+        onClick={() => slider?.slickPrev()}>
+        <BiLeftArrowAlt size="40px" />
+      </IconButton>
+      {/* Right Icon */}
+      <IconButton
+        aria-label="right-arrow"
+        variant="ghost"
+        position="absolute"
+        right={side}
+        top={top}
+        transform={'translate(0%, -50%)'}
+        zIndex={2}
+        onClick={() => slider?.slickNext()}>
+        <BiRightArrowAlt size="40px" />
+      </IconButton>
+      {/* Slider */}
+      <Slider {...settings} ref={(slider) => setSlider(slider)}>
+        {cards.map((card, index) => (
+          <Box
+            key={index}
+            height={'1xl'}
+            
+            position="relative"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="100%"
+            objectFit={'cover'}
+           
+                backgroundColor={'#D9D9D9'}
+            backgroundImage={`url(${card.image})`}>
+            {/* This is the block you need to change, to customize the caption */}
+            <Container size="container.lg" height="800px" position="relative">
+              <Stack
+                spacing={6}
+                w={'full'}
+                maxW={'lg'}
+                position="absolute"
+                top="50%"
+                
+                transform="translate(0, -50%)">
+                <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
+                  {card.title}
+                </Heading>
+                <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
+                  {card.text}
+                </Text>
+              </Stack>
+            </Container>
+          </Box>
+        ))}
+      </Slider>
+    </Box>
+  );
 }
-
-export default Example;

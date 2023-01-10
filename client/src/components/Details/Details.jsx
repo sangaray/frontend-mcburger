@@ -1,21 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState  } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer"
 import {  Button, Box, Text } from '@chakra-ui/react';
 import { getProductID, addToCart, removeFromCart, addProductFavorite, } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
+
+
 import "./Details.css";
 
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
+ 
 
   useEffect(() => {
     dispatch(getProductID(id));
+    
   }, [id, dispatch]);
 
-  const [product, cart] = useSelector((state) => [state.product, state.cart, state.productsFavorites,]);
+  const [product, cart] = useSelector((state) => [state.product, state.cart, state.productsFavorites]);
+
+  
+
 
   return (
     <div>
@@ -48,8 +55,11 @@ function Details() {
                 <p>{product[0]?.ingredients}</p>
               </div>
             </div>
+          <Button mt={'30px'} mb={'30px'} colorScheme='yellow'    onClick={() => dispatch(addProductFavorite(product[0]))} >
+            🤍
+          </Button>
             {!cart.hasOwnProperty(product[0].id) ? (
-              <Button size='lg' colorScheme='green' marginTop="30px" onClick={() => dispatch(addToCart(product[0]))}>
+              <Button size='lg' colorScheme='green'  onClick={() => dispatch(addToCart(product[0]))}>
                 Add to cart
               </Button>
             ) : (
@@ -65,9 +75,6 @@ function Details() {
             )}
           </div>
           <div>
-          <Button onClick={() => dispatch(addProductFavorite(product[0]))}>
-            🤍
-          </Button>
           </div>
         </div>
       ) : (
