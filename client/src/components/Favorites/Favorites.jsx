@@ -2,6 +2,7 @@ import {
   removeProductFavorite,
   addToCart,
   removeFromCart,
+  getAllUserFavs,
 } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Box, Text, Image } from "@chakra-ui/react";
@@ -12,20 +13,21 @@ import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import img from "./BannerFav.png";
 import "./Favorites.css";
-import { useState } from "react";
-import { ReactDOM } from "react-dom";
-//import { useLocalStorage } from "../../useLocalStorage";
 
 function Favorites() {
   const dispatch = useDispatch();
 
-  const [productsFavorites] = useSelector((state) => [state.productsFavorites]);
- 
+  const [productsFavorites, user, cart] = useSelector((state) => [
+    state.productsFavorites,
+    state.user,
+    state.cart,
+  ]);
+  useEffect(() => {
+    if (user.email) getAllUserFavs(user.email)(dispatch);
+  }, [dispatch, user.email]);
 
-  
   return (
     <div className="cont">
-      
       <div>
         <NavBar />
       </div>
@@ -35,21 +37,23 @@ function Favorites() {
         </Box>
         <hr style={{ border: "grey solid 1px" }} />
       </Link>
-   
       <div className="cont-fav-cards">
-        {productsFavorites.map((p) => (
-          
-        
-            <div className="cards-container-fav">
-              
-              <div>
-               
-                <div className="bt">
-                  <button onClick={() => dispatch(removeProductFavorite(p))}>
-                    <RiDeleteBin6Line />
-                  </button>
-                </div>
-                <img className="detail-Img" src={p.image} />
+      {productsFavorites?.map((p) => (
+      <div className="cards-container-fav">
+          <div>
+            <div className="bt">
+              <button
+                onClick={() =>
+                  removeProductFavorite({
+                    product: p,
+                    userId: user.email,
+                  })(dispatch)
+                }
+              >
+                <RiDeleteBin6Line />
+              </button>
+            </div>
+            <img className="detail-Img" src={p.image} />
               </div>
               <div className="detail-Text-Container">
                 <Box textAlign={"center"}>
@@ -66,8 +70,7 @@ function Favorites() {
               </Link>
               </div>
             </div>
-          
-        ))}
+      ))}
       </div>
       <div>
         <Footer />

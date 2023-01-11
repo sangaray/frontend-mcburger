@@ -1,58 +1,266 @@
 .nav-container li {
-  display: inline;
-  margin: 20px;
-  color: white;
-  font-family: 'Noto Nastaliq Urdu', serif;
+  display: flex;
+  flex-direction: row;
+  margin: 13px;
+  font-family: "Noto Nastaliq Urdu", serif;
+  
 }
 
 .nav-container {
-  background-color: #651616;/* cambiar esta linea de codigo */
+  background-color: #651616;
   display: flex;
+  width: 1000px;
   justify-content: center;
   align-items: center;
-  height: 10 0px;
+  
 }
+
+
+
+.cart-button {
+  width: 7%;
+ 
+}
+
+
+
+
+.menu-list {
+  display: flex;
+}
+
+.nav-btn {
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  display: none;
+  opacity: 0;
+  font-size: 3rem;
+  color: white;
+}
+
+
 
 .nav-container a {
   text-decoration: none;
-  color: white;/* cambiar esta linea de codigo */
+  color: #fafafa;
   font-size: 18px;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
 }
-
 .nav-container a:hover {
   text-decoration: underline;
-  color: white;/* cambiar esta linea de codigo */
+  color: #fafafa;
   font-size: 18px;
 }
 
-
 .button-login {
-  background-color: rgb(229, 69, 69);
-  border: none;
-  border-radius: 10px;
-  color: white;
-  padding: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.5s;
 }
 
-.button-login:hover {
-  background-color: rgb(199, 60, 60);
-}
-
-.burger-logo {
+.nav-container img {
   height: 120px;
   width: 200px;
 }
-.image-logo{
-  height: 40px;
-  width: 40px;
-  border-radius: 20px;
+
+.main-nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #651616;
+  
+}
+
+@media (max-width: 1366px) {
+  .nav-container {
+    width: 1000px;
+    height: 10 0px;
+  }
+
+  .nav-container a {
+    font-size: 13px;
+  }
+
+  .nav-container a:hover {
+    font-size: 13px;
+  }
+
+  .nav-container li {
+    margin: 18px;
+  }
+}
+
+@media (min-width: 931px) and (max-width: 1366px) {
+  .nav-container a {
+    font-size: 13px;
+  }
+
+  .nav-container a:hover {
+    font-size: 13px;
+  }
+
+  .nav-container li {
+    margin: 18px;
+  }
+}
+
+@media (min-width: 930px) and (max-width: 950px){
+    .nav-container a {
+        font-size: 13px;
+      }
+    
+      .nav-container a:hover {
+       
+        font-size: 13px;
+      }
+    
+      .nav-container li {
+        
+        margin: 18px;
+        
+      }
+      
+}
+
+@media (min-width: 500px) and (max-width: 930px)  {
+  .nav-btn {
+    display: block;
+    opacity: 1;
+  }
+
+  .cart-button {
+    margin-left: 15%;
+  }
+  .burger-menu {
+    margin-right: 15%;
+    
+  }
+  .nav-container li {
+    display: flex;
+
+    justify-content: center;
+    margin: 30px;
+    color: white;
+    font-family: "Noto Nastaliq Urdu", serif;
+  }
+
+  nav {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    height: 700px;
+    width: 100%;
+    background-color: #651616;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    transform: translateY(-1000px);
+  }
+
+  nav a {
+    font-size: 2.5rem;
+    display: flex;
+  }
+
+  .responsive_nav {
+    transform: none;
+  }
+
+  .nav-container a {
+    font-size: 1.3rem;
+    flex-direction: column;
+  }
+
+  .nav-container a:hover {
+    font-size: 1.3rem;
+  }
+
+  .logo-nav {
+    z-index: 5;
+  }
+
+  .nav-container {
+    background-color: #651616;
+  }
+
+  .menu-list {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 500px)  {
+  .nav-btn {
+    display: block;
+    opacity: 1;
+    font-size: 2rem;
+  }
+
+  .cart-button {
+    margin-left: 6%;
+  }
+  .burger-menu {
+    margin-right: 6%;
+  }
+  .nav-container li {
+    display: flex;
+
+    justify-content: center;
+    margin: 30px;
+    color: white;
+    font-family: "Noto Nastaliq Urdu", serif;
+  }
+
+  nav {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    height: 550px;
+    width: 100%;
+    background-color: #651616;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    transform: translateY(-1000px);
+  }
+
+  nav a {
+    font-size: 2.5rem;
+    display: flex;
+  }
+
+  .responsive_nav {
+    transform: none;
+  }
+
+  .nav-container a {
+    font-size: 0.7rem;
+    flex-direction: column;
+  }
+
+  .nav-container a:hover {
+    font-size: 1.3rem;
+  }
+
+  .logo-nav {
+    z-index: 5;
+  }
+
+  .nav-container {
+    background-color: #651616;
+  }
+
+  .menu-list {
+    flex-direction: column;
+  }
 }

@@ -5,7 +5,7 @@ import { Box, Text, Button, IconButton } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Carousel from "../carousel/carousel";
-import { MdOutlineDeliveryDining } from "react-icons/md"
+import {MdOutlineDeliveryDining} from "react-icons/md"
 
 
 export default function Home() {
@@ -16,14 +16,14 @@ export default function Home() {
       <div>
         <NavBar />
       </div>
-
-      <Box h={'500px'}>
-        <Box textAlign={'left'} className="text-box-w">
+      
+      <Box  h={'500px'}>
+        <Box textAlign={'left'}   className="text-box-w" marginTop={"100px"}>
           <Text as={'b'} className="w-d-y">WHAT DO YOU WANT TO ORDER<br></br> TODAY?</Text>
         </Box>
         <Box className="select-menu-chakra" >
-          <Link to="/Selectmenu">
-            <Button colorScheme={'red'} size={'md'} padding={'30px'} borderRadius={'10px'} fontSize={'30px'}>ORDER NOW&nbsp;&nbsp;&nbsp;<MdOutlineDeliveryDining size={'40'} /></Button>
+        <Link to="/Selectmenu">
+          <Button colorScheme={'red'} size={'md'} padding={'30px'} borderRadius={'10px'} fontSize={'30px'}>ORDER NOW&nbsp;&nbsp;&nbsp;<MdOutlineDeliveryDining size={'40'}/></Button>
           </Link>
         </Box>
       </Box>
@@ -63,9 +63,9 @@ export default function Home() {
         </div>
       </div>
       <div>
-        <Carousel />
+        <Carousel/>
       </div>
-
+      
       <Footer />
     </div>
   );
