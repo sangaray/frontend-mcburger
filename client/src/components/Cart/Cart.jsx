@@ -9,10 +9,12 @@ import {
 import { Box, Text, Button } from "@chakra-ui/react";
 import CartCards from "../CartCards/CartCards";
 import NavBar from "../NavBar/NavBar";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import Footer from "../Footer/Footer";
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const cartProducts = useSelector((state) => state.cart);
+  const [cartProducts, user] = useSelector((state) => [state.cart, state.user]);
   const [disableBtns, setDisableBtns] = useState(false);
   const [loading, setLoading] = useState(false);
   const [paymentLink, setLink] = useState("");
@@ -67,16 +69,30 @@ export default function Cart() {
   }
 
   function handleOnAdd(p) {
-    dispatch(addToCart(p));
+    addToCart({ userId: user.email, product: p })(dispatch);
   }
 
   function handleOnRemove(p) {
-    dispatch(removeFromCart(p));
+    removeFromCart({ userId: user.email, product: p })(dispatch);
   }
 
   function handleOnDelete(p) {
-    dispatch(deleteProductsCart(p));
+    deleteProductsCart({ product: p, userId: user.email })(dispatch);
   }
+
+  const buttonPayment = () => {
+    if (paymentLink) {
+      return (
+        <>
+          <Button size="md" colorScheme="green">
+            <a href={paymentLink}>Go to payment</a>
+          </Button>
+        </>
+      );
+    } else {
+      <></>;
+    }
+  };
 
   return (
     <Box>
@@ -84,53 +100,104 @@ export default function Cart() {
         <NavBar />
       </Box>
 
-      <Box display="flex" justifyContent="center" alignItems="center">
+      <Box
+        display={"grid"}
+        width={"100%"}
+        justifyContent={"center"}
+        grid-template-columns="repeat(auto-fill, minmax(250px, 400px))"
+      >
         <Box
-          textAlign="center" bg="#D9D9D9" marginTop="10px" borderRadius="10px" height="auto" width="1500px" marginBottom="20px"
+          display={"grid"}
+          textAlign="center"
+          bg="#D9D9D9"
+          marginTop="10px"
+          borderRadius="10px"
+          height="auto"
+          width="100%"
+          marginBottom="20px"
         >
-          <Text as="b" fontSize='3xl'>Cart</Text>
-          <hr style={{border:"grey solid 1px"}}></hr>
+          <Text as="b" fontSize="3xl">
+            Cart
+          </Text>
+          <hr style={{ border: "grey solid 1px" }}></hr>
           {Object.values(cartProducts).map((p) => {
             return (
-              <Box display="flex" alignItems="center" key={p.id + p.name}>
+              <Box
+                display="flex"
+                marginLeft={"-20px"}
+                alignItems="center"
+                justifyContent={"center"}
+                key={p.id + p.name}
+              >
                 <CartCards name={p.name} image={p.image} price={p.price} />
+
                 <Button
+                  size={"sm"}
+                  marginTop={"320px"}
+                  marginLeft={"-220px"}
+                  colorScheme="green"
                   onClick={(e) => handleOnRemove(p)}
                   isDisabled={disableBtns}
                 >
                   -
                 </Button>
-                <Text marginLeft="10px" marginRight="10px" as="b" fontSize='2xl'>{p.quantity}</Text>
+                <Text
+                  marginLeft="10px"
+                  marginRight="10px"
+                  as="b"
+                  fontSize="2xl"
+                  marginTop={"320px"}
+                >
+                  {p.quantity}
+                </Text>
                 <Button
+                  size={"sm"}
+                  marginTop={"320px"}
+                  colorScheme="green"
                   onClick={(e) => handleOnAdd(p)}
                   isDisabled={disableBtns}
                 >
                   +
                 </Button>
-                <Button marginLeft="10px"
+                <Button /* marginLeft="10px" size={"sm"} marginTop={"-50px"} */
+                  backgroundColor="#8888884f"
+                  borderRadius="5px"
+                  size={"sm"}
+                  fontSize={"18"}
+                  marginLeft="4.8%"
+                  padding={"3px"}
+                  paddingTop="2px"
+                  marginTop={"-360px"}
+                  color="#651616"
                   onClick={(e) => handleOnDelete(p)}
                   isDisabled={disableBtns}
                 >
-                  Delete
+                  <RiDeleteBin6Line />
                 </Button>
               </Box>
             );
           })}
 
-          <Text as="b" color="green" fontSize='3xl' marginLeft="1180px">{"Total Price: $" + totalPrice}</Text>
-          <hr style={{border:"grey solid 1px"}}></hr>
+          <Text as="b" color="black" fontSize="2xl" marginLeft="30px">
+            {"Total Price: $" + totalPrice}
+          </Text>
+          <hr style={{ border: "grey solid 1px" }}></hr>
           <Box marginLeft="1300px" marginBottom="50px" marginTop="40px">
-          <Button size='lg' colorScheme='green'
-            onClick={(e) => handleOnPay(arrProducts)}
-            isDisabled={!disableBtns && arrProducts.length ? false : true}
-          >
-            {loading ? <p>Loading</p> : <p>Pay</p>}
-          </Button >
-          <Button size='lg' colorScheme='green'>
-          {paymentLink ? <a href={paymentLink} >Go to payment</a> : <></>}
-          </Button>
+            <Button
+              size="md"
+              colorScheme="green"
+              marginLeft="-1285px"
+              onClick={(e) => handleOnPay(arrProducts)}
+              isDisabled={!disableBtns && arrProducts.length ? false : true}
+            >
+              {loading ? <p>Loading</p> : <p>Pay</p>}
+            </Button>
+            {buttonPayment()}
           </Box>
         </Box>
+      </Box>
+      <Box>
+        <Footer />
       </Box>
     </Box>
   );

@@ -1,22 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { restartCart, removeFromCart, addToCart } from "../../actions/index";
-import { Box, Image, Text, Button,  Divider } from '@chakra-ui/react';
+import { Box, Image, Text, Button, Divider } from "@chakra-ui/react";
 
 export default function CartList() {
   const dispatch = useDispatch();
-  const cartProducts = useSelector((state) => state.cart);
+  const [cartProducts, user] = useSelector((state) => [state.cart, state.user]);
 
   function handleOnAdd(p) {
-    dispatch(addToCart(p));
+    addToCart({ userId: user.email, product: p })(dispatch);
   }
 
   function handleOnRemove(p) {
-    dispatch(removeFromCart(p));
+    removeFromCart({ userId: user.email, product: p })(dispatch);
   }
 
   function handleOnRestart() {
-    dispatch(restartCart());
+    restartCart(user.email)(dispatch);
   }
 
   return (
@@ -25,11 +25,14 @@ export default function CartList() {
         <div key={product.id + "" + product.name}>
           <h1>{product.name}</h1>
           <Box display="flex">
-          <Button marginRight="10px" onClick={() => handleOnRemove(product)}>-</Button>
-          <Text as="b">{product.quantity}</Text>
-          <Button marginLeft="10px" onClick={() => handleOnAdd(product)}>+</Button>
+            <Button marginRight="10px" onClick={() => handleOnRemove(product)}>
+              -
+            </Button>
+            <Text as="b">{product.quantity}</Text>
+            <Button marginLeft="10px" onClick={() => handleOnAdd(product)}>
+              +
+            </Button>
           </Box>
-         
         </div>
       ))}
       <div>

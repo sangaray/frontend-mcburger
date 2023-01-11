@@ -19,7 +19,9 @@ import {
   CREATE_COMMENT,
   UPDATE_COMMENT,
   DELETE_COMMENT,
+  UPDATE_RATING,
   GET_ALL_USER_FAVS,
+  GET_ALL_USER_CART,
 } from "../actions/index";
 
 const initialState = {
@@ -31,12 +33,10 @@ const initialState = {
   productsFavorites: [],
   user: [],
   activeUser: false,
-  mapPosition: {
-    status: "user",
-    coordenates: [-34.603743591667396, -58.38151982455165],
-  },
+  mapPosition: { coordinates: [-34.603743591667396, -58.38151982455165] },
   productDetail: {},
   productComments: [],
+  branches: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -126,6 +126,12 @@ function rootReducer(state = initialState, action) {
         products: orderArray,
       };
 
+    case GET_ALL_USER_CART:
+      return {
+        ...state,
+        cart: action.payload,
+      };
+
     case ADD_TO_CART:
       if (state.cart.hasOwnProperty(action.payload.id)) {
         state.cart[action.payload.id].quantity += 1;
@@ -154,6 +160,7 @@ function rootReducer(state = initialState, action) {
           delete newCart[action.payload.id];
         }
       }
+
       return { ...state, cart: newCart };
 
     case DELETE_PRODUCTS_CART:
@@ -163,6 +170,18 @@ function rootReducer(state = initialState, action) {
         ...state,
         cart: newCart,
       };
+    /*     case ADD_PRODUCT_FAVORITE:
+          return {
+            ...state,
+            productsFavorites: [...state.productsFavorites, action.payload],
+          };
+        case REMOVE_PRODUCT_FAVORITE:
+          return {
+            ...state,
+            productsFavorites: state.productsFavorites.filter(
+              (p) => p.id !== action.payload.id
+            ),
+          }; */
     case GET_ALL_USER_FAVS:
       return {
         ...state,
@@ -187,21 +206,24 @@ function rootReducer(state = initialState, action) {
         ),
       };
     case SAVE_USER:
+      //console.log(action.payload + ' saving user...');
       return {
         ...state,
         user: action.payload,
       };
     case ERASE_USER:
+      //console.log(action.payload + ' saving user...');
       return {
         ...state,
         user: [],
       };
     case ACTIVE_USER:
+      //console.log(action.payload + ' saving user...');
       return {
         ...state,
         activeUser: action.payload,
       };
-    case GET_ALL_COMMENTS:
+    case GET_ALL_COMMENTS: //<--
       return {
         ...state,
         productComments: action.payload,

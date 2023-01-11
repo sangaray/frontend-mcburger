@@ -9,20 +9,20 @@ export default function AboutUs() {
   return (
     <div>
       <NavBar />
-      <Box textAlign="center" mt="50px">
+      <Box textAlign="center" mt="50px" display="grid">
         <Text fontWeight="bold" fontSize="4rem" >
           About Us
         </Text>
       </Box>
-      <Box display="flex" justifyContent="center" mt="10px">
+      <Box display="grid" justifyContent="center" mt="10px"   >
         <Image
-          h="600px"
+          w="80%" marginLeft={"10%"}
           src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672087651/McBurgerExtras/frente_blanco_y_negro_n7worh.jpg"
         />
       </Box>
-      <Box display="flex" justifyContent="center" marginBottom={"-20"}>
+      <Box display="grid" justifyContent="center" marginBottom={"-20"}>
         <Box textAlign="center" w="1000px" mt="100px" mb="100px" >
-          <Text fontWeight="bold" fontSize="2rem" >
+          <Text fontWeight="bold" fontSize="2rem" marginTop={"-60px"}>
             Our story starts with one dream.
           </Text>
 
@@ -37,16 +37,16 @@ export default function AboutUs() {
           </Text>
         </Box>
       </Box>
-      <Box display="flex" alignItems="center" justifyContent="center">
+      <Box className="container-about" flexWrap={'wrap'} >
         <Box
-          w="1100px"
-          display="flex"
-          justifyContent="space-between"
+          className="access1"
+          display="grid"  grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))"
+          justifyContent="center"
           alignItems="center"
+          grid-gap='2em'
+          margin-bottom='2em'
         >
           <Box
-            h="600px"
-            w="50%"
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -70,14 +70,12 @@ export default function AboutUs() {
 
             <Box mt="20px">
               <Link to="/history">
-                <Button colorScheme="yellow">Learn More</Button>
+                <Button colorScheme="yellow" marginBottom={"30px"}>Learn More</Button>
               </Link>
             </Box>
           </Box>
           <Box
-            mt="10px"
-            h="500px"
-            w="50%"
+            className="access2"
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -100,19 +98,21 @@ export default function AboutUs() {
             </Box>
             <Box mt="20px">
               <Link to="/team">
-                <Button colorScheme="yellow">Learn More</Button>
+                <Button colorScheme="yellow" marginBottom={"30px"}>Learn More</Button>
               </Link>
             </Box>
           </Box>
         </Box>
       </Box>
-      <Box display="flex" alignItems="center" justifyContent="center">
-        <Box w="1100px"
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center">
-          <Box h="600px"
-            w="50%"
+      <Box text-align='center'>
+        <Box 
+            display= 'grid'
+            grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))"
+            align-items= 'center'
+            justify-items='center'
+            grid-gap='2em'
+            margin-bottom='2em'>            
+          <Box
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -128,13 +128,13 @@ export default function AboutUs() {
 
             <Box>
               <Link to="/values">
-                <Button colorScheme="yellow" mt="70px" marginTop={"10"}>Learn More</Button>
+                <Button colorScheme="yellow" mt="70px" marginTop={"5"}>Learn More</Button>
               </Link>
             </Box>
           </Box>
 
-          <Box h="600px"
-            w="50%"
+          <Box
+            className="access1"
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -142,7 +142,7 @@ export default function AboutUs() {
             <Image mt="20px"
               src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672150894/McBurgerExtras/quality_hjc0mx.jpg"
               width={500}
-               marginTop={"-4"} 
+               marginTop={"8"}  
             />
 
             <Text mt="20px" fontSize="1.8rem" fontWeight="bold">The Roots of Quality</Text>
@@ -153,7 +153,7 @@ export default function AboutUs() {
 
             <Box>
               <Link to="/quality">
-                <Button colorScheme="yellow" mt="30px">Learn More</Button>
+                <Button colorScheme="yellow" mt="30px" marginBottom={"30px"}>Learn More</Button>
               </Link>
             </Box>
           </Box>

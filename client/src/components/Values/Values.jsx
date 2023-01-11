@@ -9,43 +9,43 @@ export default function Values() {
     return (
         <Box >
             <NavBar />
-            <Text textAlign="center" mt="50px" fontWeight="bold" fontSize="4rem" >Values In Action</Text>
+            <Text textAlign="center" mt="50px" fontWeight="bold" fontSize="4rem" display={"grid"} >Values In Action</Text>
             <Image src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672087214/McBurgerExtras/values_in_action_d0b6sp.jpg" />
-            <Text display={"flex"} textAlign={"center"} fontSize={"2rem"} marginLeft={"450px"}>Our journey towards good.</Text>
-            <p>From the start, we've been committed to doing the right thing. And every day, all around the globe, we put people, processes and practices into place to make quality food, more responsible sourcing choices, a stronger community and a better planet. In accordance with our McBurger’s values, we’re here to make a difference, and here’s how.</p>
+            <Text  textAlign={"center"}  fontSize={"2rem"} >Our journey towards good.</Text>
+            <Text textAlign={"center"}>From the start, we've been committed to doing the right thing. And every day, all around the globe, we put people, processes and practices into place to make quality food, more responsible sourcing choices, a stronger community and a better planet. In accordance with our McBurger’s values, we’re here to make a difference, and here’s how.</Text>
             <Box mb={"100px"}>
 
-                <Box display={"flex"} m={"50px"} ml={"50px"} mr={"50px"}>
-                    <Box ml={"50px"} mr={"50px"}>
-                        <Box className='image' display={"flex"} justifyContent={"center"} width={"500px"} >
+                <Box m={"50px"} ml={"50px"} mr={"50px"}>
+                    <Box ml={"50px"} mr={"50px"} >
+                        <Box className='image' display={"grid"}  justifyContent={"center"} width={"90%"} grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))" marginLeft={"5%"}>
                             <Image src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672084663/McBurgerExtras/sustentabilidad_tmibiu.jpg" />
                         </Box>
                         <Box>
-                            <Text textAlign={"center"} fontSize={"2rem"}>Sustainability Priorities</Text>
-                            <Text textAlign={"center"} fontSize="1rem">We're making a difference in the communities we serve.</Text>
+                            <Text textAlign={"center"}   fontSize={"2rem"} display={"grid"}  justifyContent={"center"}>Sustainability Priorities</Text>
+                            <Text textAlign={"center"}   marginBottom={"20px"} fontSize="1rem" display={"grid"}  justifyContent={"center"}>We're making a difference in the communities we serve.</Text>
                         </Box>
                     </Box>
 
                     <Box ml={"50px"} mr={"50px"}>
-                        <Box className='image' display={"flex"} justifyContent={"center"} width={"500px"}>
+                        <Box className='image'  display={"grid"} justifyContent={"center"} width={"90%"} grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))" marginLeft={"5%"}>
                             <Image src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672086014/McBurgerExtras/nuestravariedad_mq0h6s.jpg" />
                         </Box>
                         <Box>
-                            <Text textAlign={"center"} fontSize={"2rem"}>Good Food</Text>
-                            <Text textAlign={"center"} fontSize="1rem">
+                            <Text textAlign={"center"}  fontSize={"2rem"} display={"grid"}  justifyContent={"center"}>Good Food</Text>
+                            <Text textAlign={"center"}  marginBottom={"20px"}  fontSize="1rem" display={"grid"}  justifyContent={"center"}>
                                 Check out nutrition and ingredient information to providing responsibly sourced food.
                             </Text>
                         </Box>
                     </Box>
-                </Box>
-
-                <Box className='image' display={"flex"} justifyContent={"center"}>
-                    <Image h={"400px"}
-                        justifyContent={"center"} src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672085499/McBurgerExtras/elequipo_jt8wbx.jpg" />
+                    <Box ml={"50px"} mr={"50px"}>
+                    <Box className='image'  display={"grid"}  justifyContent={"center"} width={"90%"}  grid-template-columns= "repeat(auto-fill, minmax(250px, 400px))" marginLeft={"5%"}>
+                    <Image src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672085499/McBurgerExtras/elequipo_jt8wbx.jpg" />
                 </Box>
                 <Box>
-                    <Text textAlign={"center"} fontSize={"2rem"}>Our People & Communities</Text>
-                    <Text textAlign={"center"} fontSize="1rem">Investing in people is a top priority. So is giving back to the community.</Text>
+                    <Text  textAlign={"center"}  fontSize={"2rem"} display={"grid"}  justifyContent={"center"}>Our People & Communities</Text>
+                    <Text  textAlign={"center"} fontSize="1rem" display={"grid"}  justifyContent={"center"}>Investing in people is a top priority. So is giving back to the community.</Text>
+                </Box>
+                </Box>
                 </Box>
             </Box>
             <Footer mt={"100px"}/>

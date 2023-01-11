@@ -13,7 +13,7 @@ export default function Menu() {
   const products = useSelector((state) => state.products);
 
   return (
-    <div>
+    <div className="menu-main-container">
       <div>
         <NavBar />
       </div>

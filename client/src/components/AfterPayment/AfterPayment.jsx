@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { addOrderToDB } from "../../actions";
 import NavBar from "../NavBar/NavBar";
-import { Button } from "@chakra-ui/react";
+import { Button, Box, Text, Image } from "@chakra-ui/react";
+import Footer from '../Footer/Footer';
 import "./AfterPayment.css";
+import successImg from "./success.png";
+import failureImg from "./failure.png"
 
 function AfterPayment() {
   const [failure, setFailure] = useState(false);
@@ -60,28 +63,35 @@ function AfterPayment() {
   }, [status, payment_id, merchant_order_id]);
 
   return (
-    <div>
+    <Box>
       <NavBar />
-      <div className="paymentContainer">
+      <Box className="paymentContainer"  
+       display={"grid"} 
+       justifyContent="center" 
+       alignItems="center"
+       marginTop={"2%"}
+       marginBottom={"2%"}
+       >
         {failure ? (
-          <div className="error">
-            <h2>There was an issue with your payment! :(</h2>
-          </div>
+          <Box className="error">
+            <Image w="350px" src={failureImg}/>
+          </Box>
         ) : (
-          <div className="success">
-            <h1>Your payment was successful! :)</h1>
-          </div>
+          <Box className="success">
+            <Image w="350px" src={successImg}/>
+          </Box>
         )}
-        <div className="buttonContainer">
-          <Link to="/Cart">
+        <Box className="buttonContainer"display={"grid"}  justifyContent="center"  >
+         {/*  <Link to="/Cart">
             <Button>Back To Cart</Button>
-          </Link>
+          </Link> */}
           <Link to="/">
-            <Button>Back Home</Button>
+            <Button  size='sm' colorScheme='yellow' mt="30px" >Back Home</Button>
           </Link>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+      <Footer mt={"100px"}/>
+    </Box>
   );
 }
 

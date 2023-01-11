@@ -14,14 +14,14 @@ export default function Team() {
           Leadership Team
         </Text>
       </Box>
-      <Box display="flex" justifyContent="center" mt="10px">
+      <Box display="grid" justifyContent="center" mt="10px">
         <Image
-          h={"500px"}
+          w={"80%"} marginLeft={"10%"}
           src="https://res.cloudinary.com/dqdrtbtuv/image/upload/v1672087214/McBurgerExtras/fondo_negro_con_logo_alargado_fj2wua.jpg"
         />
       </Box>
       <Box w={'100%'}>
-        <Box mt={"50px"} display={'flex'} justifyContent={'center'} flexWrap={'wrap'} >
+        <Box mt={"50px"} display={'flex'}  justifyContent={'center'} flexWrap={'wrap'} >
           <Box
             w={"500px"}  
             display="flex"

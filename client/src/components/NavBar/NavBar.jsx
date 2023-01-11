@@ -20,34 +20,121 @@ import {
   PopoverAnchor,
 } from "@chakra-ui/react";
 
-export default function NavBar() {
+import { useAuth0 } from '@auth0/auth0-react';
+
+import { saveUser, eraseUser, userActive } from '../../actions/index'
+
+export default function NavBar(props) {
+
+  const dispatch = useDispatch();
+
+  const { loginWithRedirect, user, isAuthenticated, logout, isLoading } = useAuth0();
   const userN = useSelector((state) => state.user);
-  //console.log(userN, '*');
+  const handleLogout = () => {
+    window.localStorage.setItem('userL', '');
+    logout();
+  }
 
   const getUserData = () => {
-    if (userN) {
-      //console.log('entrando...');
+
+    let item = window.localStorage.getItem('userL');
+    let a;
+    if (item) {
+      a = JSON.parse(item);
+    } else {
+      a = { email: '' };
+    }
+
+    if (a.email) {
+      //console.log('hay userN.email');
       return (
         <>
+          <button onClick={() => handleLogout()} className="button-login"><b>LOG OUT</b></button>&nbsp;&nbsp;&nbsp;
           <label className="name-login">
-            <b>{userN.name}</b>
+            <b>{a.name}</b>
           </label>
-          &nbsp;&nbsp;
-          {/*  <img className="image-logo" src={userN.picture} alt="image" /> */}
+          &nbsp;&nbsp;&nbsp;
+          <img className="image-logo" src={a.picture} alt="image" />
         </>
       );
     } else {
-      return <></>;
+      //console.log('NO hay userN.email');
+      return (
+        <>
+          <Link to="/login">
+            <button colorScheme={'red'} className="button-login"><b>LOG IN</b></button>
+          </Link>
+        </>
+      );
     }
   };
 
-  useEffect(() => {}, [userN]);
+  const prueba = async () => {
+
+    let item = window.localStorage.getItem('userL');
+    if (item) {
+      console.log(JSON.parse(item));
+      let a = JSON.parse(item);
+      console.log(a.email, '<-');
+    }
+  }
+
+  useEffect(() => {
+
+  }, []);
+
+  const getFavorites = () => {
+    let item = window.localStorage.getItem('userL');
+    let a;
+    if (item) {
+      a = JSON.parse(item);
+    } else {
+      a = { email: '' };
+    }
+    if (a.email) {
+      return (
+        <>
+          <li><Link to="/favs">FAVORITES</Link></li>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <li>FAVORITES</li>
+        </>
+      )
+    }
+  }
+
+  const getAdmin = () => {
+    let item = window.localStorage.getItem('userL');
+    let a;
+    if (item) {
+      a = JSON.parse(item);
+    } else {
+      a = { email: '' };
+    }
+    if (a.email === 'admin@mcburger.com') {
+      return (
+        <>
+          <a href="https://dashboard-wine-nine.vercel.app/" target="_blank" rel="noreferrer">
+            AD
+          </a>
+        </>
+      )
+    } else {
+      return (
+        <>
+        </>
+      )
+    }
+  }
 
   return (
     <div>
       <div className="nav-container">
         <Link to="/">
-          <img src={BurgerLogo} alt="." />
+          <img className="burger-logo" src={BurgerLogo} alt="." />
         </Link>
         <ul>
           <li>
@@ -62,9 +149,7 @@ export default function NavBar() {
           <li>
             <Link to="/about">ABOUT US</Link>
           </li>
-          <li>
-            <Link to="/favs">FAVORITES</Link>
-          </li>
+          {getFavorites()}
           <li>
             <Link to="/locations">LOCATIONS</Link>
           </li>
@@ -88,20 +173,13 @@ export default function NavBar() {
             </PopoverContent>
           </Popover>
         </Box>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <Link to="/login">
-          <Button colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>LOG IN</Text></Button>
-        </Link>
         &nbsp;&nbsp;&nbsp;
+
         {getUserData()}
-        {/* <button onMouseOver={handleMouseIn} onMouseOut={handleMouseOut}>{hover ?
-                    <div>
-                        <BsCart2 />
-                        <CartList />
-                    </div>
-                        : <BsCart2 />
-                }
-                </button> */}
+        &nbsp;&nbsp;
+        {getAdmin()}
+
+        {/*  <Button onClick={() => prueba()} colorScheme={'red'} className="button-login"><Text textDecoration={'none'}>PRUEBA</Text></Button> */}
       </div>
     </div>
   );
