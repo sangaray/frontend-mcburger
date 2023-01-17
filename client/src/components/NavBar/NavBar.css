@@ -1,40 +1,433 @@
-.nav-container li{
-    display: inline;
-    margin: 30px;
-    color: white;
+.nav-container li {
+  display: flex;
+  flex-direction: row;
+  margin: 13px;
+  font-family: "Noto Nastaliq Urdu", serif;
+
 }
 
-.nav-container{
-    background-color: #651616;
+.logo-nav-bar {
+  height: 200px;
+  width: 200px;
+  margin-top: 4%;
+}
+
+.nav-container {
+  background-color: #651616;
+  display: flex;
+  width: 100%;
+  height: 120px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.cart-button {
+  margin: 12px;
+}
+
+.menu-list {
+  display: flex;
+}
+
+.nav-btn {
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  display: none;
+  opacity: 0;
+  font-size: 3rem;
+  color: white;
+}
+
+.log-out {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 400px;
+}
+
+.nav-container a {
+  text-decoration: none;
+  color: #fafafa;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-container a:hover {
+  text-decoration: underline;
+  color: #fafafa;
+  font-size: 15px;
+}
+
+
+.list-in-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+
+.button-login {
+  background-color: rgb(229, 69, 69);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.5s;
+  width: 100px;
+  height: 30px;
+}
+
+.image-logo {
+  height: 60x;
+  width: 60px;
+  border-radius: 50%;
+}
+
+.name-login {
+  color: #fafafa;
+}
+
+
+.li-favorites {
+  margin: 0px;
+  font-size: 18px;
+}
+
+
+.main-nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #651616;
+
+}
+
+
+@media (min-width: 1170px) and (max-width: 1366px) {
+  .nav-container a {
+    font-size: 12px;
+  }
+
+  .nav-container a:hover {
+    font-size: 12px;
+  }
+
+  .nav-container li {
+    margin: 12px;
+  }
+
+  .li-favorites {
+    margin: 0px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 931px) and (max-width: 1170px) {
+  .nav-container a {
+    font-size: 12px;
+  }
+
+  .nav-container a:hover {
+    font-size: 12px;
+  }
+
+  .nav-container li {
+    margin: 8px;
+  }
+
+  .li-favorites {
+    margin: 0px;
+    font-size: 8px;
+  }
+
+  .logo-nav-bar {
+    height: 170px;
+    width: 170px;
+    margin-top: 4%;
+  }
+
+  .log-out {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    height: 10  0px;
-}
+    height: 50px;
+    width: 270px;
+  }
 
-.nav-container a{
- text-decoration: none;
- color: white;
- font-size: 24px;
-}
-.button-login{
-    background-color:#EF7E63; 
-    border: none;
+  .button-login {
+    background-color: rgb(229, 69, 69);
     border-radius: 10px;
     color: white;
-    padding: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 15px;
     cursor: pointer;
-    -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.5s;
+    width: 100px;
+    height: 30px;
+  }
 
+  .name-login {
+    font-size: 12px;
+  }
+
+  .image-logo {
+    height: 40x;
+    width: 40px;
+    border-radius: 50%;
+  }
 }
 
-.nav-container img{
-    height: 120px;
-    width: 200px;
+@media (min-width: 930px) and (max-width: 950px) {
+  .nav-container a {
+    font-size: 11px;
+  }
+
+  .nav-container a:hover {
+    font-size: 11px;
+  }
+
+  .nav-container li {
+    margin: 7px;
+  }
+
+  .li-favorites {
+    margin: 0px;
+    font-size: 7px;
+  }
+
+  .logo-nav-bar {
+    height: 170px;
+    width: 170px;
+    margin-top: 4%;
+  }
+
+  .log-out {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 270px;
+  }
+
+  .button-login {
+    background-color: rgb(229, 69, 69);
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.5s;
+    width: 100px;
+    height: 30px;
+  }
+
+  .name-login {
+    font-size: 12px;
+  }
+
+  .image-logo {
+    height: 40x;
+    width: 40px;
+    border-radius: 50%;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 930px) {
+  .nav-btn {
+    display: block;
+    opacity: 1;
+  }
+
+  .cart-button {
+    margin-left: 15%;
+  }
+
+  .burger-menu {
+    margin-right: 15%;
+
+  }
+
+  .log-out-min {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+  }
+
+  .nav-container li {
+    display: flex;
+
+    justify-content: center;
+    margin: 30px;
+    color: white;
+    font-family: "Noto Nastaliq Urdu", serif;
+  }
+
+  nav {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    height: 700px;
+    width: 100%;
+    background-color: #651616;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    transform: translateY(-1000px);
+  }
+
+  nav a {
+    font-size: 2.5rem;
+    display: flex;
+  }
+
+  .responsive_nav {
+    transform: none;
+  }
+
+  .nav-container a {
+    font-size: 1.3rem;
+    flex-direction: column;
+  }
+
+  .nav-container a:hover {
+    font-size: 1.3rem;
+  }
+
+  .logo-nav {
+    z-index: 5;
+  }
+
+  .logo-nav-bar{
+    margin-top: 80px;
+  }
+  
+  .nav-container {
+    background-color: #651616;
+  }
+
+  .menu-list {
+    flex-direction: column;
+  }
+
+  .list-in-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: black;
+  }
+}
+
+
+
+@media (min-width: 375px) and (max-width: 500px) {
+  .nav-btn {
+    display: block;
+    opacity: 1;
+  }
+
+  .cart-button {
+    margin-left: 15%;
+  }
+
+  .burger-menu {
+    margin-right: 15%;
+
+  }
+
+  .log-out-min {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+  }
+
+  .nav-container li {
+    display: flex;
+
+    justify-content: center;
+    margin: 15px;
+    color: white;
+    font-family: "Noto Nastaliq Urdu", serif;
+  }
+
+  nav {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    height: 700px;
+    width: 100%;
+    background-color: #651616;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    transform: translateY(-1000px);
+  }
+
+  nav a {
+    font-size: 2.5rem;
+    display: flex;
+  }
+
+  .responsive_nav {
+    transform: none;
+  }
+
+  .nav-container a {
+    font-size: 1.3rem;
+    flex-direction: column;
+  }
+
+  .nav-container a:hover {
+    font-size: 1.3rem;
+  }
+
+  .logo-nav {
+    z-index: 5;
+  }
+
+  .logo-nav-bar{
+    margin-top: 80px;
+  }
+  .nav-container {
+    background-color: #651616;
+  }
+
+  .menu-list {
+    flex-direction: column;
+  }
+
+  .list-in-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: black;
+  }
+
 }

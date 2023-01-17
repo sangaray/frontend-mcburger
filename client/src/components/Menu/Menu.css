@@ -1,8 +1,12 @@
+.menu-main-container{
+    max-height: 100%;
+}
+
 .filters-container{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(204, 149, 47);
+    background-color: #f5ebdc;
     padding-bottom: 20px;
 }
 .filters{
@@ -10,7 +14,32 @@
     margin-right: 50px;
 }
 .cards-container{
+    background-color: #f5ebdc;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+@media (min-width: 576px) and (max-width: 930px) and (orientation:portrait){
+
+    .filters-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #f5ebdc;
+        padding-bottom: 20px;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 576px){
+    .filters-container{
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #f5ebdc;
+        padding-bottom: 20px;
+    }
 }

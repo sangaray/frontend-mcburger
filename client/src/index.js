@@ -4,7 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import store from "./store/index.js";
+import store, { persistor } from "./store/index.js";
+import { PersistGate } from "redux-persist/integration/react";
 import { createRoot } from "react-dom/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -20,13 +21,16 @@ root.render(
           //domain={REACT_APP_DOMAIN}
           clientId="CbwboB0RC7xwrSjegPeeYip5otVij30L"
           //redirectUri= {window.location.origin}
-          redirectUri="http://localhost:3000/login"
+          //redirectUri="http://localhost:3000/login"
+          redirectUri="https://test-deploy-topaz-nine.vercel.app/login"
         >
-          <App />
+          {/* <PersistGate loading={null} persistor={persistor}> */}
+            <App />
+         {/*  </PersistGate> */}
         </Auth0Provider>
       </Provider>
     </ChakraProvider>
-  </React.StrictMode>
+  </React.StrictMode >
 );
 
 // If you want to start measuring performance in your app, pass a function

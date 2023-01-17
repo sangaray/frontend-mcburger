@@ -9,6 +9,9 @@ import {
 import { Box, Text, Button } from "@chakra-ui/react";
 import CartCards from "../CartCards/CartCards";
 import NavBar from "../NavBar/NavBar";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import Footer from "../Footer/Footer"
+import "./Cart.css"
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -78,59 +81,73 @@ export default function Cart() {
     dispatch(deleteProductsCart(p));
   }
 
-  return (
-    <Box>
-      <Box>
-        <NavBar />
-      </Box>
+  const buttonPayment = () => {
+    if (paymentLink) {
+      return (<>
+        <Button size='md' colorScheme='green'>
+          <a href={paymentLink} >Go to payment</a>
+        </Button>
+      </>)
+    } else {
+      <></>
+    }
+  }
 
-      <Box display="flex" justifyContent="center" alignItems="center">
-        <Box
-          bg="#D9D9D9"
-          marginTop="10px"
-          borderRadius="10px"
-          height="700px"
-          width="1500px"
-        >
+  return (
+    <div>
+      <div>
+        <NavBar />
+      </div>
+
+      <div className="total-cart-container">
+        <text className="tittle-cart">Cart</text>
+        <div className="cards-cart-container">
+
+          <hr style={{ border: "grey solid 1px" }}></hr>
           {Object.values(cartProducts).map((p) => {
             return (
-              <Box key={p.id + p.name}>
-                <CartCards name={p.name} image={p.image} price={p.price} />
-                <Button
-                  onClick={(e) => handleOnRemove(p)}
-                  isDisabled={disableBtns}
-                >
-                  -
-                </Button>
-                <Text>{p.quantity}</Text>
-                <Button
-                  onClick={(e) => handleOnAdd(p)}
-                  isDisabled={disableBtns}
-                >
-                  +
-                </Button>
-                <Button
-                  onClick={(e) => handleOnDelete(p)}
-                  isDisabled={disableBtns}
-                >
-                  Eliminar
-                </Button>
-              </Box>
+              <div className="card-cart">
+                <div className="button-delete-cart">
+                  <Button onClick={(e) => handleOnDelete(p)} bg={"#b5b5b5;"}>
+                    <RiDeleteBin6Line />
+                  </Button>
+                </div>
+                <CartCards image={p.image} />
+                <div className="mid-cart-container">
+                  <Text as="b">{p.name}&nbsp;&nbsp;{p.price}</Text>
+                  <div className="button-cart-container">
+                    <button onClick={(e) => handleOnRemove(p)} className="button-card-cart">
+                      -
+                    </button>
+                    <Text margin={"10px"} as={"b"} color={"white"}>{p.quantity}</Text>
+                    <button onClick={(e) => handleOnAdd(p)} className="button-card-cart">
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
             );
           })}
-          <Text>Ubicación</Text>
-          <Text>Precio</Text>
-          <Text>Total</Text>
-          <Text>{"Precio Total: $" + totalPrice}</Text>
-          <Button
+
+        </div>
+        <hr style={{ border: "grey solid 1px" }}></hr>
+        <div className="total-price">
+          <text as="b" color="black" fontSize='2xl'>{"Total Price: $" + totalPrice}</text>
+        </div>
+        <hr style={{ border: "grey solid 1px" }}></hr>
+        <div>
+          <Button size='md' colorScheme='green' margin={"30px"}
             onClick={(e) => handleOnPay(arrProducts)}
             isDisabled={!disableBtns && arrProducts.length ? false : true}
           >
-            {loading ? <p>Loading</p> : <p>Pagar</p>}
-          </Button>
-          {paymentLink ? <a href={paymentLink}>Go to payment</a> : <></>}
-        </Box>
-      </Box>
-    </Box>
+            {loading ? <p>Loading</p> : <p>Pay</p>}
+          </Button >
+          {buttonPayment()}
+        </div>
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </div>
   );
 }

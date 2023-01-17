@@ -16,4 +16,6 @@
 .card-container img{
     width: 300px;
     height: 300px;
+    object-fit: cover;
+    background-color: rgb(202, 202, 202);
 }

@@ -1,16 +1,11 @@
 import React from "react";
-import { Box, Image, Text, Button,  Divider } from '@chakra-ui/react';
+import { Text, Button } from "@chakra-ui/react";
+import "../Cart/Cart.css"
 
-
-export default function CartCards({name, image, price }){
-    return(
-        <div>
-            <div className="card-container">
-                <img src={image} alt={name}/>
-                <Text as="b">{name}</Text>
-                
-               
-            </div>
-        </div>
-    )
+export default function CartCards({ name, image}) {
+  return (
+      <div className="image-card-carts">
+        <img src={image} alt={name} />
+      </div>
+  );
 }

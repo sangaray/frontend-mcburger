@@ -1,0 +1,148 @@
+.enri111{
+ width: 33.33%;
+ flex-direction: column;
+ margin-left: 70px;
+
+}
+
+.social-media-links{
+  margin-top: 60px;
+}
+
+.copy-container{
+  margin-top: 30px;
+}
+.enriquito111{
+width: 33.33%;
+text-align: center;
+margin-top: -30px;
+  /* w="33.3%" textAlign="center" marginTop={"-30px"} */
+}
+
+.enriquilo1111{
+width: 33.33%;
+text-align:center ;
+margin-top: -28px ;
+
+  /* w="33.3%" textAlign="center" marginTop={"-28px"} */
+}
+
+.footer-main-super{
+  height: 440px;
+  width: auto;
+  background-color:#1b1b1b ;
+  /* h="440px" w="auto" backgroundColor="#1b1b1b" */
+}
+
+
+@media (min-width: 500px) and (max-width: 930px){
+
+  .footer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    max-height: 100vh;
+    
+  }
+  .footer-main-super{
+    height: 900px;
+    width: auto;
+    background-color:#1b1b1b ;
+    /* h="440px" w="auto" backgroundColor="#1b1b1b" */
+  }
+
+  .enriquito11{
+   
+    width: 100%;
+  }
+
+  .enriquito111{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 90%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  .enri111 {
+    margin-left:  0px;
+    width: 100%;
+    text-align: center;
+    
+   
+   }
+
+   .enriquilo1111{
+    width: 100%;
+    text-align:center ;
+    margin-top: 0 ;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 500px)  {
+
+  .footer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    max-height: 100vh;
+    
+  }
+  .footer-main-super{
+    height: 900px;
+    width: auto;
+    background-color:#1b1b1b ;
+    /* h="440px" w="auto" backgroundColor="#1b1b1b" */
+  }
+
+  .enriquito11{
+   
+    width: 100%;
+  }
+
+  .enriquito111{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 90%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  .enri111 {
+    margin-left:  0px;
+    width: 100%;
+    text-align: center;
+    
+   
+   }
+
+   .enriquilo1111{
+    width: 100%;
+    text-align:center ;
+    margin-top: 0 ;
+  }
+  .social-media-links{
+    margin-top: 10px;
+    
+    border: solid red;
+  }
+
+  .copy-container{
+    margin-top: 50px;
+  }
+  
+
+}
+

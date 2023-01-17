@@ -2,7 +2,7 @@ import React from 'react'
 import NavBar from '../NavBar/NavBar'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
-import { Button } from "@chakra-ui/react";
+import { Button, Text, Image, Box } from "@chakra-ui/react";
 //footer
 
 export default function Success() {
