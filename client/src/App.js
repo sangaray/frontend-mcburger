@@ -21,13 +21,13 @@ import Login from "./components/Login/Login";
 import FormUser from "./components/FormUser/FormUser";
 import FormUser2 from "./components/FormUser/FormUser2";
 import AfterPayment from "./components/AfterPayment/AfterPayment";
-
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./actions";
 
-import axios from "axios";
-//axios.defaults.baseURL = 'http://localhost:3001/';
-axios.defaults.baseURL = "https://test-deploy-production-3b4b.up.railway.app/";
+
+import axios from 'axios';
+//axios.defaults.baseURL = 'http://localhost:3001//';
+axios.defaults.baseURL = 'https://test-deploy-production-3b4b.up.railway.app/';
 
 function App() {
   const dispatch = useDispatch();

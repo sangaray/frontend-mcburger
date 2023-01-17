@@ -11,7 +11,11 @@ export default function News() {
             <Box>
                 <NavBar />
             </Box>
-
+            <Box textAlign="center" mt="50px" display="grid">
+                <Text fontWeight="bold" fontSize="4rem">
+                    Coming soon
+                </Text>
+            </Box>
             <Box className="news-container">
                 <Box className="art-1">
                     <img src="https://s3-eu-central-1.amazonaws.com/www.burgerking.com.ar.v2/wp-media-folder-bk-argentina//home/ubuntu/preview/menu-app/frontend/apps/marketing-website-wordpress-app/web/app/uploads/sites/5/novedeades-muzzasticks.png" alt="imagen" />

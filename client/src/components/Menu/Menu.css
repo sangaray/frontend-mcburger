@@ -31,3 +31,15 @@
         padding-bottom: 20px;
     }
 }
+
+@media (min-width: 375px) and (max-width: 576px){
+    .filters-container{
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #f5ebdc;
+        padding-bottom: 20px;
+    }
+}

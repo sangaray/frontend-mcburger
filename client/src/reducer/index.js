@@ -21,7 +21,6 @@ import {
   DELETE_COMMENT,
   UPDATE_RATING,
   GET_ALL_USER_FAVS,
-  GET_ALL_USER_CART,
 } from "../actions/index";
 
 const initialState = {
@@ -46,7 +45,7 @@ function rootReducer(state = initialState, action) {
     case SET_NEW_POSITION:
       return {
         ...state,
-        mapPosition: action.payload,
+        mapPosition: action.payload
       };
     case GET_ALL_PRODUCTS:
       return {
@@ -83,17 +82,17 @@ function rootReducer(state = initialState, action) {
           action.payload === ["All"]
             ? state.productsCategory
             : products.filter((p) => {
-                let productIngredients = p.ingredients;
-                productIngredients = productIngredients.split("-");
-                productIngredients = productIngredients.map((e) => e.trim());
-                let coincidense = false;
-                searchIngredients.map((e) =>
-                  productIngredients.map((i) => {
-                    if (e === i) coincidense = true;
-                  })
-                );
-                return coincidense;
-              }),
+              let productIngredients = p.ingredients;
+              productIngredients = productIngredients.split("-");
+              productIngredients = productIngredients.map((e) => e.trim());
+              let coincidense = false;
+              searchIngredients.map((e) =>
+                productIngredients.map((i) => {
+                  if (e === i) coincidense = true;
+                })
+              );
+              return coincidense;
+            }),
       };
 
     case GET_PRODUCTS_AMOUNT:
@@ -112,24 +111,18 @@ function rootReducer(state = initialState, action) {
       let orderArray = [...state.products];
       action.payload === "asc"
         ? orderArray.sort(function (a, b) {
-            a = a.price.split("$")[1];
-            b = b.price.split("$")[1];
-            return parseInt(b) - parseInt(a);
-          })
+          a = a.price.split("$")[1];
+          b = b.price.split("$")[1];
+          return parseInt(b) - parseInt(a);
+        })
         : orderArray.sort(function (a, b) {
-            a = a.price.split("$")[1];
-            b = b.price.split("$")[1];
-            return parseInt(a) - parseInt(b);
-          });
+          a = a.price.split("$")[1];
+          b = b.price.split("$")[1];
+          return parseInt(a) - parseInt(b);
+        });
       return {
         ...state,
         products: orderArray,
-      };
-
-    case GET_ALL_USER_CART:
-      return {
-        ...state,
-        cart: action.payload,
       };
 
     case ADD_TO_CART:
@@ -160,7 +153,6 @@ function rootReducer(state = initialState, action) {
           delete newCart[action.payload.id];
         }
       }
-
       return { ...state, cart: newCart };
 
     case DELETE_PRODUCTS_CART:

@@ -3,10 +3,10 @@
     height: 600px;
     z-index: 1;
     border-radius: 15px;
-    
+
 }
 
-.button-my-position-container{
+.button-my-position-container {
     display: flex;
     justify-content: center;
     margin-top: 30px;
@@ -32,9 +32,9 @@
 }
 
 .cards-map {
-    
+
     width: 30%;
-    
+
 }
 
 
@@ -50,7 +50,6 @@
 }
 
 .text-map-cards-container {
-    
     width: 70%;
 }
 
@@ -70,9 +69,8 @@
     .leaflet-map-container {
         width: 1100px;
         height: 600px;
-
         border-radius: 15px;
-        
+
     }
 
     .map-button-container {
@@ -89,7 +87,7 @@
         height: 600px;
 
         border-radius: 15px;
-        
+
     }
 
     .map-button-container {
@@ -104,9 +102,8 @@
     .leaflet-map-container {
         width: 820px;
         height: 600px;
-
         border-radius: 15px;
-        
+
     }
 
     .map-button-container {
@@ -121,10 +118,8 @@
 
     .leaflet-map-container {
         width: 800px;
-        height: 600px;
-
+        height: 390px;
         border-radius: 15px;
-        
     }
 
     .map-button-container {
@@ -151,7 +146,7 @@
     }
 
     .text-map-cards-container {
-        
+
         font-size: 0.9rem;
         width: 70%;
     }
@@ -160,11 +155,9 @@
 @media (min-width: 1100px) and (max-width: 1250px) {
 
     .leaflet-map-container {
-        width:700px;
-        height: 600px;
-
+        width: 700px;
+        height: 420px;
         border-radius: 15px;
-        
     }
 
     .map-button-container {
@@ -189,7 +182,7 @@
     }
 
     .text-map-cards-container {
-        
+
         font-size: 0.9rem;
         width: 70%;
     }
@@ -199,10 +192,10 @@
 
     .leaflet-map-container {
         width: 650px;
-        height: 600px;
+        height: 400px;
 
         border-radius: 15px;
-        
+
     }
 
     .map-button-container {
@@ -229,7 +222,7 @@
     }
 
     .text-map-cards-container {
-        
+
         font-size: 0.9rem;
         width: 70%;
     }
@@ -239,10 +232,10 @@
 
     .leaflet-map-container {
         width: 550px;
-        height: 600px;
+        height: 350px;
 
         border-radius: 15px;
-        
+
     }
 
     .map-button-container {
@@ -270,7 +263,7 @@
     }
 
     .text-map-cards-container {
-        
+
         font-size: 0.9rem;
         width: 70%;
     }
@@ -282,10 +275,10 @@
         height: 400px;
 
         border-radius: 15px;
-        
+
     }
 
-  
+
 
     .map-and-cards-container {
         display: flex;
@@ -308,19 +301,20 @@
     }
 
     .text-map-cards-container {
-        
+
         font-size: 0.9rem;
         width: 70%;
     }
-    
+
     .cards-map {
-        
+
         width: 70%;
     }
-    
-    .map-container{
+
+    .map-container {
         width: 100%;
     }
+
     .map-button-container {
         width: 100%;
     }
@@ -332,10 +326,10 @@
         height: 200px;
 
         border-radius: 15px;
-        
+
     }
 
-  
+
 
     .map-and-cards-container {
         display: flex;
@@ -358,19 +352,20 @@
     }
 
     .text-map-cards-container {
-        
+
         font-size: 0.8rem;
         width: 70%;
     }
-    
+
     .cards-map {
-        
+
         width: 95%;
     }
-    
-    .map-container{
+
+    .map-container {
         width: 100%;
     }
+
     .map-button-container {
         width: 100%;
     }

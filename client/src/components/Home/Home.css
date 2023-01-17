@@ -1,15 +1,15 @@
-@media (max-width: 1920px) {
-    .container-directo112 {
+@media (max-width: 1920px){
+    .container-directo112{
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-
+        
+        
         max-width: 1920px;
     }
-
-    .acceso-directo11 {
-
+    
+    .acceso-directo11{
+       
         width: 33.33%;
         height: 600px;
         background-color: #FE3838;
@@ -18,17 +18,16 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-
-
+       
+    
     }
-
-    .acceso-directo11 img {
+    
+    .acceso-directo11 img{
         height: 300px;
         width: 450px;
     }
-
-    .button-pediya1 {
-        background-color: #EF7E63;
+    .button-pediya1{
+        background-color:#EF7E63; 
         border: none;
         border-radius: 10px;
         color: white;
@@ -38,20 +37,19 @@
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
-        -webkit-transition-duration: 0.4s;
+        -webkit-transition-duration: 0.4s; 
         transition-duration: 0.4s;
         margin-top: 5px;
     }
-
-
-    .acceso-directo22 img {
+    
+    
+    .acceso-directo22 img{
         height: 350px;
         width: 350px;
         margin-top: -27px;
     }
-
-    .button-pediya2 {
-        background-color: #EF7E63;
+    .button-pediya2{
+        background-color:#EF7E63; 
         border: none;
         border-radius: 10px;
         color: white;
@@ -61,21 +59,21 @@
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
-        -webkit-transition-duration: 0.4s;
+        -webkit-transition-duration: 0.4s; 
         transition-duration: 0.4s;
         margin-top: 5px;
     }
-
-
-    .acceso-directo33 img {
+    
+    
+    .acceso-directo33 img{
         height: 350px;
         width: 350px;
         margin-top: 20px;
-
+        
     }
-
-    .button-pediya3 {
-        background-color: #EF7E63;
+    
+    .button-pediya3{
+        background-color:#EF7E63; 
         border: none;
         border-radius: 10px;
         color: white;
@@ -85,223 +83,410 @@
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
-        -webkit-transition-duration: 0.4s;
+        -webkit-transition-duration: 0.4s; 
         transition-duration: 0.4s;
         margin-top: 5px;
     }
-
-    .acceso-directo11 h4 {
+    
+    .acceso-directo11 h4{
         color: white;
         font-size: 2rem;
-
+    
         font-family: 'Lilita One', cursive;
     }
-
-    .acceso-directo22 h4 {
+    
+    .acceso-directo22 h4{
         color: white;
         font-size: 1.8rem;
-
+    
         font-family: 'Lilita One', cursive;
     }
-
-    .acceso-directo33 h4 {
+    
+    .acceso-directo33 h4{
         color: white;
         font-size: 1.8rem;
         margin-top: -45px;
         font-family: 'Lilita One', cursive;
     }
-
-
-    .acceso-directo22 {
-
+    
+    
+    .acceso-directo22{
+       
         width: 33.33%;
         height: 600px;
         background-color: #E49F36;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: column;
-
+       flex-direction: column;
+        
     }
-
-    .acceso-directo33 {
-
+    .acceso-directo33{
+    
         width: 33.33%;
         height: 600px;
         background-color: #502314;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: column;
-
-
+       flex-direction: column;
+      
+        
     }
-
-    .main-container-home {
-        background-image: url('./fondoproyecto.png');
+    
+    .main-container-home{
+        /* background-image: url('./fondoproyectoMax.png'); */
         background-color: #f5ebdc;
-
         max-width: 100%;
-
     }
 
-    .phrase-home {
+    .phrase-home{
         color: #EF7E63;
         font-size: 46px;
         font-family: 'Fredoka One', cursive;
     }
-
-    .phrase-span {
+    .phrase-span{
         color: #EF7E63;
         font-size: 46px;
         font-weight: bold;
         font-family: 'Fredoka One', cursive;
     }
-
-    .phrase-button {
+    
+    .phrase-button{
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-left: 300px;
         margin-right: 300px;
-
+    
     }
-
-    .p-b-main {
+    
+    .p-b-main{
         height: 0.01px;
         margin-top: 100px;
-
+       
     }
-
-    .button-pediya {
-        background-color: #EF7E63;
+    
+    .button-pediya{
+        background-color:#EF7E63; 
         border: none;
         border-radius: 10px;
         color: white;
         padding: 10px;
         text-align: center;
         text-decoration: none;
-
+    
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
-        -webkit-transition-duration: 0.4s;
+        -webkit-transition-duration: 0.4s; 
         transition-duration: 0.4s;
     }
-
-
-    .carousel {
-        height: 90%;
+    
+    
+    .carousel{
+        height:90%;
         width: 90%;
-        padding: auto;
-        margin-left: 5%;
+       padding: auto;
+       margin-left: 5%;
     }
-
-    .w-d-y {
+    
+    .w-d-y{
         font-family: 'Lilita One', cursive;
-        font-size: 4.5rem;
+        font-size: 4.5rem; 
         color: #502314;
     }
-
-    .text-box-w {
-        margin-top: 150px;
-        margin-left: 410px;
+    
+    .text-box-w{
+        margin-top:150px ; 
+        margin-left: 100px;
     }
-
-    .select-menu-chakra {
-        margin-left: 410px;
+    .select-menu-chakra{
+       margin-left: 100px;
         margin-top: 50px;
     }
 }
-
-@media (min-width: 1366px) and (max-width: 1660px) {
-    .text-box-w {
-
+@media (min-width: 1660px) and (max-width: 2000px){
+    .text-box-w{
         margin-left: 110px;
     }
-
-    .select-menu-chakra {
-        margin-left: 110px;
-
+    .select-menu-chakra{
+       margin-left: 110px;
     }
 
-    .w-d-y {
+    .main-container-home{
+        background-image: url('./fondoproyectoFullMax.png');
+    }
 
-        font-size: 3.5rem;
-
+    .w-d-y{
+        font-size: 3.5rem; 
+        
     }
 }
 
-@media (max-width: 1366px) {
-    .container-directo112 {
-
-
-        max-width: 1366px;
+@media (min-width: 1540px) and (max-width: 1660px){
+    .text-box-w{
+        margin-left: 110px;
+    }
+    .select-menu-chakra{
+       margin-left: 110px;
     }
 
-    .text-box-w {
-        margin-left: 100px;
+    .main-container-home{
+        background-image: url('./fondoproyectoMax.png');
     }
 
-    .w-d-y {
-
-        font-size: 3.5rem;
-
-    }
-
-    .main-container-home {
-        background-image: url('./fondoproyecto.png');
-
-
-    }
-
-    .select-menu-chakra {
-        margin-left: 100px;
-
+    .w-d-y{
+        font-size: 3.5rem; 
+        
     }
 }
 
-@media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait) {
-    .container-directo112 {
+
+@media (min-width: 1366px) and (max-width: 1540px)  {
+    
+    .container-directo112{    
+        max-width: 1660px;
+    }
+
+    .text-box-w{
+        margin-left: 100px;
+    }
+    
+    .main-container-home{
+        background-image: url('./fondoproyectoMid-Regular.png');
+    }
+
+    .w-d-y{
+        
+        font-size: 3.5rem; 
+        
+    }
+
+    .select-menu-chakra{
+        margin-left: 100px;
+        
+     }
+}
+
+@media (min-width: 1100px) and (max-width: 1366px)  {
+    .container-directo112{
+        width: 100%;
+    }
+
+    .main-container-home{
+        background-image: url('./fondoproyectoMid-Regular.png');
+    }
+
+    .text-box-w{
+        margin-left: 70px;
+        max-width: 700px;
+    }
+    
+    .w-d-y{
+        
+        font-size: 2.7rem; 
+        
+    }
+    .main-container-home{
+        background-image: url('./fondoproyectoMid-Small.png');
+        
+       
+    
+    }
+
+    .select-menu-chakra{
+        margin-left: 70px;
+        
+     }
+   
+}
+
+/* @media (min-width: 1100px) and (max-width: 1366px)  {
+    .container-directo112{
         flex-direction: column;
         width: 100%;
-
+        
     }
 
-    .text-box-w {
-        margin-left: 100px;
+    .main-container-home{
+        background-image: url('./fondoproyectoMid-Regular.png');
     }
 
-    .w-d-y {
-
-        font-size: 3.5rem;
-
+    .text-box-w{
+        margin-left: 70px;
+        max-width: 700px;
+    }
+    
+    .w-d-y{
+        
+        font-size: 2.7rem; 
+        
+    }
+    .main-container-home{
+        background-image: url('./fondoproyectoMid-Small.png');
+        
+       
+    
     }
 
-    .main-container-home {
-        background-image: url('./fondoproyecto.png');
-
-
-
+    .select-menu-chakra{
+        margin-left: 70px;
+        
+     }
+     .acceso-directo11{
+        
+        width: 100%;
+    }
+    .acceso-directo22{
+        
+        width: 100%;
+    }
+    .acceso-directo33{
+        
+        width: 100%;
+    }
+} */
+@media (min-width: 991.98px) and (max-width: 1100px)  {
+    .container-directo112{
+        flex-direction: column;
+        width: 100%;
+        
     }
 
-    .select-menu-chakra {
-        margin-left: 100px;
-
+    .main-container-home{
+        background-image: url('./fondoproyectoMid-Small.png');
     }
 
-    .acceso-directo11 {
+    .text-box-w{
+        margin-left: 70px;
+        max-width: 700px;
+    }
+    
+    .w-d-y{
+        
+        font-size: 2.7rem; 
+        
+    }
+    .main-container-home{
+        background-image: url('./fondoproyectoSmall.png');
+        
+       
+    
+    }
 
+    .select-menu-chakra{
+        margin-left: 70px;
+        
+     }
+     .acceso-directo11{
+        
+        width: 100%;
+    }
+    .acceso-directo22{
+        
+        width: 100%;
+    }
+    .acceso-directo33{
+        
+        width: 100%;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 991.98px)  {
+    .container-directo112{
+        flex-direction: column;
+        width: 100%;
+        
+    }
+
+    .main-container-home{
+        background-image: url('./fondoproyectoSmall.png');
+    }
+
+    .text-box-w{
+        margin-left: 70px;
+        max-width: 700px;
+    }
+    
+    .w-d-y{
+        
+        font-size: 2.7rem; 
+        
+    }
+    .main-container-home{
+        background-image: url('./fondoproyectoSmall.png');
+        
+       
+    
+    }
+
+    .select-menu-chakra{
+        margin-left: 70px;
+        
+     }
+     .acceso-directo11{
+        
+        width: 100%;
+    }
+    .acceso-directo22{
+        
+        width: 100%;
+    }
+    .acceso-directo33{
+        
+        width: 100%;
+    }
+}
+@media (min-width: 375px) and (max-width: 500px)  {
+    .w-d-y{
+        
+        font-size: 2.3rem; 
+        
+        
+    }
+    .text-box-w{
+        margin-left: 30px;
+        width: 350px;
+    }
+
+    .select-menu-chakra{
+        margin-left: 25px;
+        
+    }
+
+    .container-directo112{
+        flex-direction: column;
         width: 100%;
     }
 
-    .acceso-directo22 {
-
+    .acceso-directo11{
+        
+        width: 100%;
+    }
+    .acceso-directo22{
+        
+        width: 100%;
+    }
+    .acceso-directo33{
+        
         width: 100%;
     }
 
-    .acceso-directo33 {
+    .acceso-directo11 img{
+        height: 200px;
+        width: 350px;
+    }
 
-        width: 100%;
+      .acceso-directo22 img{
+        height: 200px;
+        width: 200px;
+    }
+
+    .acceso-directo33 img{
+        height: 250px;
+        width: 250px;
+        
+        
     }
 }

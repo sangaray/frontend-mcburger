@@ -11,7 +11,6 @@ import CartCards from "../CartCards/CartCards";
 import NavBar from "../NavBar/NavBar";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Footer from "../Footer/Footer"
-import "./Cart.css"
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -94,60 +93,78 @@ export default function Cart() {
   }
 
   return (
-    <div>
-      <div>
+    <Box>
+      <Box>
         <NavBar />
-      </div>
+      </Box>
 
-      <div className="total-cart-container">
-        <text className="tittle-cart">Cart</text>
-        <div className="cards-cart-container">
-
+      <Box display={"grid"} width={"100%"} justifyContent={"center"} grid-template-columns="repeat(auto-fill, minmax(250px, 400px))">
+        <Box
+          display={"grid"} textAlign="center" bg="#D9D9D9" marginTop="10px" borderRadius="10px" height="auto" width="100%" marginBottom="20px"
+        >
+          <Text as="b" fontSize='3xl'>Cart</Text>
           <hr style={{ border: "grey solid 1px" }}></hr>
           {Object.values(cartProducts).map((p) => {
             return (
-              <div className="card-cart">
-                <div className="button-delete-cart">
-                  <Button onClick={(e) => handleOnDelete(p)} bg={"#b5b5b5;"}>
-                    <RiDeleteBin6Line />
-                  </Button>
-                </div>
-                <CartCards image={p.image} />
-                <div className="mid-cart-container">
-                  <Text as="b">{p.name}&nbsp;&nbsp;{p.price}</Text>
-                  <div className="button-cart-container">
-                    <button onClick={(e) => handleOnRemove(p)} className="button-card-cart">
-                      -
-                    </button>
-                    <Text margin={"10px"} as={"b"} color={"white"}>{p.quantity}</Text>
-                    <button onClick={(e) => handleOnAdd(p)} className="button-card-cart">
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <Box display="flex" marginLeft={"-20px"} alignItems="center" justifyContent={"center"} key={p.id + p.name}>
+
+                <CartCards name={p.name} image={p.image} price={p.price} />
+
+                <Button
+                  size={"sm"}
+                  marginTop={"320px"}
+                  marginLeft={"-220px"}
+                  colorScheme='green'
+                  onClick={(e) => handleOnRemove(p)}
+                  isDisabled={disableBtns}
+                >
+                  -
+                </Button>
+                <Text marginLeft="10px" marginRight="10px" as="b" fontSize='2xl' marginTop={"320px"}>{p.quantity}</Text>
+                <Button
+                  size={"sm"}
+                  marginTop={"320px"}
+                  colorScheme='green'
+                  onClick={(e) => handleOnAdd(p)}
+                  isDisabled={disableBtns}
+                >
+                  +
+                </Button>
+                <Button /* marginLeft="10px" size={"sm"} marginTop={"-50px"} */
+                  backgroundColor="#8888884f"
+                  borderRadius="5px"
+                  size={"sm"}
+                  fontSize={"18"}
+                  marginLeft="4.8%"
+                  padding={"3px"}
+                  paddingTop="2px"
+                  marginTop={"-360px"}
+                  color="#651616"
+                  onClick={(e) => handleOnDelete(p)}
+                  isDisabled={disableBtns}
+                >
+                  <RiDeleteBin6Line />
+                </Button>
+              </Box>
             );
           })}
 
-        </div>
-        <hr style={{ border: "grey solid 1px" }}></hr>
-        <div className="total-price">
-          <text as="b" color="black" fontSize='2xl'>{"Total Price: $" + totalPrice}</text>
-        </div>
-        <hr style={{ border: "grey solid 1px" }}></hr>
-        <div>
-          <Button size='md' colorScheme='green' margin={"30px"}
-            onClick={(e) => handleOnPay(arrProducts)}
-            isDisabled={!disableBtns && arrProducts.length ? false : true}
-          >
-            {loading ? <p>Loading</p> : <p>Pay</p>}
-          </Button >
-          {buttonPayment()}
-        </div>
-      </div>
-      <div>
+          <Text as="b" color="black" fontSize='2xl' marginLeft="30px">{"Total Price: $" + totalPrice}</Text>
+          <hr style={{ border: "grey solid 1px" }}></hr>
+          <Box marginLeft="1300px" marginBottom="50px" marginTop="40px">
+            <Button size='md' colorScheme='green' marginLeft="-1285px"
+              onClick={(e) => handleOnPay(arrProducts)}
+              isDisabled={!disableBtns && arrProducts.length ? false : true}
+            >
+              {loading ? <p>Loading</p> : <p>Pay</p>}
+            </Button >
+            {buttonPayment()}
+          </Box>
+        </Box>
+      </Box>
+      <Box>
         <Footer />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }

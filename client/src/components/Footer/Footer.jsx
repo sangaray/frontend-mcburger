@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import emailJs from "@emailjs/browser";
 import "./Footer.css"
+import swal from "sweetalert";
 
 import {
   Box,
@@ -55,7 +56,11 @@ export default function Footer(res) {
       )
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-    alert("comment sent successfully");
+    /*  alert("comment sent successfully"); */
+    swal("Comment sent successfully!", {
+      buttons: false,
+      timer: 2000,
+    });
     setInput({
       user_name: "",
       user_email: "",
@@ -115,78 +120,78 @@ export default function Footer(res) {
             fontSize="20px"
             color="white"
             mb="10px"
-           
+
             marginBottom={"10px"}
           >
             Contact us
           </Text>
           <div className="enriquito11">
-          <form onSubmit={sendMail}>
-            <Input
-              backgroundColor="white"
-              mb="10px"
-              placeholder="Name"
-              
-              type="text"
-              value={input.user_name}
-              name="user_name"
-              onChange={(e) => handleInputChange(e)}
-            />
-            {errors.user_name && (
-              <Text fontSize="11px" color="red">
-                {errors.user_name}
-              </Text>
-            )}
+            <form onSubmit={sendMail}>
+              <Input
+                backgroundColor="white"
+                mb="10px"
+                placeholder="Name"
 
-            <Input
-              backgroundColor="white"
-              mb="10px"
-              placeholder="E-Mail"
-              
-              type="email"
-              value={input.user_email}
-              name="user_email"
-              onChange={(e) => handleInputChange(e)}
-            />
-            {errors.user_email && (
-              <Text fontSize="11px" color="red">
-                {errors.user_email}
-              </Text>
-            )}
+                type="text"
+                value={input.user_name}
+                name="user_name"
+                onChange={(e) => handleInputChange(e)}
+              />
+              {errors.user_name && (
+                <Text fontSize="11px" color="red">
+                  {errors.user_name}
+                </Text>
+              )}
 
-            <Textarea
-              backgroundColor="white"
-              placeholder="Comments... "
-          
-              type="text"
-              value={input.user_message}
-              name="user_message"
-              onChange={(e) => handleInputChange(e)}
-            />
-            {errors.user_message && (
-              <Text fontSize="11px" color="red">
-                {errors.user_message}
-              </Text>
-            )}
-            {errors.user_name ||
-            errors.user_email ||
-            errors.user_message ||
-            input.user_name === "" ? (
-              <Button
-                mt={"10px"}
-                
-                select="true"
-                disabled
-                type="submit"
-              >
-                Submit
-              </Button>
-            ) : (
-              <Button mt={"10px"} marginRight={"75px"} type="submit">
-                Submit
-              </Button>
-            )}
-          </form>
+              <Input
+                backgroundColor="white"
+                mb="10px"
+                placeholder="E-Mail"
+
+                type="email"
+                value={input.user_email}
+                name="user_email"
+                onChange={(e) => handleInputChange(e)}
+              />
+              {errors.user_email && (
+                <Text fontSize="11px" color="red">
+                  {errors.user_email}
+                </Text>
+              )}
+
+              <Textarea
+                backgroundColor="white"
+                placeholder="Comments... "
+
+                type="text"
+                value={input.user_message}
+                name="user_message"
+                onChange={(e) => handleInputChange(e)}
+              />
+              {errors.user_message && (
+                <Text fontSize="11px" color="red">
+                  {errors.user_message}
+                </Text>
+              )}
+              {errors.user_name ||
+                errors.user_email ||
+                errors.user_message ||
+                input.user_name === "" ? (
+                <Button
+                  mt={"10px"}
+
+                  select="true"
+                  disabled
+                  type="submit"
+                >
+                  Submit
+                </Button>
+              ) : (
+                <Button mt={"10px"} marginRight={"75px"} type="submit">
+                  Submit
+                </Button>
+              )}
+            </form>
           </div>
         </Box>
         <Box className="enriquilo1111"  >
@@ -236,7 +241,7 @@ export default function Footer(res) {
           </Box>
         </Box>
       </Box>
-      <Box className="copy-container"  backgroundColor="gray" h="40px" textAlign="center">
+      <Box className="copy-container" backgroundColor="gray" h="40px" textAlign="center">
         <Text color="white">© All Rights Reserved 2022</Text>
       </Box>
     </Box>

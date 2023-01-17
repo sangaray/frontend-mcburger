@@ -14,7 +14,6 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const RESTART_CART = "RESTART_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const DELETE_PRODUCTS_CART = "DELETE_PRODUCTS_CART";
-export const GET_ALL_USER_CART = "GET_ALL_USER_CART";
 //MAPS
 export const SET_NEW_POSITION = "SET_NEW_POSITION";
 
@@ -34,14 +33,14 @@ export function setNewPosition(params) {
 
 export function getAllProducts() {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/products");
+    var json = await axios.get("/products");
     return dispatch({ type: "GET_ALL_PRODUCTS", payload: json.data });
   };
 }
 
 export function getProductID(id) {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/products/" + id);
+    var json = await axios.get("/products/" + id);
     return dispatch({ type: "GET_PRODUCTS_ID", payload: json.data });
   };
 }
@@ -74,88 +73,45 @@ export function getProductsByIgredient(params) {
   };
 }
 
-export function removeFromCart({ userId, product }) {
-  return async (dispatch) => {
-    if (userId) {
-      await axios.put("http://localhost:3001/cart", {
-        productId: product.id,
-        userId,
-      });
-    }
-    dispatch({
-      type: "REMOVE_FROM_CART",
-      payload: product,
-    });
+export function removeFromCart(params) {
+  return {
+    type: "REMOVE_FROM_CART",
+    payload: params,
   };
 }
 
-export function deleteProductsCart({ product, userId }) {
-  return async (dispatch) => {
-    if (userId) {
-      await axios.delete(
-        "http://localhost:3001/cart?userId=" +
-          userId +
-          "&productId=" +
-          product.id
-      );
-    }
-
-    dispatch({
-      type: "DELETE_PRODUCTS_CART",
-      payload: product,
-    });
+export function deleteProductsCart(params) {
+  return {
+    type: "DELETE_PRODUCTS_CART",
+    payload: params,
   };
 }
 
-export function getAllUserCart(userId) {
-  return async function (dispatch) {
-    const res = await axios.get("http://localhost:3001/cart/" + userId);
-
-    dispatch({ type: "GET_ALL_USER_CART", payload: res.data ? res.data : {} });
+export function addToCart(params) {
+  let object = {
+    id: params.id,
+    name: params.name,
+    image: params.image,
+    price: params.price,
+    quantity: 1,
+    description: params.summary,
+  };
+  return {
+    type: "ADD_TO_CART",
+    payload: object,
   };
 }
 
-export function addToCart({ userId, product }) {
-  return async function (dispatch) {
-    if (userId) {
-      await axios.post("http://localhost:3001/cart", {
-        productId: product.id,
-        userId,
-      });
-    }
-
-    let object = {
-      id: product.id,
-      name: product.name,
-      image: product.image,
-      price: product.price,
-      quantity: 1,
-      description: product.summary,
-    };
-
-    dispatch({
-      type: "ADD_TO_CART",
-      payload: object,
-    });
-  };
-}
-
-export function restartCart(userId) {
-  return async (dispatch) => {
-    if (userId) {
-      const res = await axios.delete(
-        "http://localhost:3001/cart?userId=" + userId
-      );
-    }
-    dispatch({
-      type: "RESTART_CART",
-    });
+export function restartCart(params) {
+  return {
+    type: "RESTART_CART",
+    payload: params,
   };
 }
 
 export function addProductsToCart(params) {
   return async function () {
-    var json = await axios.post("http://localhost:3001/payment", params);
+    var json = await axios.post("/payment", params);
     return json.data;
   };
 }
@@ -191,7 +147,7 @@ export function addOrderToDB(params) {
 export function getAllComments(id) {
   return async function (dispatch) {
     const commentsInfo = await axios.get(
-      "http://localhost:3001/comments/product/" + id
+      "/comments/product/" + id
     );
     dispatch({
       type: GET_ALL_COMMENTS,
@@ -202,7 +158,7 @@ export function getAllComments(id) {
 
 export function createComment(payload) {
   return async function (dispatch) {
-    const info = await axios.post("http://localhost:3001/comments", payload);
+    const info = await axios.post("/comments", payload);
     dispatch({
       type: CREATE_COMMENT,
       payload: info.data,
@@ -212,7 +168,7 @@ export function createComment(payload) {
 
 export function updateComment(payload) {
   return async function (dispatch) {
-    const info = await axios.put("http://localhost:3001/comments", payload);
+    const info = await axios.put("/comments", payload);
     dispatch({
       type: UPDATE_COMMENT,
       payload: info.data,
@@ -222,7 +178,7 @@ export function updateComment(payload) {
 export function deleteComment(payload) {
   return async function (dispatch) {
     const deletedComment = await axios.delete(
-      "http://localhost:3001/comments?idUser=" +
+      "/comments?idUser=" +
         payload.idUser +
         "&idProduct=" +
         payload.idProduct
@@ -254,7 +210,10 @@ export function addProductFavorite({ product, userId }) {
 export function removeProductFavorite({ product, userId }) {
   return async function (dispatch) {
     const res = await axios.delete(
-      "/favorites/?userId=" + userId + "&productId=" + product.id
+      "/favorites/?userId=" +
+        userId +
+        "&productId=" +
+        product.id
     );
     dispatch({
       type: REMOVE_PRODUCT_FAVORITE,
